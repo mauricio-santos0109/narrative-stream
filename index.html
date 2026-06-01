@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mauricio Santos — The Narrative Stream</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg:        '#2D2A2A',
+          bgDeep:    '#1B1919',
+          brandCyan: '#29abe3',
+          brandLime: '#8fc045',
+          brandMag:  '#e32285',
+          brandGold: '#f9b03d',
+        },
+        fontFamily: {
+          display: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          serif:   ['"Montserrat"', 'system-ui', 'sans-serif'],
+          sans:    ['"Montserrat"', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+
+  /* ─── Master grid ─────────────────────────────────── */
+  :root {
+    --grid-gap:     clamp(16px, 1.5vw, 24px);
+    --container-px: clamp(20px, 3vw, 40px);
+  }
+  .container-x { max-width: 1400px; margin-left: auto; margin-right: auto; padding-left: var(--container-px); padding-right: var(--container-px); }
+  .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--grid-gap); }
+  .rail-card { flex: 0 0 78vw; scroll-snap-align: start; }
+  @media (min-width: 640px)  { .rail-card { flex: 0 0 calc((100% - var(--grid-gap)) / 2); } }
+  @media (min-width: 1024px) { .rail-card { flex: 0 0 calc((100% - 2 * var(--grid-gap)) / 3); } }
+
+  body {
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(41,171,227,0.12), transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(227,34,133,0.10), transparent 60%),
+      radial-gradient(700px 400px at 50% 40%, rgba(143,192,69,0.06), transparent 60%),
+      #2D2A2A;
+    background-attachment: fixed;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    opacity: 0.06; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ─── Type scale ─────────────────────────────────── */
+  .h1      { font-size: clamp(56px, 10vw, 128px); font-weight: 900; letter-spacing: -0.035em; line-height: 0.92; }
+  .h2      { font-size: clamp(32px, 5vw, 64px);   font-weight: 900; letter-spacing: -0.02em;  line-height: 0.98; }
+  .h3      { font-size: clamp(22px, 2.8vw, 36px); font-weight: 800; letter-spacing: -0.01em;  line-height: 1.15; }
+  .h4      { font-size: clamp(28px, 3.2vw, 40px); font-weight: 800; letter-spacing: 0;        line-height: 1; }
+  .lead    { font-size: clamp(17px, 1.4vw, 22px); font-weight: 300; line-height: 1.55; }
+  .body    { font-size: clamp(14px, 1vw, 17px);   font-weight: 300; line-height: 1.7; }
+  .body-s  { font-size: clamp(12px, 0.9vw, 14px); font-weight: 400; line-height: 1.6; }
+  .eyebrow { font-size: clamp(9px, 0.7vw, 11px);  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+  .section-pad-y { padding-top: clamp(80px, 12vw, 160px); padding-bottom: clamp(80px, 12vw, 160px); }
+
+  /* ─── Surfaces ───────────────────────────────────── */
+  .glass {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .glass-strong {
+    background: linear-gradient(180deg, rgba(30,28,28,0.65), rgba(20,18,18,0.85));
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .rail-fade-l, .rail-fade-r { position: absolute; top:0; bottom:0; width: 90px; pointer-events:none; z-index: 10; }
+  .rail-fade-l { left:0;  background: linear-gradient(90deg,  #2D2A2A 10%, rgba(45,42,42,0)); }
+  .rail-fade-r { right:0; background: linear-gradient(270deg, #2D2A2A 10%, rgba(45,42,42,0)); }
+  .focus-ring:focus-visible { outline: 2px solid #f9b03d; outline-offset: 3px; }
+
+  /* ─── Keyframes / animations ─────────────────────── */
+  @keyframes loader-bar   { 0%,100%{transform:scaleY(0.25);opacity:0.45} 25%{transform:scaleY(1);opacity:1} 60%{transform:scaleY(0.55);opacity:0.85} }
+  @keyframes loader-sweep { 0%,100%{left:0%} 50%{left:100%} }
+  @keyframes fade-up      { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fade-in      { from{opacity:0} to{opacity:1} }
+  @keyframes nav-down     { from{opacity:0;transform:translateY(-30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes modal-in     { from{opacity:0;transform:translateY(40px) scale(0.98)} to{opacity:1;transform:translateY(0) scale(1)} }
+  @keyframes pulse-dot    { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .loader-bar  { animation: loader-bar 1.8s ease-in-out infinite; transform-origin: bottom; }
+  .loader-bar-2 { animation-delay: 0.12s; }
+  .loader-bar-3 { animation-delay: 0.24s; }
+  .loader-bar-4 { animation-delay: 0.36s; }
+  .loader-sweep { animation: loader-sweep 2.4s ease-in-out infinite; }
+
+  .anim-fade-up  { animation: fade-up 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+  .anim-fade-in  { animation: fade-in 0.5s ease-out both; }
+  .anim-nav-down { animation: nav-down 0.6s cubic-bezier(0.22,1,0.36,1) 0.2s both; }
+  .anim-modal-in { animation: modal-in 0.35s cubic-bezier(0.22,1,0.36,1) both; }
+  .anim-pulse    { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+  .delay-1 { animation-delay: 0.5s; }
+  .delay-2 { animation-delay: 0.7s; }
+  .delay-3 { animation-delay: 1.0s; }
+  .delay-4 { animation-delay: 1.15s; }
+
+  .card { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s; will-change: transform; }
+  .card:hover, .card.is-hover { transform: translateY(-10px) scale(1.07); z-index: 30; }
+
+  .reveal { opacity: 0; }
+  .reveal.in { animation: fade-up 0.7s cubic-bezier(0.22,1,0.36,1) both; }
+
+  .contact-tile { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), background 0.3s ease, box-shadow 0.3s ease; }
+  .contact-tile:hover {
+    background: var(--brand);
+    transform: translateY(-6px);
+    box-shadow:
+      0 14px 30px color-mix(in srgb, var(--brand) 35%, transparent),
+      inset 0 0 0 1px var(--brand) !important;
+  }
+  .contact-tile:hover * { color: #1B1919 !important; opacity: 1 !important; }
+</style>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="text-white font-sans antialiased">
+<div id="root" class="relative z-[2]"></div>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef, useMemo, createContext, useContext } = React;
+
+const C = { video: '#29abe3', interaction: '#8fc045', editorial: '#e32285', gold: '#f9b03d' };
+const GOLD = C.gold;
+
+const LOGO_URL = './assets/logo/MarcaFINAL.png';
+const HERO_VIDEO_URL = './assets/hero/proceso-zorro.mp4';
+const PROJECT_SHOTS = Array.from({length: 12}, (_, i) => `./assets/shots/${String(i+1).padStart(2,'0')}.png`);
+
+const LangContext = createContext('es');
+function useT() {
+  const lang = useContext(LangContext);
+  const t = (es, en) => (lang === 'en' ? en : es);
+  t.lang = lang;
+  return t;
+}
+
+const BRAND = {
+  Audiovisual: { color: C.video,
+    tag:    { es: 'AUDIOVISUAL',                en: 'AUDIOVISUAL' },
+    kicker: { es: 'Movimiento · Film · Color',  en: 'Motion · Film · Color' } },
+  Interaction: { color: C.interaction,
+    tag:    { es: 'INTERACCIÓN / MULTIMEDIA',     en: 'INTERACTION / MULTIMEDIA' },
+    kicker: { es: 'Realtime · Web · Instalación', en: 'Realtime · Web · Installation' } },
+  Editorial:   { color: C.editorial,
+    tag:    { es: 'EDITORIAL / MARCA',              en: 'EDITORIAL / BRANDING' },
+    kicker: { es: 'Print · Identidad · Tipografía', en: 'Print · Identity · Type' } },
+};
+
+const V = (n) => `https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/${n}.mp4`;
+
+const PROJECTS = {
+  Audiovisual: [
+    { id:'av1', title:'NENA — Vicios', year:2025, software:'Photoshop · Premiere Pro · DaVinci', runtime:'Videoclip',
+      context: { es:'Colectivo · Bs. As.', en:'Collective · Bs. As.' },
+      href:'https://www.behance.net/gallery/233372039/NENA-Vicios-Videoclip-Diseno-Cintico',
+      synopsis: { es:'Videoclip con titulación de diseño cinético — fotografía y montaje a lo largo de varias secuencias, realizado con un colectivo de Buenos Aires.',
+                  en:'Music video with kinetic-design titling — cinematography and editing across multiple sequences, made with a Buenos Aires collective.' },
+      video: './assets/nena/video.mp4',
+      poster:'./assets/nena/poster.jpg',
+      bts:[
+        './assets/nena/poster.jpg',
+        './assets/nena/bts-1.jpg',
+        './assets/nena/bts-2.jpg',
+      ] },
+    { id:'av2', title:'PARANOIA — Editor’s Cut', year:2025, software:'Photoshop · DaVinci Resolve', runtime:'01:00',
+      context: { es:'Diseño Cinético', en:'Kinetic Design' },
+      href:'https://www.behance.net/gallery/233402927/The-making-of-PARANOIA-Videominuto-Diseno-Cintico',
+      synopsis: { es:'Editor’s cut del videominuto “PARANOIA” — tratamiento de grano cinematográfico y bloopers sobre los créditos. Una pieza de proceso.',
+                  en:'Editor’s cut of the one-minute film “PARANOIA” — cinematic grain treatment, bloopers over the credits. A process piece.' },
+      video: './assets/paranoia/video.mp4',
+      poster:'./assets/paranoia/poster.jpeg',
+      bts:[
+        './assets/paranoia/bts-1.jpeg',
+        './assets/paranoia/bts-2.jpeg',
+        './assets/paranoia/bts-3.jpeg',
+      ] },
+    { id:'av3', title:'Folioscopio (Flipbook)', year:2026, software:'After Effects · DaVinci', runtime:'2D Anim',
+      context: { es:'UADE · FADI', en:'UADE · FADI' },
+      href:'https://www.behance.net/gallery/241523777/Folioscopio-(Flipbook)-Diseno-y-Animacion-2D',
+      synopsis: { es:'Animación cuadro a cuadro tipo flipbook — dibujo 2D, terminación digital y un montaje con ritmo.',
+                  en:'Frame-by-frame flipbook animation — hand-drawn 2D, digital finishing and paced editing.' },
+      video: './assets/folioscopio/video.mp4',
+      poster:'./assets/folioscopio/poster.jpg',
+      bts:[
+        './assets/folioscopio/bts-1.jpeg',
+        './assets/folioscopio/bts-2.jpeg',
+        './assets/folioscopio/bts-3.jpg',
+      ] },
+  ],
+  Interaction: [
+    { id:'ix1', title:'DG3 — Mi Me Mo', year:2025, software:'Illustrator · Photoshop',
+      runtime:{ es:'Señalética', en:'Wayfinding' },
+      context:{ es:'UADE · FADI', en:'UADE · FADI' },
+      href:'https://www.behance.net/gallery/238609381/DG3-Mi-Me-Mo',
+      synopsis:{ es:'Señalética y wayfinding para un recorrido barrial urbano — logotipo más un sistema de identidad con su guía de marca.',
+                 en:'Wayfinding and signage for an urban neighbourhood tour — a logotype plus a full identity system with brand guidelines.' },
+      video: './assets/mimemo/video.mp4',
+      poster:'./assets/mimemo/poster.png' },
+  ],
+  Editorial: [
+    { id:'ed1', title:{ es:'Infografía — Minifigura LEGO', en:'Infographic — LEGO Minifigure' },
+      year:2025, software:'Illustrator', runtime:'Print · A3',
+      context:{ es:'UADE · FADI', en:'UADE · FADI' },
+      still:true,
+      href:'https://www.behance.net/gallery/233446807/Infografia-Diseno-de-la-Informacion-Visual',
+      synopsis:{ es:'Infografía estilo blueprint que disecciona la minifigura de LEGO: historia y evolución, diseño y materialidad, producción y distribución, datos y estadísticas.',
+                 en:'Blueprint-style infographic dissecting the LEGO minifigure: history and evolution, design and materiality, production and distribution, data and statistics.' },
+      poster:'./assets/infografia/minifigura-lego.png' },
+    { id:'ed2', title:'Shredded Teen Spirit', year:2025, software:'InDesign · Photoshop · Illustrator', runtime:'Editorial',
+      context:{ es:'UADE · FADI', en:'UADE · FADI' },
+      href:'https://www.behance.net/gallery/221313469/Shredded-Teen-Spirit-Diseno-Editorial',
+      synopsis:{ es:'Libro editorial sobre el grunge — una grilla de 6 columnas llevada a lo crudo y desordenado; la estructura escala de lo introspectivo al caos y vuelve a calmarse.',
+                 en:'Editorial book on grunge — a 6-column grid pushed raw and disorganised; the structure escalates from introspective to chaos, then settles.' },
+      video: V('VolkswagenGTIReview'),
+      poster:'https://placehold.co/800x450/b51b6a/0b0b0b?text=SHREDDED+TEEN+SPIRIT&font=montserrat' },
+  ],
+};
+
+const tr = (val, lang) => (val && typeof val === 'object' && !Array.isArray(val)) ? (val[lang] || val.es || val.en) : val;
+const BTS = (color) => [1,2,3,4].map(i => `https://placehold.co/640x360/${color.replace('#','')}/0b0b0b?text=FRAME+0${i}&font=montserrat`);
+
+const ICONS = {
+  gmail:     <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>,
+  phone:     <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>,
+  linkedin:  <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>,
+  behance:   <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/></svg>,
+  youtube:   <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>,
+  instagram: <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>,
+  cv:        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>,
+  /* software */
+  photoshop:   <svg viewBox="0 0 24 24" className="w-full h-full"><text x="12" y="17" textAnchor="middle" fill="currentColor" fontFamily="Montserrat, sans-serif" fontSize="13" fontWeight="900" letterSpacing="-0.5">Ps</text></svg>,
+  illustrator: <svg viewBox="0 0 24 24" className="w-full h-full"><text x="12" y="17" textAnchor="middle" fill="currentColor" fontFamily="Montserrat, sans-serif" fontSize="13" fontWeight="900" letterSpacing="-0.5">Ai</text></svg>,
+  indesign:    <svg viewBox="0 0 24 24" className="w-full h-full"><text x="12" y="17" textAnchor="middle" fill="currentColor" fontFamily="Montserrat, sans-serif" fontSize="13" fontWeight="900" letterSpacing="-0.5">Id</text></svg>,
+  vscode:      <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z"/></svg>,
+  filmora:     <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5zm5 5l7 4-7 4V8z"/></svg>,
+  davinci:     <svg viewBox="0 0 24 24" className="w-full h-full"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2.2"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>,
+  figma:       <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full"><path d="M15.852 8.981h-4.588V0h4.588a4.491 4.491 0 0 1 0 8.981zM12.735 7.51h3.117a3.019 3.019 0 1 0 0-6.039h-3.117V7.51zm0 1.471H8.148A4.491 4.491 0 1 1 8.148 0h4.587v8.981zm-4.587-7.51a3.019 3.019 0 1 0 0 6.039h3.116V1.471H8.148zm0 15.019h-.045a4.491 4.491 0 1 1 0-8.98h4.587v6.563a4.421 4.421 0 0 1-4.542 4.417zm-.045-7.509a3.019 3.019 0 0 0 0 6.038h.045a2.95 2.95 0 0 0 2.946-2.946V8.981H8.103zm7.764 7.509a4.491 4.491 0 1 1 0-8.98 4.491 4.491 0 0 1 0 8.98zm0-7.509a3.019 3.019 0 1 0 0 6.039 3.019 3.019 0 0 0 0-6.04zM8.148 24a4.491 4.491 0 0 1 0-8.981h4.587v4.49A4.498 4.498 0 0 1 8.148 24zm0-7.51a3.019 3.019 0 1 0 0 6.04 3.024 3.024 0 0 0 3.019-3.02V16.49H8.148z"/></svg>,
+};
+
+function useReveal(threshold = 0.12) {
+  const ref = useRef(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setSeen(true); io.disconnect(); } },
+      { threshold }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [threshold]);
+  return [ref, seen];
+}
+
+// ---------------- LOGO ----------------
+function Monogram({ size = 36 }) {
+  return (
+    <img
+      src={LOGO_URL}
+      alt="Mauricio Santos"
+      style={{ height: size, width: 'auto', maxWidth: size * 2, display: 'block' }}
+      draggable={false}
+    />
+  );
+}
+
+function Wordmark() {
+  return (
+    <div className="h3" style={{ letterSpacing: '0.22em', lineHeight: 1 }}>
+      <span style={{ color: C.video }}>M</span>AURICIO&nbsp;<span style={{ color: C.editorial }}>S</span>ANTOS
+    </div>
+  );
+}
+
+// ---------------- LOADER ----------------
+function Loader({ done }) {
+  const t = useT();
+  const bars = [C.video, C.interaction, C.editorial, C.gold];
+  return (
+    <div
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-bg transition-opacity ${done ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+      style={{ transitionDuration: '600ms' }}
+    >
+      <div className="flex flex-col items-center">
+        <div className="relative w-[280px] sm:w-[360px]">
+          <div className="flex gap-3 h-28 sm:h-32 items-end">
+            {bars.map((c, i) => (
+              <div
+                key={i}
+                className={`flex-1 rounded-[3px] loader-bar ${i===1?'loader-bar-2':i===2?'loader-bar-3':i===3?'loader-bar-4':''}`}
+                style={{ background: c, boxShadow: `0 0 24px ${c}55, inset 0 0 8px rgba(255,255,255,0.15)` }}
+              />
+            ))}
+          </div>
+          <div className="absolute -bottom-5 loader-sweep" style={{ transform: 'translateX(-50%)' }}>
+            <div style={{
+              width: 0, height: 0,
+              borderLeft: '9px solid transparent', borderRight: '9px solid transparent',
+              borderTop: `13px solid ${GOLD}`, filter: `drop-shadow(0 0 8px ${GOLD}aa)`,
+            }} />
+          </div>
+          <div className="mt-4 h-px w-full bg-white/15" />
+        </div>
+        <div className="mt-10 eyebrow text-white/70" style={{ fontSize: 'clamp(13px, 1.3vw, 18px)', letterSpacing: '0.5em' }}>{t('CARGANDO','LOADING')}</div>
+      </div>
+    </div>
+  );
+}
+
+// ---------------- LANG SWITCH ----------------
+function LangSwitch({ lang, setLang }) {
+  return (
+    <div className="flex items-center eyebrow glass rounded-md overflow-hidden ml-1">
+      {['es','en'].map((code) => {
+        const active = lang === code;
+        return (
+          <button
+            key={code}
+            onClick={() => setLang(code)}
+            aria-pressed={active}
+            className="px-2.5 sm:px-3 py-2 transition-colors focus-ring"
+            style={active
+              ? { background: C.gold, color: '#2D2A2A' }
+              : { background: 'transparent', color: 'rgba(255,255,255,0.55)' }}
+          >
+            {code.toUpperCase()}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ---------------- NAVBAR ----------------
+function Navbar({ onJump, lang, setLang }) {
+  const t = useT();
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onS = () => setScrolled(window.scrollY > 24);
+    window.addEventListener('scroll', onS, { passive: true });
+    return () => window.removeEventListener('scroll', onS);
+  }, []);
+  const links = [
+    { label: t('PROYECTOS','PROJECTS'), id: 'projects' },
+    { label: t('SOBRE MÍ','ABOUT'),     id: 'about'    },
+    { label: t('CONTACTO','CONTACT'),   id: 'contact'  },
+  ];
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 anim-nav-down ${scrolled ? 'glass-strong' : 'bg-transparent'} transition-all duration-500`}>
+      <div className="container-x h-16 sm:h-20 flex items-center justify-between gap-2">
+        <button onClick={() => onJump('top')} className="flex items-center gap-3 focus-ring rounded-md shrink-0">
+          <Monogram size={40} />
+          <div className="hidden md:block text-left">
+            <Wordmark />
+          </div>
+        </button>
+        <div className="flex items-center gap-1 sm:gap-2">
+          {links.map((l) => (
+            <button
+              key={l.id}
+              onClick={() => onJump(l.id)}
+              className="eyebrow px-2 sm:px-4 py-2 rounded-md text-white/70 hover:text-white transition-colors focus-ring whitespace-nowrap"
+            >
+              {l.label}
+            </button>
+          ))}
+          <LangSwitch lang={lang} setLang={setLang} />
+          <button
+            onClick={() => onJump('contact')}
+            className="ml-1 hidden md:inline-flex items-center gap-2 eyebrow font-bold px-4 py-2 rounded-md border border-brandGold/60 text-brandGold hover:bg-brandGold hover:text-bg transition-all"
+            style={{ boxShadow: '0 0 22px rgba(249,176,61,0.18)' }}
+          >
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-brandGold anim-pulse" />
+            {t('EN LÍNEA','ONLINE')}
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+// ---------------- HERO ----------------
+function Hero({ onPlay }) {
+  const t = useT();
+  const bgRef = useRef(null);
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (bgRef.current) bgRef.current.style.transform = `translateY(${Math.min(y * 0.25, 200)}px)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <section className="relative h-[92vh] sm:h-screen w-full overflow-hidden">
+      <div ref={bgRef} className="absolute inset-0 will-change-transform">
+        <video
+          autoPlay muted loop playsInline
+          className="w-full h-full object-cover"
+          style={{ opacity: 0.42, filter: 'blur(5px) saturate(0.9)', transform: 'scale(1.06)' }}
+          poster="https://placehold.co/1920x1080/1B1919/1B1919"
+          src={HERO_VIDEO_URL}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(45,42,42,0.95) 0%, rgba(45,42,42,0.5) 22%, rgba(45,42,42,0.3) 55%, rgba(45,42,42,0.85) 88%, rgba(45,42,42,1) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(900px 600px at 70% 40%, rgba(41,171,227,0.20), transparent 60%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(700px 500px at 20% 80%, rgba(227,34,133,0.16), transparent 60%)', mixBlendMode: 'screen' }} />
+      </div>
+
+      <div className="relative z-10 h-full flex flex-col justify-end">
+        <div className="container-x w-full pb-16 sm:pb-24">
+          <h1
+            className="h1 text-white anim-fade-up delay-2"
+            style={{ textShadow: '0 8px 60px rgba(0,0,0,0.55)' }}
+          >
+            <span style={{ color: C.video }}>M</span>AURICIO<br/><span style={{ color: C.editorial }}>S</span>ANTOS
+          </h1>
+          <p className="lead italic text-white/80 mt-6 max-w-2xl anim-fade-up delay-3">
+            {t('Arquitecto de Historias','Architect of Stories')} <span className="text-brandGold not-italic">|</span> {t('Diseño de Sistemas Narrativos','Narrative Systems Design')}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3 anim-fade-up delay-4">
+            <button
+              onClick={() => onPlay(PROJECTS.Audiovisual[0], 'Audiovisual')}
+              className="group inline-flex items-center gap-3 bg-white text-bg eyebrow font-bold px-5 sm:px-7 py-3 rounded-md hover:bg-brandGold transition-all focus-ring"
+              style={{ boxShadow: '0 18px 40px rgba(249,176,61,0.18), 0 4px 12px rgba(0,0,0,0.5)' }}
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 1 L12 7 L2 13 Z" fill="currentColor"/></svg>
+              {t('VER DESTACADO','PLAY FEATURED')}
+            </button>
+            <button
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex items-center gap-2 glass eyebrow font-bold px-5 py-3 rounded-md text-white/85 hover:text-white transition-colors"
+            >
+              + {t('MÁS INFO','MORE INFO')}
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------- CARD ----------------
+function Card({ item, color, onOpen, index }) {
+  const t = useT();
+  const [hover, setHover] = useState(false);
+  const vidRef = useRef(null);
+  const [revealRef, seen] = useReveal();
+
+  useEffect(() => {
+    const v = vidRef.current;
+    if (!v) return;
+    if (hover) { v.play().catch(() => {}); }
+    else { v.pause(); try { v.currentTime = 0; } catch(_){} }
+  }, [hover]);
+
+  const ring = hover
+    ? `0 28px 60px ${color}33, 0 8px 22px rgba(0,0,0,0.55), inset 0 0 0 1px ${color}88`
+    : '0 6px 18px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.06)';
+
+  const title = tr(item.title, t.lang);
+  const synopsis = tr(item.synopsis, t.lang);
+
+  return (
+    <button
+      ref={revealRef}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onFocus={() => setHover(true)}
+      onBlur={() => setHover(false)}
+      onClick={() => onOpen(item)}
+      className={`card rail-card group relative aspect-video rounded-xl overflow-hidden cursor-pointer text-left focus-ring reveal ${seen ? 'in' : ''}`}
+      style={{ boxShadow: ring, animationDelay: `${index * 0.06}s` }}
+    >
+      <img src={item.poster} alt={title} className="absolute inset-0 w-full h-full object-cover" />
+      {!item.still && item.video && (
+        <video
+          ref={vidRef} src={item.video}
+          muted loop playsInline preload="none"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${hover ? 'opacity-100' : 'opacity-0'}`}
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+      <div className="absolute inset-0 opacity-30" style={{ background: `linear-gradient(180deg, transparent 40%, ${color}22)`, mixBlendMode: 'multiply' }} />
+
+      <div className="absolute top-3 left-3 flex items-center gap-2 glass rounded-full px-2.5 py-1">
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: color, boxShadow: `0 0 10px ${color}` }} />
+        <span className="eyebrow text-white/80">{item.year}</span>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+        <div className="h3">{title}</div>
+        <div
+          className="overflow-hidden transition-all duration-500"
+          style={{ maxHeight: hover ? '150px' : '0px', opacity: hover ? 1 : 0 }}
+        >
+          <div className="body-s mt-2 text-white/70">{synopsis}</div>
+          <div className="eyebrow mt-2" style={{ color }}>{item.software}</div>
+        </div>
+      </div>
+
+      <div className="absolute top-3 right-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <span className="eyebrow text-brandGold">{item.href ? t('VER CASO','CASE STUDY') : t('VER','PLAY')}</span>
+        <div style={{ width:0, height:0, borderTop:'5px solid transparent', borderBottom:'5px solid transparent', borderLeft:`8px solid ${GOLD}`, filter:`drop-shadow(0 0 6px ${GOLD}aa)` }} />
+      </div>
+    </button>
+  );
+}
+
+// ---------------- RAIL ----------------
+function Rail({ category, items, onOpen }) {
+  const t = useT();
+  const { color, tag, kicker } = BRAND[category];
+  const scrollerRef = useRef(null);
+  const [headRef, headSeen] = useReveal();
+
+  const scrollBy = (dir) => {
+    const el = scrollerRef.current; if (!el) return;
+    el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.8, 720), behavior: 'smooth' });
+  };
+
+  return (
+    <section className="relative py-8 sm:py-12">
+      <div className="container-x">
+        <div ref={headRef} className={`flex items-end justify-between mb-5 reveal ${headSeen ? 'in' : ''}`}>
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="block w-8 h-[3px] rounded-full" style={{ background: color, boxShadow: `0 0 12px ${color}` }} />
+              <span className="eyebrow text-white/50">{kicker[t.lang]}</span>
+            </div>
+            <h2 className="h2 mt-2" style={{ color }}>{tag[t.lang]}</h2>
+          </div>
+          <div className="hidden sm:flex items-center gap-2">
+            <button aria-label="Scroll left"  onClick={() => scrollBy(-1)} className="w-10 h-10 rounded-full glass hover:bg-white/10 transition-colors focus-ring flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M9 1 L3 7 L9 13" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <button aria-label="Scroll right" onClick={() => scrollBy(1)}  className="w-10 h-10 rounded-full glass hover:bg-white/10 transition-colors focus-ring flex items-center justify-center">
+              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M5 1 L11 7 L5 13" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative">
+        <div className="rail-fade-l hidden sm:block" />
+        <div className="rail-fade-r hidden sm:block" />
+        <div ref={scrollerRef} className="no-scrollbar overflow-x-auto snap-x snap-mandatory scroll-smooth">
+          <div className="flex container-x pb-6 pt-2" style={{ gap: 'var(--grid-gap)' }}>
+            {items.map((item, i) => (
+              <Card key={item.id} item={item} color={color} onOpen={onOpen} index={i} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------- PLAYER MODAL ----------------
+function PlayerModal({ project, color, onClose }) {
+  const t = useT();
+  const vidRef = useRef(null);
+  const [playing, setPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [time, setTime] = useState('00:00');
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [onClose]);
+
+  const togglePlay = () => {
+    const v = vidRef.current; if (!v) return;
+    if (v.paused) { v.play(); setPlaying(true); } else { v.pause(); setPlaying(false); }
+  };
+  const toggleMute = () => setMuted((m) => !m);
+  const rewind10 = () => {
+    const v = vidRef.current; if (!v) return;
+    v.currentTime = Math.max(0, v.currentTime - 10);
+  };
+  const onTime = () => {
+    const v = vidRef.current; if (!v || !v.duration) return;
+    setProgress((v.currentTime / v.duration) * 100);
+    const m = Math.floor(v.currentTime / 60).toString().padStart(2,'0');
+    const s = Math.floor(v.currentTime % 60).toString().padStart(2,'0');
+    setTime(`${m}:${s}`);
+  };
+
+  const bts = useMemo(() => (project.bts && project.bts.length) ? project.bts : BTS(color), [project, color]);
+
+  const title    = tr(project.title,    t.lang);
+  const synopsis = tr(project.synopsis, t.lang);
+  const context  = tr(project.context,  t.lang);
+  const runtime  = tr(project.runtime,  t.lang);
+
+  return (
+    <div className="fixed inset-0 z-[90] flex items-start justify-center overflow-y-auto anim-fade-in">
+      <div className="absolute inset-0 bg-bg/85" style={{ backdropFilter: 'blur(20px)' }} onClick={onClose} />
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto my-6 sm:my-10 px-3 sm:px-6 anim-modal-in">
+        <div className="glass-strong rounded-2xl overflow-hidden"
+             style={{ boxShadow: `0 40px 120px ${color}22, 0 12px 30px rgba(0,0,0,0.7), inset 0 0 0 1px ${color}33` }}>
+          <div className="flex items-center justify-between px-4 sm:px-6 h-12 sm:h-14 border-b border-white/10">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full" style={{ background: color, boxShadow: `0 0 10px ${color}` }} />
+              <span className="eyebrow text-white/60">{t('REPRODUCIENDO','NOW PLAYING')} · {project.id.toUpperCase()}</span>
+            </div>
+            <button onClick={onClose} aria-label={t('Cerrar','Close')} className="w-9 h-9 rounded-full hover:bg-white/10 flex items-center justify-center focus-ring">
+              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2 L12 12 M12 2 L2 12" stroke="white" strokeWidth="1.6" strokeLinecap="round"/></svg>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
+            <div className="relative bg-black flex items-center justify-center">
+              {project.still ? (
+                <img src={project.poster} alt={title} className="w-full max-h-[82vh] object-contain" />
+              ) : (<>
+              <video ref={vidRef} src={project.video} autoPlay loop playsInline muted={muted} onTimeUpdate={onTime} className="w-full aspect-video object-cover" />
+              <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 pb-4 pt-10 bg-gradient-to-t from-black/90 to-transparent">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <button onClick={rewind10} aria-label="Rewind 10s" title="-10s" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass flex items-center justify-center hover:bg-white/15 focus-ring">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                  </button>
+                  <button onClick={togglePlay} aria-label={playing ? 'Pause' : 'Play'} className="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass flex items-center justify-center hover:bg-white/15 focus-ring">
+                    {playing ? (
+                      <svg width="12" height="12" viewBox="0 0 12 12"><rect x="2" y="1" width="3" height="10" fill="white"/><rect x="7" y="1" width="3" height="10" fill="white"/></svg>
+                    ) : (
+                      <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 1 L11 6 L2 11 Z" fill="white"/></svg>
+                    )}
+                  </button>
+                  <button onClick={toggleMute} aria-label={muted ? 'Unmute' : 'Mute'} className="w-9 h-9 sm:w-10 sm:h-10 rounded-full glass flex items-center justify-center hover:bg-white/15 focus-ring">
+                    {muted ? (
+                      <svg width="15" height="15" viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z" fill="white"/><path d="M15 9 L21 15 M21 9 L15 15" stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none"/></svg>
+                    ) : (
+                      <svg width="15" height="15" viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z" fill="white"/><path d="M14 7c1.8 1.2 3 3.1 3 5s-1.2 3.8-3 5" stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none"/></svg>
+                    )}
+                  </button>
+                  <div className="eyebrow text-white/70 w-12">{time}</div>
+                  <div className="relative flex-1 h-[3px] bg-white/15 rounded-full">
+                    <div className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${progress}%`, background: color, boxShadow: `0 0 8px ${color}` }} />
+                    <div
+                      className="absolute top-1/2"
+                      style={{
+                        left: `${progress}%`, transform: 'translate(-50%, -50%)',
+                        width: 0, height: 0,
+                        borderLeft:'6px solid transparent', borderRight:'6px solid transparent',
+                        borderTop:`9px solid ${GOLD}`, filter:`drop-shadow(0 0 6px ${GOLD}aa)`,
+                      }}
+                    />
+                  </div>
+                  <div className="eyebrow text-white/40 w-12 text-right">{runtime}</div>
+                </div>
+              </div>
+              </>)}
+            </div>
+
+            <aside className="p-5 sm:p-6 border-t lg:border-t-0 lg:border-l border-white/10">
+              <div className="eyebrow text-white/40 mb-2">{t('ESPECIFICACIONES TÉCNICAS','TECHNICAL SPECIFICATIONS')}</div>
+              <h3 className="h3" style={{ color }}>{title}</h3>
+              <p className="body italic mt-4 text-white/75">{synopsis}</p>
+              <dl className="mt-6 grid grid-cols-2 gap-y-4 gap-x-3">
+                <dt className="eyebrow text-white/40">{t('AÑO','YEAR')}</dt>          <dd className="body-s text-white/90 col-start-2 font-medium">{project.year}</dd>
+                <dt className="eyebrow text-white/40">{t('CONTEXTO','CONTEXT')}</dt>  <dd className="body-s text-white/90 col-start-2 font-medium">{context}</dd>
+                <dt className="eyebrow text-white/40">{t('DURACIÓN','RUNTIME')}</dt>  <dd className="body-s text-white/90 col-start-2 font-medium">{runtime}</dd>
+                <dt className="eyebrow text-white/40">SOFTWARE</dt>                   <dd className="body-s text-white/90 col-start-2 font-medium">{project.software}</dd>
+              </dl>
+              {project.href && (
+                <a href={project.href} target="_blank" rel="noopener"
+                   className="mt-6 inline-flex items-center gap-2 eyebrow font-bold px-4 py-2 rounded-md border transition-colors hover:text-bg"
+                   style={{ borderColor: color, color }}
+                   onMouseEnter={(e)=>{e.currentTarget.style.background=color}}
+                   onMouseLeave={(e)=>{e.currentTarget.style.background='transparent'}}>
+                  {t('VER EN BEHANCE','VIEW ON BEHANCE')} ↗
+                </a>
+              )}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.software.split('·').map(s => s.trim()).filter(Boolean).map(tag => (
+                  <span key={tag} className="eyebrow px-2 py-1 rounded border" style={{ borderColor: `${color}55`, color }}>{tag}</span>
+                ))}
+              </div>
+            </aside>
+          </div>
+
+          <div className="px-4 sm:px-6 py-6 border-t border-white/10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-6 h-[2px] rounded-full" style={{ background: color }} />
+              <span className="eyebrow text-white/60">{t('DETRÁS DE ESCENA · PROCESO CRUDO','BEHIND THE SCENES · RAW PROCESS')}</span>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {bts.map((src, i) => (
+                <div key={i} className="relative aspect-video rounded-md overflow-hidden" style={{ boxShadow: `0 8px 22px rgba(0,0,0,0.45), inset 0 0 0 1px ${color}22` }}>
+                  <img src={src} className="absolute inset-0 w-full h-full object-cover" alt={`Behind the scenes ${i+1}`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <div className="absolute bottom-2 left-2 eyebrow text-white/70">FRAME / 0{i+1}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------------- ABOUT ----------------
+function About() {
+  const t = useT();
+  const [ref, seen] = useReveal();
+  return (
+    <section id="about" className="relative section-pad-y overflow-hidden">
+      <ProjectsBg images={PROJECT_SHOTS} offset={4} />
+      <div ref={ref} className={`relative container-x reveal ${seen ? 'in' : ''}`}>
+        <div className="grid-12">
+        <div className="col-span-12 md:col-span-5">
+          <h2 className="h2">
+            {t(<>El detrás<br/>de <span style={{ color: C.video }}>cámaras.</span></>,
+                <>Behind the<br/><span style={{ color: C.video }}>scenes.</span></>)}
+          </h2>
+        </div>
+        <div className="col-span-12 md:col-span-7">
+          <p className="lead text-white/85">
+            {t(
+              <>Soy diseñador multimedia y gráfico <em className="text-white not-italic font-medium">en formación</em> — uno la formalidad del editorial con la capacidad técnica de las experiencias interactivas y el ritmo del lenguaje audiovisual. Construyo <em className="text-white not-italic font-medium">sistemas narrativos</em> que funcionan en múltiples soportes: del papel al entorno virtual y al video.</>,
+              <>I'm a multimedia &amp; graphic designer <em className="text-white not-italic font-medium">in training</em> — I pair the rigor of editorial design with the technical chops of interactive experiences and the rhythm of audiovisual language. I build <em className="text-white not-italic font-medium">narrative systems</em> that work across multiple supports: from print to the virtual to video.</>
+            )}
+          </p>
+          <p className="body mt-5 text-white/65">
+            {t(
+              <>Creo en la <em className="text-white not-italic font-medium">transparencia del proceso</em>: mostrar la cocina de un proyecto — bocetos, errores de código, pruebas de montaje — le da un valor que el render final no tiene. Por eso mi diferencial es el <em className="not-italic font-medium" style={{ color: C.gold }}>“Behind the Scenes”</em>: cada trabajo viene con su video de proceso para que veas cómo pasé del concepto a la realidad.</>,
+              <>I believe in <em className="text-white not-italic font-medium">process transparency</em>: showing a project's kitchen — sketches, broken code, montage tests — gives it a value the polished render can't. That's why my differentiator is the <em className="not-italic font-medium" style={{ color: C.gold }}>“Behind the Scenes”</em>: every project ships with its own process video, so you see how I got from concept to reality.</>
+            )}
+          </p>
+        </div>
+        </div>
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7" style={{ gap: 'var(--grid-gap)' }}>
+            {[
+              { icon:'illustrator', name:'Illustrator',     level:{es:'Avanzado',  en:'Advanced'    }, color:C.gold        },
+              { icon:'photoshop',   name:'Photoshop',       level:{es:'Intermedio',en:'Intermediate'}, color:C.video       },
+              { icon:'indesign',    name:'InDesign',        level:{es:'Intermedio',en:'Intermediate'}, color:C.editorial   },
+              { icon:'vscode',      name:'VS Code',         level:{es:'Avanzado',  en:'Advanced'    }, color:C.interaction },
+              { icon:'davinci',     name:'DaVinci Resolve', level:{es:'Avanzado',  en:'Advanced'    }, color:C.gold        },
+              { icon:'filmora',     name:'Filmora',         level:{es:'Avanzado',  en:'Advanced'    }, color:C.video       },
+              { icon:'figma',       name:'Figma',           level:{es:'Avanzado',  en:'Advanced'    }, color:C.editorial   },
+            ].map((s) => {
+              const lvl = tr(s.level, t.lang);
+              const isAdv = s.level.es === 'Avanzado';
+              return (
+                <div key={s.icon}
+                     aria-label={`${s.name} · ${lvl}`}
+                     className="contact-tile group glass rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-center"
+                     style={{ aspectRatio:'1 / 1', boxShadow:`inset 0 0 0 1px ${s.color}40`, '--brand': s.color }}>
+                  <span className="block w-9 h-9 sm:w-11 sm:h-11 mb-3 text-white/85">{ICONS[s.icon]}</span>
+                  <span className="body-s text-white/70 leading-tight">{s.name}</span>
+                  <span className="block eyebrow mt-1" style={{ color: isAdv ? C.gold : 'rgba(255,255,255,0.4)' }}>{lvl}</span>
+                </div>
+              );
+            })}
+          </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------- CONTACT ----------------
+function Contact() {
+  const t = useT();
+  const [ref, seen] = useReveal();
+  return (
+    <section id="contact" className="relative section-pad-y border-t border-white/5 overflow-hidden">
+      <ProjectsBg images={PROJECT_SHOTS} offset={8} />
+      <div ref={ref} className={`relative container-x reveal ${seen ? 'in' : ''}`}>
+        <h2 className="h2">
+          {t(<>Trabajemos <span style={{ color: C.editorial }}>juntos.</span></>,
+              <>Let's work <span style={{ color: C.editorial }}>together.</span></>)}
+        </h2>
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7" style={{ gap: 'var(--grid-gap)' }}>
+          {[
+            { icon:'cv',        label:t('Descargar CV','Download CV'), href:'./CV-Mauricio-Santos.pdf',         color:C.gold,        ext:false, download:'CV-Mauricio-Santos.pdf' },
+            { icon:'gmail',     label:'mepobox@gmail.com',             href:'mailto:mepobox@gmail.com',         color:C.video,       ext:false },
+            { icon:'phone',     label:'+54 376 4186318',               href:'tel:+543764186318',                color:C.interaction, ext:false },
+            { icon:'linkedin',  label:'nbdesigner',                    href:'https://www.linkedin.com/in/nbdesigner/',  color:C.video,     ext:true  },
+            { icon:'behance',   label:'maurisantos1',                  href:'https://www.behance.net/maurisantos1',     color:C.editorial, ext:true  },
+            { icon:'youtube',   label:'@mauro6026',                    href:'https://youtube.com/@mauro6026',   color:C.editorial,   ext:true  },
+            { icon:'instagram', label:t('Próximamente','Soon'),        href:'#',                                color:C.interaction, ext:false },
+          ].map((l) => (
+            <a key={l.icon}
+               href={l.href}
+               target={l.ext ? '_blank' : undefined}
+               rel={l.ext ? 'noopener noreferrer' : undefined}
+               download={l.download || undefined}
+               aria-label={l.label}
+               className="contact-tile group glass rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-center focus-ring"
+               style={{ aspectRatio:'1 / 1', boxShadow:`inset 0 0 0 1px ${l.color}40`, '--brand': l.color }}>
+              <span className="block w-9 h-9 sm:w-11 sm:h-11 mb-3 text-white/85">{ICONS[l.icon]}</span>
+              <span className="body-s text-white/60 break-all leading-tight">{l.label}</span>
+            </a>
+          ))}
+        </div>
+        <div className="mt-16 flex items-center gap-4 text-white/40 eyebrow">
+          <Monogram size={28} />
+          <span>© 2026 · MAURICIO SANTOS</span>
+          <div className="flex-1 h-px bg-white/10" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------- PROJECTS BACKGROUND SLIDESHOW ----------------
+function ProjectsBg({ images, intervalMs = 5000, offset = 0 }) {
+  const seq = useMemo(() => {
+    if (!images || !images.length) return [];
+    const n = ((offset % images.length) + images.length) % images.length;
+    return images.slice(n).concat(images.slice(0, n));
+  }, [images, offset]);
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (!seq.length) return;
+    const t = setInterval(() => setI((p) => (p + 1) % seq.length), intervalMs);
+    return () => clearInterval(t);
+  }, [seq, intervalMs]);
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {seq.map((src, idx) => (
+        <img
+          key={src + ':' + idx}
+          src={src}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover transition-opacity ease-in-out"
+          style={{
+            opacity: i === idx ? 0.16 : 0,
+            transitionDuration: '1800ms',
+            filter: 'blur(2px) saturate(0.85)',
+          }}
+        />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-b from-bg via-bg/55 to-bg" />
+    </div>
+  );
+}
+
+// ---------------- APP ----------------
+function App() {
+  const [lang, setLang] = useState(() => {
+    try { return localStorage.getItem('lang') || 'es'; } catch (_) { return 'es'; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem('lang', lang); } catch (_) {}
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  const [done, setDone] = useState(false);
+  const [open, setOpen] = useState(null);
+
+  useEffect(() => {
+    const tmr = setTimeout(() => setDone(true), 2400);
+    return () => clearTimeout(tmr);
+  }, []);
+
+  const onJump = (id) => {
+    if (id === 'top') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const makeOpen = (cat) => (item) => setOpen({ item, category: cat });
+  const closeModal = () => setOpen(null);
+
+  return (
+    <LangContext.Provider value={lang}>
+      <Loader done={done} />
+      <Navbar onJump={onJump} lang={lang} setLang={setLang} />
+      <main id="top">
+        <Hero onPlay={(item, cat) => setOpen({ item, category: cat })} />
+        <div id="projects" className="relative py-6 overflow-hidden">
+          <ProjectsBg images={PROJECT_SHOTS} />
+          <Rail category="Audiovisual" items={PROJECTS.Audiovisual} onOpen={makeOpen('Audiovisual')} />
+          <Rail category="Interaction" items={PROJECTS.Interaction} onOpen={makeOpen('Interaction')} />
+          <Rail category="Editorial"   items={PROJECTS.Editorial}   onOpen={makeOpen('Editorial')}   />
+        </div>
+        <About />
+        <Contact />
+      </main>
+      {open && (
+        <PlayerModal
+          key={open.item.id + ':' + lang}
+          project={open.item}
+          color={BRAND[open.category].color}
+          onClose={closeModal}
+        />
+      )}
+    </LangContext.Provider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
