@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Portfolio TP_2 · Mauricio Santos · Láminas A3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  @page { size: A3 portrait; margin: 0; }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }
+  html, body { font-family: 'Montserrat', sans-serif; color:#1B1919; background:#e6e6e6; }
+  body { display:flex; flex-direction:column; align-items:center; gap:8mm; padding:8mm 0; }
+
+  .page {
+    width: 297mm; height: 420mm;
+    padding: 16mm;
+    background: #FAFAFA;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  }
+  .page:last-child { page-break-after: avoid; }
+  @media print {
+    body { background: none; padding: 0; gap: 0; }
+    .page { box-shadow: none; margin: 0; }
+  }
+
+  /* HEADER (matches the Lámina editable template) */
+  .header {
+    display:flex; justify-content:space-between; align-items:flex-end;
+    border-bottom: 0.8mm solid #1B1919;
+    padding-bottom: 5mm;
+    margin-bottom: 12mm;
+  }
+  .brand-word {
+    font-size: 48pt; font-weight: 900; letter-spacing: -0.03em; line-height:0.9;
+  }
+  .meta { font-size: 7.5pt; line-height: 1.5; text-align:left; max-width: 130mm; }
+  .meta strong { font-weight: 700; }
+  .meta .sep { display:inline-block; margin: 0 3mm; color:#999; }
+
+  /* TYPE */
+  .eyebrow { font-size: 7pt; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color:#666; }
+  h2.section-title {
+    font-size: 28pt; font-weight: 900; letter-spacing: -0.025em; line-height: 0.95;
+    margin-bottom: 6mm;
+  }
+  h2.section-title .ink { color: #29abe3; }
+  h3.block-title {
+    font-size: 11pt; font-weight: 800; letter-spacing: -0.005em;
+    margin-bottom: 1.5mm;
+  }
+  h3.block-title.q { color: #e32285; font-size: 9.5pt; }
+  p.body { font-size: 9pt; font-weight: 300; line-height: 1.55; }
+  p.lead { font-size: 10.5pt; font-weight: 400; line-height: 1.5; }
+  em.hl { font-style: normal; font-weight: 600; color: #1B1919; }
+  em.gold { font-style: normal; font-weight: 700; color: #c98a1f; }
+  em.cyan { font-style: normal; font-weight: 700; color: #29abe3; }
+
+  /* GRID */
+  .grid12 { display:grid; grid-template-columns: repeat(12, 1fr); gap: 5mm; }
+
+  /* ─── PAGE 1 ─── */
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm 8mm;
+    margin-bottom: 8mm;
+  }
+  .manifesto-block { padding-left: 3mm; border-left: 0.4mm solid #ddd; }
+  .manifesto-block.accent-cyan { border-left-color: #29abe3; }
+  .manifesto-block.accent-lime { border-left-color: #8fc045; }
+  .manifesto-block.accent-mag  { border-left-color: #e32285; }
+  .manifesto-block.accent-gold { border-left-color: #f9b03d; }
+
+  .brand-section {
+    border-top: 0.2mm solid #1B1919;
+    padding-top: 6mm;
+    margin-top: 4mm;
+  }
+  .brand-row {
+    display: grid;
+    grid-template-columns: 60mm 1fr;
+    gap: 8mm;
+    align-items: flex-start;
+  }
+  .logo-frame {
+    background: #1B1919;
+    padding: 8mm;
+    height: 60mm;
+    display:flex; align-items:center; justify-content:center;
+    border-radius: 2mm;
+  }
+  .logo-frame img { max-width: 100%; max-height: 100%; }
+
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    margin-top: 4mm;
+  }
+  .swatch {
+    aspect-ratio: 1 / 1;
+    padding: 3mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    font-weight: 700;
+    border-radius: 1.5mm;
+  }
+  .swatch .lbl { font-size: 7pt; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.95; }
+  .swatch .hex { font-size: 10pt; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+  .type-block {
+    margin-top: 4mm;
+    background: #1B1919;
+    color: white;
+    padding: 5mm;
+    border-radius: 2mm;
+  }
+  .type-block .label { font-size: 7pt; letter-spacing: 0.22em; opacity: 0.6; margin-bottom: 2mm; }
+  .type-block .sample-h { font-weight: 900; font-size: 22pt; letter-spacing: -0.03em; line-height: 1; }
+  .type-block .sample-b { font-weight: 300; font-size: 9pt; line-height: 1.55; margin-top: 3mm; }
+  .type-block .weights { display:flex; gap: 6mm; margin-top: 4mm; font-size: 9pt; opacity: 0.7; }
+  .type-block .weights span { font-weight: var(--w, 400); }
+
+  /* ─── PAGE 2 ─── */
+  .architecture {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4mm;
+    margin-bottom: 5mm;
+  }
+  .arch-row {
+    display: grid;
+    grid-template-columns: 26mm 1fr;
+    gap: 4mm;
+    align-items: stretch;
+    padding: 3mm 4mm;
+    background: #fff;
+    border: 0.2mm solid #ddd;
+    border-left: 2mm solid #1B1919;
+  }
+  .arch-row.cyan { border-left-color: #29abe3; }
+  .arch-row.lime { border-left-color: #8fc045; }
+  .arch-row.mag  { border-left-color: #e32285; }
+  .arch-row.gold { border-left-color: #f9b03d; }
+  .arch-row.dark { border-left-color: #1B1919; }
+  .arch-row .arch-tag { font-size: 8pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; align-self: center; }
+  .arch-row .arch-body { font-size: 8.5pt; line-height: 1.4; }
+  .arch-row .arch-body strong { font-weight: 700; }
+
+  .sections-screens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4mm;
+    margin-top: 5mm;
+  }
+  .screen {
+    background: #1B1919;
+    border-radius: 2mm;
+    padding: 5mm;
+    color: white;
+    height: 78mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .screen .screen-eyebrow { font-size: 7pt; letter-spacing: 0.22em; opacity: 0.6; }
+  .screen .screen-h { font-size: 28pt; font-weight: 900; letter-spacing: -0.03em; line-height: 0.9; margin-top: auto; }
+  .screen .screen-h .a { color: #29abe3; } .screen .screen-h .b { color: #e32285; }
+  .screen .screen-sub { font-size: 8pt; opacity: 0.7; font-style: italic; margin-top: 2mm; }
+  .screen.hero { background: linear-gradient(135deg, #2D2A2A 0%, #1B1919 100%); }
+  .screen.rails .rails-mock { display:flex; flex-direction:column; gap: 3mm; }
+  .screen.rails .rail-tag { font-size: 8pt; font-weight: 800; letter-spacing: 0.04em; }
+  .screen.rails .rail-tag.cy { color: #29abe3; }
+  .screen.rails .rail-tag.li { color: #8fc045; }
+  .screen.rails .rail-tag.ma { color: #e32285; }
+  .screen.rails .rail-cards { display:flex; gap: 1.5mm; }
+  .screen.rails .rail-card { flex: 1; height: 10mm; border-radius: 0.8mm; background: rgba(255,255,255,0.08); border: 0.2mm solid rgba(255,255,255,0.15); }
+  .screen.about { background: #1B1919; }
+  .screen.about .ab-title { font-size: 22pt; font-weight: 900; letter-spacing: -0.025em; line-height: 0.95; }
+  .screen.about .ab-title .em { color: #29abe3; }
+  .screen.about .skills { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1.5mm; margin-top: auto; }
+  .screen.about .sk { aspect-ratio:1/1; border: 0.2mm solid rgba(255,255,255,0.15); border-radius: 1mm; display:flex; align-items:center; justify-content:center; font-weight: 900; font-size: 7pt; }
+  .screen.contact .ct-title { font-size: 22pt; font-weight: 900; line-height: 0.95; letter-spacing: -0.025em; }
+  .screen.contact .ct-title .em { color: #e32285; }
+  .screen.contact .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm; margin-top: auto; }
+  .screen.contact .tile { aspect-ratio:1/1; border: 0.2mm solid rgba(255,255,255,0.15); border-radius: 1mm; }
+  .screen.contact .tile.t1 { border-color: rgba(249,176,61,0.6); }
+  .screen.contact .tile.t2 { border-color: rgba(41,171,227,0.6); }
+  .screen.contact .tile.t3 { border-color: rgba(143,192,69,0.6); }
+  .screen.contact .tile.t4 { border-color: rgba(227,34,133,0.6); }
+
+  /* ─── PAGE 3 ─── */
+  .project-hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 8mm;
+    margin-bottom: 8mm;
+  }
+  .project-poster {
+    background: #1B1919;
+    border-radius: 2mm;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+  }
+  .project-poster img { width: 100%; height: 100%; object-fit: cover; }
+  .project-meta dt { font-size: 7pt; letter-spacing: 0.22em; color: #888; text-transform: uppercase; margin-top: 2.5mm; }
+  .project-meta dd { font-size: 10.5pt; font-weight: 600; margin-top: 0.5mm; }
+  .project-meta .tags { margin-top: 4mm; display: flex; flex-wrap: wrap; gap: 1.5mm; }
+  .project-meta .tag { font-size: 7pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 1.5mm 2.5mm; border: 0.2mm solid #8fc045; color: #6f9c33; border-radius: 0.8mm; }
+
+  .bts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+  }
+  .bts-tile { background:#1B1919; border-radius: 2mm; overflow:hidden; aspect-ratio: 4 / 3; }
+  .bts-tile img { width: 100%; height: 100%; object-fit: cover; }
+  .bts-frame { font-size: 7pt; letter-spacing: 0.22em; opacity: 0.5; padding: 1.5mm 3mm; color: white; }
+
+  /* URL strip (bottom of pages) */
+  .url-strip {
+    position: absolute;
+    bottom: 8mm; left: 16mm; right: 16mm;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 0.2mm solid #ccc;
+    padding-top: 3mm;
+    font-size: 7.5pt;
+  }
+  .url-strip .url {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .url-strip .page-num { color: #888; letter-spacing: 0.2em; }
+
+  /* QR code box */
+  .qr {
+    background: white;
+    padding: 2mm;
+    border: 0.2mm solid #ddd;
+    border-radius: 1mm;
+  }
+  .qr img { display: block; width: 100%; height: auto; }
+
+  .pull {
+    font-size: 13pt;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.45;
+    color: #444;
+    margin-bottom: 6mm;
+    padding-left: 4mm;
+    border-left: 0.5mm solid #f9b03d;
+  }
+  .pull em.hl { font-style: normal; font-weight: 700; color: #1B1919; }
+</style>
+</head>
+<body>
+
+<!-- ━━━━━━━━━━ PAGE 1 ━━━━━━━━━━ -->
+<section class="page">
+  <header class="header">
+    <div class="brand-word">PORTFOLIO</div>
+    <div class="meta">
+      <strong>TP_2:</strong> Concepto + Contenido/Trabajos + Estructura<br>
+      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Erika Caiafa<br>
+      <strong>Alumno:</strong> Santos Mauricio Ezequiel
+    </div>
+  </header>
+
+  <div class="eyebrow">CH·01 · CONCEPTO</div>
+  <h2 class="section-title">El detrás <span class="ink">de cámaras.</span></h2>
+
+  <p class="pull">
+    Soy diseñador multimedia y gráfico <em class="hl">en formación</em>. Uno la formalidad del editorial con la capacidad técnica de las experiencias interactivas y el ritmo del lenguaje audiovisual. Construyo <em class="hl">sistemas narrativos</em> que funcionan en múltiples soportes: del papel al entorno virtual y al video.
+  </p>
+
+  <div class="manifesto-grid">
+    <div class="manifesto-block accent-cyan">
+      <h3 class="block-title q">¿Quién soy?</h3>
+      <p class="body">Diseñador en formación que conecta la formalidad del editorial con la capacidad técnica de interacción y el ritmo audiovisual.</p>
+    </div>
+    <div class="manifesto-block accent-lime">
+      <h3 class="block-title q">¿Qué hago?</h3>
+      <p class="body">Construyo sistemas narrativos. No solo piezas estáticas: proyectos que funcionan en múltiples soportes — papel, entorno virtual, video.</p>
+    </div>
+    <div class="manifesto-block accent-mag">
+      <h3 class="block-title q">¿Para quién?</h3>
+      <p class="body">Estudios de branding transmedia, agencias de contenido digital o desarrolladoras indie que necesiten alguien que entienda tanto de front-end como de montaje de video.</p>
+    </div>
+    <div class="manifesto-block accent-gold">
+      <h3 class="block-title q">¿En qué creo?</h3>
+      <p class="body">En la <em class="hl">transparencia del proceso</em>: mostrar la cocina de un proyecto (bocetos, errores de código, pruebas de montaje) le da un valor que el render final no tiene.</p>
+    </div>
+  </div>
+
+  <h3 class="block-title" style="font-size:11pt; margin-top:4mm;">Qué propongo</h3>
+  <p class="body" style="margin-bottom:8mm;">
+    Mi diferencial es el <em class="gold">"Behind the Scenes"</em>: cada uno de mis trabajos viene acompañado de su video/imagen de proceso para que se vea cómo pasé del concepto a la realidad. Uso mi base de diseño editorial para organizar la información y mis habilidades en montaje para que esa información se convierta en una experiencia inmersiva.
+  </p>
+
+  <!-- BRAND SYSTEM -->
+  <section class="brand-section">
+    <div class="eyebrow" style="margin-bottom:3mm;">CH·02 · SISTEMA DE MARCA</div>
+    <h2 class="section-title" style="font-size:22pt; margin-bottom:6mm;">Marca personal</h2>
+
+    <div class="brand-row">
+      <div>
+        <div class="logo-frame">
+          <img src="./assets/logo/MarcaFINAL.png" alt="Marca Mauricio Santos">
+        </div>
+      </div>
+      <div>
+        <h3 class="block-title">Construcción</h3>
+        <p class="body" style="margin-bottom:4mm;">El signo surge de la síntesis técnica de los entornos de edición audiovisual, donde la línea de tiempo organiza el relato mediante bloques de color. Las <em class="hl">tres barras verticales</em> representan los ejes del perfil — <em class="cyan">Video (Cian)</em>, <em style="font-weight:700;color:#6f9c33">Interacción (Verde)</em>, <em style="font-weight:700;color:#c01d70">Editorial (Magenta)</em> — y al integrarse con los <em class="gold">playheads dorados</em>, construyen una "M" como monograma dinámico.</p>
+
+        <h3 class="block-title">Paleta cromática</h3>
+        <div class="palette">
+          <div class="swatch" style="background:#29abe3;"><span class="lbl">Video</span><span class="hex">#29ABE3</span></div>
+          <div class="swatch" style="background:#8fc045;"><span class="lbl">Interacción</span><span class="hex">#8FC045</span></div>
+          <div class="swatch" style="background:#e32285;"><span class="lbl">Editorial</span><span class="hex">#E32285</span></div>
+          <div class="swatch" style="background:#f9b03d; color:#1B1919;"><span class="lbl">Playhead</span><span class="hex">#F9B03D</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-block">
+      <div class="label">TIPOGRAFÍA · MONTSERRAT</div>
+      <div class="sample-h">Mauricio Santos</div>
+      <div class="sample-b">Una sola familia tipográfica con todo el rango de pesos (300→900) sostiene la jerarquía completa: titulares en 900 con tracking negativo, cuerpos en 300 con interlineado generoso, captions en 600 caps trackeados.</div>
+      <div class="weights">
+        <span style="--w:300">300 Light</span>
+        <span style="--w:500">500 Medium</span>
+        <span style="--w:700">700 Bold</span>
+        <span style="--w:900">900 Black</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="url-strip">
+    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
+    <span class="page-num">01 / 03 · CONCEPTO + MARCA</span>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━ PAGE 2 ━━━━━━━━━━ -->
+<section class="page">
+  <header class="header">
+    <div class="brand-word">PORTFOLIO</div>
+    <div class="meta">
+      <strong>TP_2:</strong> Concepto + Contenido/Trabajos + Estructura<br>
+      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Erika Caiafa<br>
+      <strong>Alumno:</strong> Santos Mauricio Ezequiel
+    </div>
+  </header>
+
+  <div class="eyebrow">CH·02 · ESTRUCTURA DEL SITIO</div>
+  <h2 class="section-title">La <span class="ink">arquitectura.</span></h2>
+
+  <p class="lead" style="margin-bottom: 8mm; max-width: 220mm;">
+    El sitio toma la <em class="hl">metáfora de un servicio de streaming</em> (Netflix / Apple TV) para presentar el portfolio: un Hero como portada destacada, rieles horizontales como catálogo de trabajos divididos por categoría cromática, y la zona de identidad personal abajo. Cada interacción simula la UX de una pieza de software de edición.
+  </p>
+
+  <h3 class="block-title">Secciones y rol de cada una</h3>
+  <div class="architecture" style="margin-top: 3mm;">
+    <div class="arch-row dark">
+      <div class="arch-tag">HERO</div>
+      <div class="arch-body"><strong>Portada destacada</strong> — el nombre "Mauricio Santos" como H1 sobre video loop de proceso (animación del Zorro Caminando), tagline "Arquitecto de Historias · Diseño de Sistemas Narrativos", CTAs <em class="hl">Ver Destacado</em> + Más Info.</div>
+    </div>
+    <div class="arch-row cyan">
+      <div class="arch-tag" style="color:#29abe3;">CATÁLOGO · AV</div>
+      <div class="arch-body"><strong>Riel Audiovisual</strong> — Videoclip NENA, Videominuto PARANOIA, Folioscopio Flipbook. Color identificador: cian. Cards con preview animado al hover; el modal abre con player tipo software de edición (rewind 10s · play/pause · mute · scrubber con playhead dorado).</div>
+    </div>
+    <div class="arch-row lime">
+      <div class="arch-tag" style="color:#6f9c33;">CATÁLOGO · IX</div>
+      <div class="arch-body"><strong>Riel Interacción / Multimedia</strong> — Infografía de la Minifigura LEGO. Color identificador: verde lima.</div>
+    </div>
+    <div class="arch-row mag">
+      <div class="arch-tag" style="color:#c01d70;">CATÁLOGO · ED</div>
+      <div class="arch-body"><strong>Riel Editorial / Marca</strong> — Mi Me Mo (señalética DG3), Shredded Teen Spirit, Publicación Editorial TP1. Color identificador: magenta.</div>
+    </div>
+    <div class="arch-row dark">
+      <div class="arch-tag">SOBRE MÍ</div>
+      <div class="arch-body"><strong>Identidad + skills</strong> — manifiesto en primera persona, énfasis en el "Behind the Scenes", y grilla de 7 íconos de software que manejo (Photoshop · Illustrator · InDesign · VS Code · DaVinci · Filmora · Figma) con su nivel.</div>
+    </div>
+    <div class="arch-row gold">
+      <div class="arch-tag" style="color:#c98a1f;">CONTACTO</div>
+      <div class="arch-body"><strong>"Trabajemos juntos."</strong> — 7 tiles cuadrados con íconos de plataformas: Descargar CV (gold, primario), Gmail, Teléfono, LinkedIn, Behance, YouTube, Instagram. Al hover cada tile vira al color de su categoría.</div>
+    </div>
+  </div>
+
+  <h3 class="block-title" style="margin-top: 8mm;">Mockup visual · vistas de cada sección</h3>
+  <div class="sections-screens">
+    <div class="screen hero">
+      <div class="screen-eyebrow">HERO · CH·01</div>
+      <div class="screen-h"><span class="a">M</span>AURICIO<br><span class="b">S</span>ANTOS</div>
+      <div class="screen-sub">Arquitecto de Historias · Diseño de Sistemas Narrativos</div>
+    </div>
+    <div class="screen rails">
+      <div class="screen-eyebrow">CATÁLOGO · 3 RIELES</div>
+      <div class="rails-mock">
+        <div>
+          <div class="rail-tag cy">AUDIOVISUAL</div>
+          <div class="rail-cards"><div class="rail-card"></div><div class="rail-card"></div><div class="rail-card"></div></div>
+        </div>
+        <div>
+          <div class="rail-tag li">INTERACCIÓN / MULTIMEDIA</div>
+          <div class="rail-cards"><div class="rail-card"></div><div class="rail-card" style="opacity:0.3"></div><div class="rail-card" style="opacity:0.3"></div></div>
+        </div>
+        <div>
+          <div class="rail-tag ma">EDITORIAL / MARCA</div>
+          <div class="rail-cards"><div class="rail-card"></div><div class="rail-card"></div><div class="rail-card"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="screen about">
+      <div class="screen-eyebrow">SOBRE MÍ + SKILLS</div>
+      <div class="ab-title">El detrás<br>de <span class="em">cámaras.</span></div>
+      <div class="skills">
+        <div class="sk">Ai</div><div class="sk">Ps</div><div class="sk">Id</div>
+        <div class="sk">VS</div><div class="sk">●</div><div class="sk">▶</div><div class="sk">F</div>
+      </div>
+    </div>
+    <div class="screen contact">
+      <div class="screen-eyebrow">CONTACTO</div>
+      <div class="ct-title">Trabajemos<br><span class="em">juntos.</span></div>
+      <div class="tiles">
+        <div class="tile t1"></div><div class="tile t2"></div><div class="tile t3"></div><div class="tile t4"></div>
+        <div class="tile t2"></div><div class="tile t4"></div><div class="tile t3"></div><div class="tile t1"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="url-strip">
+    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
+    <span class="page-num">02 / 03 · ESTRUCTURA</span>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━ PAGE 3 ━━━━━━━━━━ -->
+<section class="page">
+  <header class="header">
+    <div class="brand-word">PORTFOLIO</div>
+    <div class="meta">
+      <strong>TP_2:</strong> Concepto + Contenido/Trabajos + Estructura<br>
+      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Erika Caiafa<br>
+      <strong>Alumno:</strong> Santos Mauricio Ezequiel
+    </div>
+  </header>
+
+  <div class="eyebrow">CH·03 · TRABAJO · CASO DE ESTUDIO</div>
+  <h2 class="section-title">Folioscopio <span class="ink" style="color:#29abe3;">(Flipbook).</span></h2>
+
+  <div class="project-hero">
+    <div class="project-poster">
+      <img src="./assets/folioscopio/poster.jpg" alt="Folioscopio poster">
+    </div>
+    <dl class="project-meta">
+      <dt>Año</dt>           <dd>2026</dd>
+      <dt>Contexto</dt>      <dd>UADE · FADI · Animación 2D · TP_2</dd>
+      <dt>Software</dt>      <dd>After Effects · DaVinci Resolve</dd>
+      <dt>Categoría</dt>     <dd style="color:#29abe3;">Audiovisual · Cian</dd>
+
+      <div class="tags">
+        <span class="tag" style="border-color:#29abe3; color:#1f87b3;">AFTER EFFECTS</span>
+        <span class="tag" style="border-color:#29abe3; color:#1f87b3;">DAVINCI</span>
+        <span class="tag" style="border-color:#f9b03d; color:#c98a1f;">2D ANIM</span>
+      </div>
+
+      <div style="margin-top: 6mm; padding-top: 4mm; border-top: 0.2mm solid #ddd;">
+        <div class="eyebrow" style="margin-bottom: 2mm;">CASO DE ESTUDIO</div>
+        <p class="body" style="font-size: 9.5pt;">behance.net/gallery/<br><strong>241523777</strong>/Folioscopio</p>
+      </div>
+    </dl>
+  </div>
+
+  <h3 class="block-title">Sinopsis</h3>
+  <p class="lead" style="margin-bottom: 8mm;">
+    Animación cuadro a cuadro tipo <em class="hl">flipbook</em> — dibujo 2D, terminación digital y un montaje con ritmo. El TP exigió pensar el movimiento desde el papel: cada cuadro escaneado, ordenado, post-producido y compaginado en una secuencia que se ve fluida pero que arrastra detrás suyo todo el rastro físico del proceso de dibujo.
+  </p>
+
+  <div class="eyebrow" style="margin-bottom: 3mm;">BEHIND THE SCENES · PROCESO CRUDO</div>
+  <div class="bts-grid">
+    <div class="bts-tile">
+      <img src="./assets/folioscopio/bts-1.jpeg" alt="BTS Folioscopio 1">
+    </div>
+    <div class="bts-tile">
+      <img src="./assets/folioscopio/bts-2.jpeg" alt="BTS Folioscopio 2">
+    </div>
+    <div class="bts-tile">
+      <img src="./assets/folioscopio/bts-3.jpg" alt="BTS Folioscopio 3">
+    </div>
+  </div>
+
+  <div style="margin-top: 6mm; padding: 4mm 5mm; background: #1B1919; color: white; border-radius: 2mm; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <div style="font-size: 7pt; letter-spacing: 0.22em; opacity: 0.6;">VER EL TRABAJO COMPLETO + REPRODUCIR LA ANIMACIÓN</div>
+      <div style="font-size: 11pt; font-weight: 700; letter-spacing: 0.04em; margin-top: 1.5mm;">mauricio-santos0109.github.io/narrative-stream</div>
+    </div>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1" alt="QR" style="width: 22mm; height: 22mm;">
+    </div>
+  </div>
+
+  <div class="url-strip">
+    <span class="url">Caso de estudio · Folioscopio (Flipbook)</span>
+    <span class="page-num">03 / 03 · DESARROLLO DE TRABAJO</span>
+  </div>
+</section>
+
+</body>
+</html>
