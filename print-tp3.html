@@ -210,6 +210,8 @@
   .ig-hl-circle.lime { background: #8fc045; }
   .ig-hl-circle.mag  { background: #e32285; }
   .ig-hl-circle.gold { background: #f9b03d; color: #1B1919; }
+  .ig-hl-circle.dark { background: #1B1919; }
+  .ig-hl-circle.dark .hl-letter { background: linear-gradient(135deg, #f9b03d, #e32285, #29abe3); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .ig-hl-circle .hl-letter { font-weight: 900; font-size: 8pt; letter-spacing: -0.05em; }
   .ig-hl-lbl { font-size: 5.5pt; color: #444; margin-top: 0.5mm; font-weight: 600; }
 
@@ -494,6 +496,130 @@
   .ig-hl-big .lbl { font-size: 7pt; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1B1919; }
   .ig-hl-big .desc { font-size: 6pt; color: #888; line-height: 1.3; text-align: center; max-width: 32mm; }
 
+  /* PORTFOLIO SHOWCASE (page 1) */
+  .portfolio-showcase {
+    margin-top: 6mm;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 4mm;
+  }
+  .portfolio-showcase .pf-hero {
+    grid-row: span 2;
+    background: #1B1919;
+    border-radius: 2mm;
+    overflow: hidden;
+    position: relative;
+    border: 0.3mm solid #ddd;
+  }
+  .portfolio-showcase .pf-hero img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .portfolio-showcase .pf-side {
+    background: #1B1919;
+    border-radius: 2mm;
+    overflow: hidden;
+    border: 0.3mm solid #ddd;
+    aspect-ratio: 16 / 9;
+  }
+  .portfolio-showcase .pf-side img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portfolio-showcase .pf-caption {
+    grid-column: 1 / -1;
+    font-size: 7.5pt; line-height: 1.5; color: #444;
+    padding: 3mm 4mm; background: #fff; border-radius: 1.5mm; border: 0.2mm solid #eee;
+    margin-top: 1mm;
+  }
+  .portfolio-showcase .pf-caption strong { font-weight: 800; color: #1B1919; }
+  .portfolio-showcase .pf-caption em { font-style: normal; font-weight: 700; color: #c01d70; }
+  .portfolio-showcase .pf-caption ul { margin: 1.5mm 0 0 4mm; padding: 0; }
+  .portfolio-showcase .pf-caption li { font-size: 7pt; line-height: 1.5; margin-bottom: 0.5mm; }
+  .portfolio-showcase .pf-caption li strong { color: #c01d70; }
+
+  /* PAGE 2 — Real screen wrappers (LinkedIn / YouTube) */
+  .real-screen {
+    background: #fff;
+    border-radius: 1.5mm;
+    border: 0.2mm solid #ddd;
+    overflow: hidden;
+    box-shadow: 0 0.4mm 1.5mm rgba(0,0,0,0.08);
+  }
+  .real-screen .browser-bar {
+    display: flex; align-items: center; gap: 1.2mm;
+    background: #eeefef; padding: 1.2mm 2mm;
+    border-bottom: 0.2mm solid #ddd;
+  }
+  .real-screen .browser-bar .dot { width: 1.8mm; height: 1.8mm; border-radius: 50%; background: #ccc; }
+  .real-screen .browser-bar .url {
+    flex: 1; background: #fff; border: 0.15mm solid #ddd; border-radius: 4mm;
+    padding: 0.6mm 2.5mm; font-size: 5.5pt; color: #666; font-weight: 500;
+  }
+  .real-screen img.shot { width: 100%; display: block; }
+  .real-screen .caption {
+    font-size: 6.5pt; padding: 1.8mm 2.5mm; color: #555; background: #fafafa;
+    border-top: 0.2mm solid #eee;
+    line-height: 1.4;
+  }
+  .real-screen .caption strong { font-weight: 700; color: #1B1919; }
+
+  .yt-real-card {
+    background: white;
+    border-radius: 1.5mm;
+    border: 0.2mm solid #ddd;
+    overflow: hidden;
+  }
+  .yt-real-card .browser-bar {
+    display: flex; align-items: center; gap: 1.2mm;
+    background: #0f0f0f; padding: 1.2mm 2mm;
+    border-bottom: 0.2mm solid #222;
+  }
+  .yt-real-card .browser-bar .dot { width: 1.8mm; height: 1.8mm; border-radius: 50%; background: #444; }
+  .yt-real-card .browser-bar .yt-mini {
+    margin-left: 1mm;
+    color: white; font-weight: 800; font-size: 7pt; letter-spacing: -0.02em;
+  }
+  .yt-real-card .browser-bar .yt-mini::before {
+    content: "▶"; color: #FF0000; margin-right: 1mm;
+  }
+  .yt-real-card .browser-bar .url {
+    flex: 1; background: #303030; border-radius: 4mm;
+    padding: 0.6mm 2.5mm; font-size: 5.5pt; color: #ccc; font-weight: 500;
+  }
+  .yt-real-card .banner-shot { width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
+  .yt-real-card .yt-row {
+    display: grid; grid-template-columns: 12mm 1fr 18mm; gap: 2.5mm; align-items: center;
+    padding: 2.5mm 3mm; background: white;
+  }
+  .yt-real-card .yt-row .yt-pp {
+    width: 12mm; height: 12mm; border-radius: 50%; overflow: hidden; background: #1B1919;
+    border: 0.3mm solid #eee;
+    transform: translateY(-3mm);
+    box-shadow: 0 0.4mm 1mm rgba(0,0,0,0.2);
+  }
+  .yt-real-card .yt-row .yt-pp img { width: 100%; height: 100%; object-fit: cover; }
+  .yt-real-card .yt-row .yt-info .yt-name { font-size: 9pt; font-weight: 800; }
+  .yt-real-card .yt-row .yt-info .yt-handle-line { font-size: 6.5pt; color: #666; margin-top: 0.4mm; }
+  .yt-real-card .yt-row .yt-sub-cta {
+    background: #1B1919; color: white;
+    font-size: 6.5pt; font-weight: 800; letter-spacing: 0.04em;
+    padding: 1.4mm 0; border-radius: 6mm; text-align: center;
+  }
+  .yt-real-card .caption {
+    font-size: 6.5pt; padding: 1.8mm 3mm; color: #555; background: #fafafa;
+    border-top: 0.2mm solid #eee;
+    line-height: 1.4;
+  }
+
+  /* PAGE 3 — Real IG screenshots wrappers */
+  .ig-phone {
+    background: #1B1919; padding: 1.5mm;
+    border-radius: 3mm;
+    box-shadow: 0 0.4mm 1.5mm rgba(0,0,0,0.18);
+  }
+  .ig-phone .screen {
+    background: white; border-radius: 2mm; overflow: hidden;
+    aspect-ratio: 9 / 19.5;
+  }
+  .ig-phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
   /* URL strip */
   .url-strip {
     position: absolute;
@@ -568,35 +694,31 @@
     </div>
   </section>
 
-  <!-- STRATEGY -->
-  <div style="margin-top:8mm;">
-    <div class="eyebrow" style="margin-bottom:3mm;">CH·03 · ESTRATEGIA DE REDES</div>
-    <h3 class="block-title" style="font-size:14pt; margin-bottom:4mm;">3 plataformas, 1 sola voz.</h3>
-    <div class="strategy">
-      <div class="strat-card cyan">
-        <div class="strat-eyebrow">Plataforma profunda</div>
-        <h4>Instagram</h4>
-        <p>Vidriera principal del proceso. Posts curados + reels de Behind the Scenes. Donde la marca se ve completa: grilla, historia, reels, highlights.</p>
-        <div class="audience"><strong>Audiencia:</strong> pares de diseño + reclutadores creativos</div>
-      </div>
-      <div class="strat-card lime">
-        <div class="strat-eyebrow">Networking profesional</div>
-        <h4>LinkedIn</h4>
-        <p>Header + foto + headline + about. El portfolio formal — punto de aterrizaje para estudios y agencias. Menos densidad, más claridad.</p>
-        <div class="audience"><strong>Audiencia:</strong> estudios · agencias · pasantías</div>
-      </div>
-      <div class="strat-card mag">
-        <div class="strat-eyebrow">Bitácora extendida</div>
-        <h4>YouTube</h4>
-        <p>Canal complementario donde Instagram no alcanza por duración. Procesos largos, walkthroughs de proyectos. Behind the Scenes en formato extendido.</p>
-        <div class="audience"><strong>Audiencia:</strong> curiosos de proceso · estudiantes</div>
+  <!-- PORTFOLIO en vivo -->
+  <div style="margin-top:7mm;">
+    <div class="eyebrow" style="margin-bottom:3mm;">CH·03 · EL PORTFOLIO EN VIVO</div>
+    <h3 class="block-title" style="font-size:14pt; margin-bottom:1mm;">Punto de aterrizaje único.</h3>
+    <p class="body" style="margin-bottom: 4mm; max-width: 220mm;">
+      Todas las redes apuntan al mismo destino: <em class="hl">mauricio-santos0109.github.io/narrative-stream</em> — sitio React con 3 rieles de catálogo (Audiovisual · Interacción · Editorial), 9 trabajos abribles en modal con su <em class="mag">Behind the Scenes</em>.
+    </p>
+    <div class="portfolio-showcase">
+      <div class="pf-hero"><img src="./assets/screens-tp3/portfolio-1.png" alt="Portfolio hero"></div>
+      <div class="pf-side"><img src="./assets/screens-tp3/portfolio-2.png" alt="Portfolio catálogo"></div>
+      <div class="pf-side"><img src="./assets/screens-tp3/portfolio-3.png" alt="Modal de proyecto con BTS"></div>
+      <div class="pf-caption">
+        <strong>Proceso TP_2 → TP_3 ·</strong> Cambios aplicados al sitio durante la preparación del TP3 de redes:
+        <ul>
+          <li><strong>Marca real en los proyectos:</strong> reemplazo de BTS placeholder por las 3 fotos del modelo físico de MiMeMo + 3 piezas de proceso reales de la Infografía LEGO (diagrama de partes, fondo escaneado, captura de Illustrator).</li>
+          <li><strong>Sección "Trabajemos juntos":</strong> el tile de Instagram ahora linkea al perfil real (<em>@maurisantos.design</em>) reemplazando el "Próximamente".</li>
+          <li><strong>Tipografía + featured markers:</strong> ajustes previos de jerarquía y badges "destacado" en los trabajos featured de cada categoría (correcciones de la rúbrica TP_2).</li>
+        </ul>
       </div>
     </div>
   </div>
 
   <div class="url-strip">
     <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">01 / 03 · MARCA + CONCEPTO + ESTRATEGIA</span>
+    <span class="page-num">01 / 03 · MARCA + CONCEPTO + PORTFOLIO</span>
   </div>
 </section>
 
@@ -633,18 +755,17 @@
           <span>≡</span>
         </div>
         <div class="ig-prof-row">
-          <div class="ig-avatar"><div class="inner"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div></div>
+          <div class="ig-avatar"><div class="inner"><img src="./assets/social/ig-profile-pic.png" alt="PP"></div></div>
           <div class="ig-stats">
-            <div class="ig-stat"><div class="ig-stat-n">9</div><div class="ig-stat-lbl">posts</div></div>
-            <div class="ig-stat"><div class="ig-stat-n">1.2K</div><div class="ig-stat-lbl">seguidores</div></div>
-            <div class="ig-stat"><div class="ig-stat-n">348</div><div class="ig-stat-lbl">siguiendo</div></div>
+            <div class="ig-stat"><div class="ig-stat-n">9</div><div class="ig-stat-lbl">publicaciones</div></div>
+            <div class="ig-stat"><div class="ig-stat-n">6</div><div class="ig-stat-lbl">seguidores</div></div>
+            <div class="ig-stat"><div class="ig-stat-n">17</div><div class="ig-stat-lbl">seguidos</div></div>
           </div>
         </div>
         <div class="ig-prof-info">
           <div class="ig-name">Mauricio Santos</div>
-          <div class="ig-handle">Diseñador multimedia · UADE FADI</div>
-          <div class="ig-bio">📐 Sistemas narrativos · papel → virtual → video<br>✨ Behind the Scenes de cada proyecto</div>
-          <div class="ig-link">↗ mauricio-santos0109.github.io</div>
+          <div class="ig-bio">Multimedia &amp; Graphic Designer<br>El detrás de cámaras de cada proyecto ↓</div>
+          <div class="ig-link">↗ mauricio-santos0109.github.io/narrative-stream/</div>
         </div>
         <div class="ig-actions">
           <div class="ig-btn follow">Seguir</div>
@@ -652,28 +773,28 @@
           <div class="ig-btn more">+</div>
         </div>
         <div class="ig-highlights">
-          <div class="ig-hl-item"><div class="ig-hl-circle cyan"><span class="hl-letter">AV</span></div><div class="ig-hl-lbl">Audiovisual</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle lime"><span class="hl-letter">IX</span></div><div class="ig-hl-lbl">Interacción</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle mag"><span class="hl-letter">ED</span></div><div class="ig-hl-lbl">Editorial</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle gold"><span class="hl-letter">BTS</span></div><div class="ig-hl-lbl">Proceso</div></div>
+          <div class="ig-hl-item"><div class="ig-hl-circle mag"><span class="hl-letter">E</span></div><div class="ig-hl-lbl">Editorial</div></div>
+          <div class="ig-hl-item"><div class="ig-hl-circle lime"><span class="hl-letter">I</span></div><div class="ig-hl-lbl">Interacción</div></div>
+          <div class="ig-hl-item"><div class="ig-hl-circle cyan"><span class="hl-letter">A</span></div><div class="ig-hl-lbl">Audiovisual</div></div>
+          <div class="ig-hl-item"><div class="ig-hl-circle dark"><span class="hl-letter">M</span></div><div class="ig-hl-lbl">¿Quién soy?</div></div>
         </div>
         <div class="ig-grid">
-          <div class="ig-post"><img src="./assets/nena/poster.jpg" alt="NENA"></div>
-          <div class="ig-post"><img src="./assets/paranoia/poster.jpeg" alt="PARANOIA"></div>
-          <div class="ig-post"><img src="./assets/folioscopio/poster.jpg" alt="Folioscopio"></div>
-          <div class="ig-post"><img src="./assets/imagine-ai/poster.png" alt="IMAGINE.AI"></div>
-          <div class="ig-post"><img src="./assets/infografia/minifigura-lego.png" alt="LEGO"></div>
-          <div class="ig-post"><img src="./assets/chess/poster.png" alt="CHESS"></div>
-          <div class="ig-post"><img src="./assets/new-editorial/poster.png" alt="Pub TP1"></div>
-          <div class="ig-post"><img src="./assets/mimemo/poster.png" alt="MiMeMo"></div>
-          <div class="ig-post"><img src="./assets/shredded/poster.png" alt="Shredded"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-09-shredded.png" alt="Shredded"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-08-mimemo.png" alt="MiMeMo"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-07-publicacion.png" alt="Pub TP1"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-06-chess.png" alt="CHESS"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-05-lego.png" alt="LEGO"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-04-imagine.png" alt="IMAGINE.AI"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-03-folioscopio.png" alt="Folioscopio"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-02-paranoia.png" alt="PARANOIA"></div>
+          <div class="ig-post"><img src="./assets/social/ig-post-01-nena.png" alt="NENA"></div>
         </div>
       </div>
       <div class="qr-strip">
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1&color=1B1919" alt="QR"></div>
+        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com/maurisantos.design&margin=1&color=1B1919" alt="QR IG"></div>
         <div class="qr-meta">
           <strong>@maurisantos.design</strong>
-          <span class="hand">→ Portfolio web</span>
+          <span class="hand">→ Ir a Instagram</span>
         </div>
       </div>
     </div>
@@ -685,33 +806,23 @@
         <span class="name">LinkedIn</span>
         <span class="role">Networking</span>
       </div>
-      <div class="li-mock">
-        <div class="li-banner">
-          <div class="word">MAURICIO<br>SANTOS<span class="sub">Architect of Stories</span></div>
+      <div class="real-screen">
+        <div class="browser-bar">
+          <span class="dot" style="background:#ff5f57;"></span>
+          <span class="dot" style="background:#ffbd2e;"></span>
+          <span class="dot" style="background:#28ca42;"></span>
+          <span class="url">linkedin.com/in/nbdesigner</span>
         </div>
-        <div class="li-profile-zone">
-          <div class="li-avatar"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-          <div class="li-name-row">
-            <div class="li-name">Mauricio Santos</div>
-            <div class="li-headline">Multimedia &amp; Graphic Designer · Editorial · Interaction · Audiovisual</div>
-            <div class="li-meta">UADE · FADI <span style="margin: 0 1.5mm; color:#ccc;">·</span> <span class="city">Buenos Aires</span></div>
-            <div class="li-btn-row">
-              <span class="li-btn connect">+ Conectar</span>
-              <span class="li-btn msg">Mensaje</span>
-            </div>
-          </div>
-          <div class="li-about">
-            <strong>Sobre mí</strong><br>
-            Soy diseñador multimedia y gráfico en formación. Construyo sistemas narrativos que funcionan en múltiples soportes — del papel al entorno virtual y al video. Mi diferencial es el <em class="hl">Behind the Scenes</em>: cada pieza viene con su proceso a la vista.
-            <div class="see-more">…ver más</div>
-          </div>
+        <img class="shot" src="./assets/screens-tp3/linkedin-real.png" alt="LinkedIn perfil real">
+        <div class="caption">
+          <strong>Perfil real publicado.</strong> Banner con el sistema de marca, foto de perfil con monograma sobre paleta brand, y headline alineado con la estrategia: <em>"Multimedia &amp; Graphic Designer · Sistemas narrativos del papel al video"</em>.
         </div>
       </div>
       <div class="qr-strip">
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1&color=1B1919" alt="QR"></div>
+        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/nbdesigner/&margin=1&color=1B1919" alt="QR LI"></div>
         <div class="qr-meta">
           <strong>linkedin.com/in/<br>nbdesigner</strong>
-          <span class="hand">→ Portfolio web</span>
+          <span class="hand">→ Ir a LinkedIn</span>
         </div>
       </div>
     </div>
@@ -723,40 +834,30 @@
         <span class="name">YouTube</span>
         <span class="role">Bitácora</span>
       </div>
-      <div class="yt-mock">
-        <div class="yt-banner">
-          <div class="yt-word">MAURICIO SANTOS<span class="sub">Behind the Scenes</span></div>
+      <div class="yt-real-card">
+        <div class="browser-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="yt-mini">YouTube</span>
+          <span class="url">youtube.com/@mauro6026</span>
         </div>
-        <div class="yt-profile-zone">
-          <div class="yt-avatar"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-          <div>
+        <img class="banner-shot" src="./assets/social/yt-banner.png" alt="YouTube banner">
+        <div class="yt-row">
+          <div class="yt-pp"><img src="./assets/social/ig-profile-pic.png" alt="PP"></div>
+          <div class="yt-info">
             <div class="yt-name">Mauricio Santos</div>
-            <div class="yt-handle-row"><span class="hand">@mauro6026</span> · 245 suscriptores · 18 videos</div>
-            <div class="yt-subs"><strong>Bitácora</strong> de procesos de diseño · de papel a render</div>
-            <span class="yt-sub-btn">Suscribirse</span>
+            <div class="yt-handle-line">@mauro6026 · Bitácora de procesos · El detrás de cámaras</div>
           </div>
+          <div class="yt-sub-cta">Suscribirse</div>
         </div>
-        <div class="yt-featured">
-          <div class="yt-feat-eyebrow">Destacado</div>
-          <div class="yt-feat-vid">
-            <img src="./assets/folioscopio/bts-2.jpeg" alt="featured">
-            <div class="yt-feat-overlay"><div class="yt-play"></div></div>
-          </div>
-          <div class="yt-feat-title">Folioscopio · de boceto a animación en 8 minutos</div>
-          <div class="yt-feat-meta">2.4K vistas · hace 2 meses</div>
-          <div class="yt-thumbs">
-            <div class="yt-thumb"><img src="./assets/nena/poster.jpg" alt=""></div>
-            <div class="yt-thumb"><img src="./assets/paranoia/poster.jpeg" alt=""></div>
-            <div class="yt-thumb"><img src="./assets/imagine-ai/poster.png" alt=""></div>
-            <div class="yt-thumb"><img src="./assets/chess/poster.png" alt=""></div>
-          </div>
+        <div class="caption" style="font-size:6.5pt; padding:1.8mm 3mm;">
+          <strong style="color:#1B1919;">Banner channel art</strong> diseñado bajo el sistema de marca: wordmark MAURICIO SANTOS con M cian + S magenta, timeline editorial con playhead gold, eyebrow "El detrás de cámaras" y barras brand como firma en la esquina inferior izquierda.
         </div>
       </div>
       <div class="qr-strip">
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1&color=1B1919" alt="QR"></div>
+        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/@mauro6026&margin=1&color=1B1919" alt="QR YT"></div>
         <div class="qr-meta">
           <strong>youtube.com/<br>@mauro6026</strong>
-          <span class="hand">→ Portfolio web</span>
+          <span class="hand">→ Ir a YouTube</span>
         </div>
       </div>
     </div>
@@ -785,124 +886,47 @@
   </header>
 
   <div class="eyebrow">CH·03 · INSTAGRAM · RED MÁS DESARROLLADA</div>
-  <h2 class="section-title">5 vistas, <span class="ink">un sistema.</span></h2>
+  <h2 class="section-title">La cuenta <span class="ink">funcionando.</span></h2>
 
   <p class="body" style="margin-bottom: 5mm; max-width: 220mm;">
-    Instagram es la red más desarrollada porque concentra <em class="hl">5 formatos nativos</em> distintos (perfil + post detalle + story + reel + highlights), cada uno con su propio lenguaje pero anclados al mismo sistema de marca. Abajo, el desglose completo.
+    Instagram es la red más desarrollada porque concentra <em class="hl">5 formatos nativos</em> distintos: perfil + post detalle + story + reel + highlights. Las primeras 3 vistas son <em class="mag">capturas reales de la cuenta en producción</em> (subidas durante esta entrega); la 4ª (reel) queda como mockup proyectado y los highlight covers son las piezas diseñadas a dimensión exacta de IG.
   </p>
 
   <div class="ig-detail-grid">
 
-    <!-- PROFILE (left, vertical) -->
+    <!-- PROFILE REAL (left) -->
     <div class="ig-card-wrap">
-      <div class="ig-card-caption">01 · Perfil</div>
-      <div class="ig-mock">
-        <div class="ig-topbar">
-          <span class="ig-handle-top">maurisantos.design</span>
-          <span>≡</span>
-        </div>
-        <div class="ig-prof-row">
-          <div class="ig-avatar"><div class="inner"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div></div>
-          <div class="ig-stats">
-            <div class="ig-stat"><div class="ig-stat-n">9</div><div class="ig-stat-lbl">posts</div></div>
-            <div class="ig-stat"><div class="ig-stat-n">1.2K</div><div class="ig-stat-lbl">seguidores</div></div>
-            <div class="ig-stat"><div class="ig-stat-n">348</div><div class="ig-stat-lbl">siguiendo</div></div>
-          </div>
-        </div>
-        <div class="ig-prof-info">
-          <div class="ig-name">Mauricio Santos</div>
-          <div class="ig-handle">Diseñador multimedia · UADE FADI</div>
-          <div class="ig-bio">📐 Sistemas narrativos · papel → virtual → video<br>✨ Behind the Scenes de cada proyecto<br>📍 Buenos Aires</div>
-          <div class="ig-link">↗ mauricio-santos0109.github.io</div>
-        </div>
-        <div class="ig-actions">
-          <div class="ig-btn follow">Seguir</div>
-          <div class="ig-btn msg">Mensaje</div>
-          <div class="ig-btn more">+</div>
-        </div>
-        <div class="ig-highlights">
-          <div class="ig-hl-item"><div class="ig-hl-circle cyan"><span class="hl-letter">AV</span></div><div class="ig-hl-lbl">Audiovisual</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle lime"><span class="hl-letter">IX</span></div><div class="ig-hl-lbl">Interacción</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle mag"><span class="hl-letter">ED</span></div><div class="ig-hl-lbl">Editorial</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle gold"><span class="hl-letter">BTS</span></div><div class="ig-hl-lbl">Proceso</div></div>
-        </div>
-        <div class="ig-grid">
-          <div class="ig-post"><img src="./assets/nena/poster.jpg" alt=""></div>
-          <div class="ig-post"><img src="./assets/paranoia/poster.jpeg" alt=""></div>
-          <div class="ig-post"><img src="./assets/folioscopio/poster.jpg" alt=""></div>
-          <div class="ig-post"><img src="./assets/imagine-ai/poster.png" alt=""></div>
-          <div class="ig-post"><img src="./assets/infografia/minifigura-lego.png" alt=""></div>
-          <div class="ig-post"><img src="./assets/chess/poster.png" alt=""></div>
-          <div class="ig-post"><img src="./assets/new-editorial/poster.png" alt=""></div>
-          <div class="ig-post"><img src="./assets/mimemo/poster.png" alt=""></div>
-          <div class="ig-post"><img src="./assets/shredded/poster.png" alt=""></div>
-        </div>
+      <div class="ig-card-caption">01 · Perfil real · @maurisantos.design</div>
+      <div class="ig-phone">
+        <div class="screen"><img src="./assets/screens-tp3/ig-real-3.jpeg" alt="Perfil real IG"></div>
       </div>
     </div>
 
     <!-- right col: post + story/reel -->
     <div class="right-col">
 
-      <!-- POST DETAIL -->
+      <!-- POST DETAIL — captura real -->
       <div class="ig-card-wrap">
-        <div class="ig-card-caption">02 · Post (detalle)</div>
-        <div class="ig-post-detail">
-          <div class="pd-head">
-            <div class="pd-avatar"><div class="inner"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div></div>
-            <div>
-              <div class="pd-name">maurisantos.design</div>
-              <div class="pd-sub">Buenos Aires</div>
-            </div>
-            <div class="pd-dots">⋯</div>
-          </div>
-          <div class="pd-img">
-            <img src="./assets/folioscopio/bts-2.jpeg" alt="post">
-            <div class="carousel-dots">
-              <div class="cd on"></div><div class="cd"></div><div class="cd"></div>
-            </div>
-          </div>
-          <div class="pd-actions">
-            <svg viewBox="0 0 24 24"><path d="M16.7 4.5C14.6 4.5 13 6 12 7.6 11 6 9.4 4.5 7.3 4.5 4.4 4.5 2 7 2 10c0 5.4 10 11.5 10 11.5s10-6.1 10-11.5c0-3-2.4-5.5-5.3-5.5z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M21 12c0 4-4 7.5-9 7.5-1.5 0-3-.3-4.3-.9L3 20l1.5-4.2C3.5 14.4 3 13.2 3 12c0-4 4-7.5 9-7.5s9 3.5 9 7.5z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M2 21l20-9L2 3v6l14 3-14 3z"/></svg>
-            <svg class="right" viewBox="0 0 24 24"><path d="M6 4v17l6-4 6 4V4z"/></svg>
-          </div>
-          <div class="pd-likes">1.247 me gusta</div>
-          <div class="pd-caption">
-            <strong>maurisantos.design</strong> Folioscopio — cuadro a cuadro, escaneo, post-pro y montaje. El proceso completo en 3 imágenes. <span class="tag">#animation #2D #behindTheScenes #processOverPerfection</span><br>
-            <span style="color:#888; font-size:6pt;">Ver los 47 comentarios · hace 3 días</span>
-          </div>
+        <div class="ig-card-caption">02 · Post real · NENA — Vicios (carousel)</div>
+        <div class="ig-phone">
+          <div class="screen"><img src="./assets/screens-tp3/ig-real-1.jpeg" alt="Post real IG"></div>
         </div>
       </div>
 
-      <!-- bottom row: story + reel -->
+      <!-- bottom row: story REAL + reel sintético -->
       <div class="bot-row">
 
-        <!-- STORY -->
+        <!-- STORY REAL -->
         <div class="ig-card-wrap">
-          <div class="ig-card-caption">03 · Story</div>
-          <div class="ig-story">
-            <div class="ig-story-bars">
-              <div class="b on"></div><div class="b"></div><div class="b"></div><div class="b"></div>
-            </div>
-            <div class="ig-story-meta">
-              <div class="av"><img src="./assets/logo/MarcaFINAL.png" alt=""></div>
-              <span class="nm">maurisantos.design</span>
-              <span class="ago">· 4h</span>
-            </div>
-            <div class="ig-story-body">
-              <div class="eyebrow">BEHIND THE SCENES</div>
-              <h3>El detrás<br>de <span class="em-c">cámaras.</span></h3>
-              <p>"Cada pieza viene con su proceso a la vista — bocetos, errores, pruebas."</p>
-            </div>
-            <div class="ig-story-sticker"><span class="dot"></span>VER PORTFOLIO</div>
-            <div class="ig-story-cta">Desliza arriba ↑</div>
+          <div class="ig-card-caption">03 · Story real · Shredded</div>
+          <div class="ig-phone">
+            <div class="screen"><img src="./assets/screens-tp3/ig-real-2.jpeg" alt="Story real IG"></div>
           </div>
         </div>
 
-        <!-- REEL -->
+        <!-- REEL (mockup — futuro contenido) -->
         <div class="ig-card-wrap">
-          <div class="ig-card-caption">04 · Reel</div>
+          <div class="ig-card-caption">04 · Reel (proyectado) · Folioscopio BTS</div>
           <div class="ig-reel">
             <div class="reel-img"><img src="./assets/folioscopio/bts-1.jpeg" alt="reel"></div>
             <div class="reel-overlay">
@@ -913,7 +937,7 @@
               <div class="reel-bottom">
                 <div class="reel-info">
                   <div class="reel-handle">
-                    <div class="av"><img src="./assets/logo/MarcaFINAL.png" alt=""></div>
+                    <div class="av"><img src="./assets/social/ig-profile-pic.png" alt=""></div>
                     <div class="nm">maurisantos.design</div>
                   </div>
                   <div class="reel-caption">
@@ -926,15 +950,15 @@
                 <div class="reel-actions">
                   <div class="act">
                     <svg class="ic" viewBox="0 0 24 24" fill="white"><path d="M16.7 4.5C14.6 4.5 13 6 12 7.6 11 6 9.4 4.5 7.3 4.5 4.4 4.5 2 7 2 10c0 5.4 10 11.5 10 11.5s10-6.1 10-11.5c0-3-2.4-5.5-5.3-5.5z"/></svg>
-                    <span class="cnt">12K</span>
+                    <span class="cnt">—</span>
                   </div>
                   <div class="act">
                     <svg class="ic" viewBox="0 0 24 24" fill="white"><path d="M21 12c0 4-4 7.5-9 7.5-1.5 0-3-.3-4.3-.9L3 20l1.5-4.2C3.5 14.4 3 13.2 3 12c0-4 4-7.5 9-7.5s9 3.5 9 7.5z"/></svg>
-                    <span class="cnt">408</span>
+                    <span class="cnt">—</span>
                   </div>
                   <div class="act">
                     <svg class="ic" viewBox="0 0 24 24" fill="white"><path d="M2 21l20-9L2 3v6l14 3-14 3z"/></svg>
-                    <span class="cnt">231</span>
+                    <span class="cnt">—</span>
                   </div>
                 </div>
               </div>
@@ -946,41 +970,41 @@
     </div>
   </div>
 
-  <!-- HIGHLIGHTS STRIP -->
+  <!-- HIGHLIGHTS STRIP — Highlight covers reales -->
   <div class="ig-card-wrap">
-    <div class="ig-card-caption">05 · Highlight covers</div>
+    <div class="ig-card-caption">05 · Highlight covers diseñados · pieza 1080×1920 recortada a círculo por IG</div>
     <div class="ig-highlight-strip">
       <div class="ig-hl-big">
-        <div class="circle cyan"><span class="letter">AV</span></div>
-        <div class="lbl">Audiovisual</div>
-        <div class="desc">Videoclips · cortos · animación 2D</div>
-      </div>
-      <div class="ig-hl-big">
-        <div class="circle lime"><span class="letter">IX</span></div>
-        <div class="lbl">Interacción</div>
-        <div class="desc">Web · multimedia · juegos · IA</div>
-      </div>
-      <div class="ig-hl-big">
-        <div class="circle mag"><span class="letter">ED</span></div>
+        <div class="circle mag" style="padding:0; overflow:hidden;"><img src="./assets/social/ig-hl-cover-ed.png" alt="Editorial" style="width:100%; height:100%; object-fit:cover;"></div>
         <div class="lbl">Editorial</div>
-        <div class="desc">Print · señalética · marca</div>
+        <div class="desc">Publicaciones · señalética · libros</div>
       </div>
       <div class="ig-hl-big">
-        <div class="circle gold"><span class="letter">BTS</span></div>
-        <div class="lbl">Proceso</div>
-        <div class="desc">Bocetos · errores · pruebas crudas</div>
+        <div class="circle lime" style="padding:0; overflow:hidden;"><img src="./assets/social/ig-hl-cover-ix.png" alt="Interacción" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="lbl">Interacción</div>
+        <div class="desc">Web · game · infografía</div>
       </div>
       <div class="ig-hl-big">
-        <div class="circle dark"><span class="letter">M</span></div>
-        <div class="lbl">Mauricio</div>
-        <div class="desc">Quien soy · qué hago · contacto</div>
+        <div class="circle cyan" style="padding:0; overflow:hidden;"><img src="./assets/social/ig-hl-cover-av.png" alt="Audiovisual" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="lbl">Audiovisual</div>
+        <div class="desc">Videoclip · corto · animación</div>
+      </div>
+      <div class="ig-hl-big">
+        <div class="circle dark" style="padding:0; overflow:hidden;"><img src="./assets/social/ig-profile-pic.png" alt="¿Quién soy?" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="lbl">¿Quién soy?</div>
+        <div class="desc">Manifiesto · marca · contacto</div>
+      </div>
+      <div class="ig-hl-big">
+        <div class="circle gold"><span class="letter">+</span></div>
+        <div class="lbl">A futuro</div>
+        <div class="desc">BTS de cada proyecto · proceso crudo</div>
       </div>
     </div>
   </div>
 
   <div class="url-strip">
     <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">03 / 03 · INSTAGRAM DETALLADO</span>
+    <span class="page-num">03 / 03 · INSTAGRAM · CUENTA EN PRODUCCIÓN</span>
   </div>
 </section>
 

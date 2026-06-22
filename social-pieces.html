@@ -641,69 +641,100 @@
   .yt-banner-piece::before {
     content: ""; position: absolute; inset: 0;
     background:
-      radial-gradient(circle at 20% 50%, rgba(41,171,227,0.5), transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(249,176,61,0.25), transparent 45%),
-      radial-gradient(circle at 80% 50%, rgba(227,34,133,0.5), transparent 40%),
+      radial-gradient(ellipse 60% 100% at 18% 50%, rgba(41,171,227,0.45), transparent 60%),
+      radial-gradient(ellipse 60% 100% at 82% 50%, rgba(227,34,133,0.45), transparent 60%),
+      radial-gradient(circle at 50% 50%, rgba(249,176,61,0.18), transparent 55%),
+      radial-gradient(circle at 50% 50%, rgba(15,15,15,0.6) 0%, transparent 70%),
       linear-gradient(135deg, var(--c-bg) 0%, var(--c-bg-d) 100%);
   }
   .yt-banner-piece::after {
     content: ""; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    opacity: 0.05; mix-blend-mode: overlay; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.06; mix-blend-mode: overlay; pointer-events: none;
   }
-  /* Safe zone for mobile/TV: centered 1546×423 (= ~60.4% w × 29.4% h) */
+  /* Safe zone for mobile/TV: centered 1546x423 (~60.4% w x 29.4% h) */
   .yt-banner-piece .safe-zone {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 60.4%;
     height: 29.4%;
-    display: grid;
-    grid-template-columns: 25cqi 1fr;
-    gap: 5cqi;
-    align-items: center;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
     z-index: 2;
   }
-  .yt-banner-piece .safe-zone .monogram {
-    width: 100%;
-    aspect-ratio: 1;
-    background: rgba(0,0,0,0.45);
-    border: 0.5cqi solid var(--c-gold);
-    border-radius: 50%;
-    padding: 5cqi;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 0 8cqi rgba(249,176,61,0.4);
-  }
-  .yt-banner-piece .safe-zone .monogram img { max-width: 100%; max-height: 100%; }
-  .yt-banner-piece .safe-zone .text .micro {
-    font-size: 2cqi; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase;
+  .yt-banner-piece .safe-zone .eyebrow {
+    display: inline-flex; align-items: center; gap: 1.2cqi;
+    font-size: 1.6cqi; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase;
     color: var(--c-gold);
-    margin-bottom: 2cqi;
+    margin-bottom: 1.6cqi;
   }
-  .yt-banner-piece .safe-zone .text h1 {
-    font-size: 9cqi; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
+  .yt-banner-piece .safe-zone .eyebrow .dot { width: 0.7cqi; height: 0.7cqi; border-radius: 50%; background: var(--c-gold); box-shadow: 0 0 1cqi var(--c-gold); }
+  .yt-banner-piece .safe-zone .wm {
+    font-size: 7.5cqi; font-weight: 900; letter-spacing: -0.035em; line-height: 0.92;
+    color: white;
+    margin-bottom: 1.4cqi;
+    text-shadow: 0 0.4cqi 2cqi rgba(0,0,0,0.55);
   }
-  .yt-banner-piece .safe-zone .text h1 .em-c { color: var(--c-cyan); }
-  .yt-banner-piece .safe-zone .text h1 .em-m { color: var(--c-mag); }
-  .yt-banner-piece .safe-zone .text .tag {
-    font-size: 3cqi; font-weight: 300; font-style: italic;
+  .yt-banner-piece .safe-zone .wm .em-c { color: var(--c-cyan); }
+  .yt-banner-piece .safe-zone .wm .em-m { color: var(--c-mag); }
+  .yt-banner-piece .safe-zone .tag {
+    font-size: 2.1cqi; font-weight: 300; font-style: italic;
     color: rgba(255,255,255,0.85);
-    margin-top: 2cqi;
+    margin-bottom: 2.4cqi;
+    max-width: 80%;
   }
-  .yt-banner-piece .safe-zone .text .tag em.hl { font-style: normal; font-weight: 700; color: var(--c-gold); }
-  .yt-banner-piece .safe-zone .text .handle-row {
-    margin-top: 3cqi;
-    display: flex; align-items: center; gap: 3cqi;
-    font-size: 2cqi; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
+  .yt-banner-piece .safe-zone .tag em.hl { font-style: normal; font-weight: 700; color: var(--c-gold); }
+  .yt-banner-piece .safe-zone .handle-row {
+    display: flex; align-items: center; gap: 1.6cqi;
+    font-size: 1.5cqi; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
   }
-  .yt-banner-piece .safe-zone .text .handle-row .pill {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 1.2cqi 2.5cqi;
+  .yt-banner-piece .safe-zone .handle-row .pill {
+    background: rgba(255,255,255,0.08);
+    border: 0.1cqi solid rgba(255,255,255,0.22);
+    padding: 1.1cqi 2.2cqi;
     border-radius: 100cqi;
+    color: rgba(255,255,255,0.85);
+    backdrop-filter: blur(4px);
   }
-  .yt-banner-piece .safe-zone .text .handle-row .pill.gold { color: var(--c-gold); border-color: var(--c-gold); }
+  .yt-banner-piece .safe-zone .handle-row .pill.gold { color: var(--c-gold); border-color: var(--c-gold); }
+  /* Horizontal timeline scrubber across the banner (echoes brand concept) */
+  .yt-banner-piece .timeline {
+    position: absolute;
+    left: 0; right: 0; bottom: 18%;
+    height: 0.3cqi;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(41,171,227,0.55) 18%,
+      rgba(143,192,69,0.55) 38%,
+      rgba(249,176,61,0.7) 50%,
+      rgba(227,34,133,0.55) 62%,
+      rgba(41,171,227,0.55) 82%,
+      transparent 100%);
+    z-index: 1;
+  }
+  .yt-banner-piece .timeline::before,
+  .yt-banner-piece .timeline::after {
+    content: ""; position: absolute; top: 50%;
+    width: 1.6cqi; height: 1.6cqi; border-radius: 50%;
+    background: var(--c-gold);
+    box-shadow: 0 0 2.4cqi rgba(249,176,61,0.8);
+    transform: translateY(-50%);
+  }
+  .yt-banner-piece .timeline::before { left: 50%; transform: translate(-50%, -50%); }
+  .yt-banner-piece .timeline::after { right: 16%; }
+  /* Bottom corner brand barcode (cyan/lime/magenta tags) */
+  .yt-banner-piece .corner-tag {
+    position: absolute;
+    left: 4%; bottom: 6%;
+    display: flex; gap: 0.4cqi;
+    z-index: 2;
+  }
+  .yt-banner-piece .corner-tag span { display: block; width: 0.6cqi; height: 4cqi; }
+  .yt-banner-piece .corner-tag span.c { background: var(--c-cyan); box-shadow: 0 0 1cqi rgba(41,171,227,0.5); }
+  .yt-banner-piece .corner-tag span.l { background: var(--c-lime); box-shadow: 0 0 1cqi rgba(143,192,69,0.5); }
+  .yt-banner-piece .corner-tag span.m { background: var(--c-mag);  box-shadow: 0 0 1cqi rgba(227,34,133,0.5); }
 </style>
 </head>
 <body>
@@ -1038,16 +1069,15 @@
       <a class="preview" href="#yt-banner">
         <div class="wrap-16-9">
           <div class="piece yt-banner-piece">
+            <div class="timeline"></div>
+            <div class="corner-tag"><span class="c"></span><span class="l"></span><span class="m"></span></div>
             <div class="safe-zone">
-              <div class="monogram"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-              <div class="text">
-                <div class="micro">El detrás de cámaras</div>
-                <h1><span class="em-c">M</span>AURICIO <span class="em-m">S</span>ANTOS</h1>
-                <div class="tag">Bitácora de procesos · <em class="hl">Behind the Scenes</em> de cada proyecto</div>
-                <div class="handle-row">
-                  <span class="pill">@mauro6026</span>
-                  <span class="pill gold">↗ Portfolio</span>
-                </div>
+              <div class="eyebrow"><span class="dot"></span>El detrás de cámaras<span class="dot"></span></div>
+              <div class="wm"><span class="em-c">M</span>AURICIO <span class="em-m">S</span>ANTOS</div>
+              <div class="tag">Bitácora de procesos · <em class="hl">Behind the Scenes</em> de cada proyecto</div>
+              <div class="handle-row">
+                <span class="pill">@mauro6026</span>
+                <span class="pill gold">↗ Portfolio</span>
               </div>
             </div>
           </div>
