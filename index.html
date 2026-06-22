@@ -40,11 +40,11 @@
   .container-x { max-width: 1400px; margin-left: auto; margin-right: auto; padding-left: var(--container-px); padding-right: var(--container-px); }
   .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--grid-gap); }
   .rail-card { flex: 0 0 78vw; scroll-snap-align: start; }
-  @media (min-width: 640px)  { .rail-card { flex: 0 0 calc((100% - var(--grid-gap)) / 2); } }
-  @media (min-width: 1024px) { .rail-card { flex: 0 0 calc((100% - 2 * var(--grid-gap)) / 3); } }
+  @media (min-width: 640px)  { .rail-card { flex: 0 0 calc((100% - var(--grid-gap)) / 2.25); } }
+  @media (min-width: 1024px) { .rail-card { flex: 0 0 calc((100% - 2 * var(--grid-gap)) / 3.25); } }
   .rail-card.featured { flex: 0 0 78vw; }
-  @media (min-width: 640px)  { .rail-card.featured { flex: 0 0 calc(((100% - var(--grid-gap)) / 2) * 1.2); } }
-  @media (min-width: 1024px) { .rail-card.featured { flex: 0 0 calc(((100% - 2 * var(--grid-gap)) / 3) * 1.25); } }
+  @media (min-width: 640px)  { .rail-card.featured { flex: 0 0 calc(((100% - var(--grid-gap)) / 2.25) * 1.25); } }
+  @media (min-width: 1024px) { .rail-card.featured { flex: 0 0 calc(((100% - 2 * var(--grid-gap)) / 3.25) * 1.25); } }
 
   body {
     background:
@@ -619,20 +619,10 @@ function Rail({ category, items, onOpen }) {
             </div>
             <h2 className="h2 mt-2" style={{ color }}>{tag[t.lang]}</h2>
           </div>
-          <div className="hidden sm:flex items-center gap-2">
-            <button aria-label="Scroll left"  onClick={() => scrollBy(-1)} className="w-10 h-10 rounded-full glass hover:bg-white/10 transition-colors focus-ring flex items-center justify-center">
-              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M9 1 L3 7 L9 13" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
-            <button aria-label="Scroll right" onClick={() => scrollBy(1)}  className="w-10 h-10 rounded-full glass hover:bg-white/10 transition-colors focus-ring flex items-center justify-center">
-              <svg width="14" height="14" viewBox="0 0 14 14"><path d="M5 1 L11 7 L5 13" stroke="white" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
-          </div>
         </div>
       </div>
 
       <div className="relative">
-        <div className="rail-fade-l hidden sm:block" />
-        <div className="rail-fade-r hidden sm:block" />
         <div ref={scrollerRef} className="no-scrollbar overflow-x-auto snap-x snap-mandatory scroll-smooth">
           <div className="flex container-x pb-6 pt-2" style={{ gap: 'var(--grid-gap)' }}>
             {items.map((item, i) => (
@@ -800,8 +790,7 @@ function About() {
   const t = useT();
   const [ref, seen] = useReveal();
   return (
-    <section id="about" className="relative section-pad-y overflow-hidden">
-      <ProjectsBg images={PROJECT_SHOTS} offset={4} />
+    <section id="about" className="relative section-pad-y">
       <div ref={ref} className={`relative container-x reveal ${seen ? 'in' : ''}`}>
         <div className="grid-12">
         <div className="col-span-12 md:col-span-5">
@@ -859,8 +848,7 @@ function Contact() {
   const t = useT();
   const [ref, seen] = useReveal();
   return (
-    <section id="contact" className="relative section-pad-y border-t border-white/5 overflow-hidden">
-      <ProjectsBg images={PROJECT_SHOTS} offset={8} />
+    <section id="contact" className="relative section-pad-y border-t border-white/5">
       <div ref={ref} className={`relative container-x reveal ${seen ? 'in' : ''}`}>
         <h2 className="h2">
           {t(<>Trabajemos <span style={{ color: C.editorial }}>juntos.</span></>,
@@ -964,8 +952,7 @@ function App() {
       <Navbar onJump={onJump} lang={lang} setLang={setLang} />
       <main id="top">
         <Hero onPlay={(item, cat) => setOpen({ item, category: cat })} />
-        <div id="projects" className="relative py-6 overflow-hidden">
-          <ProjectsBg images={PROJECT_SHOTS} />
+        <div id="projects" className="relative py-6">
           <Rail category="Audiovisual" items={PROJECTS.Audiovisual} onOpen={makeOpen('Audiovisual')} />
           <Rail category="Interaction" items={PROJECTS.Interaction} onOpen={makeOpen('Interaction')} />
           <Rail category="Editorial"   items={PROJECTS.Editorial}   onOpen={makeOpen('Editorial')}   />
