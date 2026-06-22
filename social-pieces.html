@@ -439,6 +439,162 @@
   .li-banner-piece .timeline-bars .bar.li { background: var(--c-lime); box-shadow: 0 0 1.5cqi rgba(143,192,69,0.5); }
   .li-banner-piece .timeline-bars .bar.ma { background: var(--c-mag);  box-shadow: 0 0 1.5cqi rgba(227,34,133,0.5); }
 
+  /* ─── BTS POST (carousel slides 2 & 3) ─── */
+  .ig-post-bts { background: var(--c-bg-d); position: relative; overflow: hidden; }
+  .ig-post-bts .bts-bg { position: absolute; inset: 0; }
+  .ig-post-bts .bts-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .ig-post-bts .bts-bg.crop-top img { object-position: top; }
+  .ig-post-bts .bts-bg.crop-bottom img { object-position: bottom; }
+  .ig-post-bts::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 22%, rgba(0,0,0,0.15) 65%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+  }
+  .ig-post-bts .cat-chip {
+    position: absolute; top: 4cqi; left: 4cqi; z-index: 3;
+    background: rgba(15,15,15,0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 1.3cqi 2.4cqi;
+    border-radius: 100cqi;
+    display: flex; align-items: center; gap: 1.4cqi;
+  }
+  .ig-post-bts .cat-chip .dot { width: 1.2cqi; height: 1.2cqi; border-radius: 50%; }
+  .ig-post-bts .cat-chip.cyan .dot { background: var(--c-cyan); box-shadow: 0 0 1.2cqi var(--c-cyan); }
+  .ig-post-bts .cat-chip.lime .dot { background: var(--c-lime); box-shadow: 0 0 1.2cqi var(--c-lime); }
+  .ig-post-bts .cat-chip.mag  .dot { background: var(--c-mag);  box-shadow: 0 0 1.2cqi var(--c-mag); }
+  .ig-post-bts .cat-chip .lbl { font-size: 1.6cqi; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: white; }
+  .ig-post-bts .brand-chip {
+    position: absolute; top: 4cqi; right: 4cqi; z-index: 3;
+    width: 8.4cqi; height: 8.4cqi; border-radius: 50%;
+    background: rgba(15,15,15,0.65);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--c-gold);
+    box-shadow: 0 0 3cqi rgba(249,176,61,0.45);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.4cqi;
+  }
+  .ig-post-bts .brand-chip img { max-width: 100%; max-height: 100%; }
+  .ig-post-bts .proj-title {
+    position: absolute; bottom: 11cqi; left: 5cqi; right: 5cqi; z-index: 3;
+    font-size: 5.5cqi; font-weight: 900; letter-spacing: -0.025em; line-height: 0.95;
+    color: white; text-shadow: 0 0.3cqi 1cqi rgba(0,0,0,0.7);
+  }
+  .ig-post-bts .frame-label {
+    position: absolute; bottom: 7cqi; left: 5cqi; z-index: 3;
+    font-size: 1.8cqi; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 0.2cqi 0.6cqi rgba(0,0,0,0.6);
+  }
+  .ig-post-bts .frame-label .seq { color: var(--c-gold); margin-right: 1.2cqi; font-weight: 800; }
+  .ig-post-bts .handle-strip {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+    background: var(--c-gold); color: var(--c-bg-d);
+    padding: 1.4cqi 5cqi;
+    font-size: 1.6cqi; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  /* ─── PROJECT STORY (1080×1920) ─── */
+  .ig-story-proj {
+    background: var(--c-bg-d);
+    position: relative; overflow: hidden;
+    --cat-color: var(--c-cyan);
+    --cat-tint: rgba(41,171,227,0.45);
+  }
+  .ig-story-proj.cat-cyan { --cat-color: var(--c-cyan); --cat-tint: rgba(41,171,227,0.45); }
+  .ig-story-proj.cat-lime { --cat-color: var(--c-lime); --cat-tint: rgba(143,192,69,0.4); }
+  .ig-story-proj.cat-mag  { --cat-color: var(--c-mag);  --cat-tint: rgba(227,34,133,0.4); }
+  .ig-story-proj::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 25%, var(--cat-tint), transparent 55%),
+      radial-gradient(circle at 75% 80%, rgba(249,176,61,0.18), transparent 55%),
+      var(--c-bg-d);
+  }
+  .ig-story-proj::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.06; mix-blend-mode: overlay; pointer-events: none;
+  }
+  .ig-story-proj .content {
+    position: relative; z-index: 2;
+    height: 100%; padding: 18cqi 7cqi 22cqi;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: white;
+  }
+  .ig-story-proj .micro {
+    font-size: 2.2cqi; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--cat-color); margin-bottom: 4cqi;
+  }
+  .ig-story-proj .proj-image {
+    width: 72%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 4.5cqi;
+    border-radius: 3cqi;
+    overflow: hidden;
+    box-shadow: 0 4cqi 10cqi rgba(0,0,0,0.6);
+    border: 0.4cqi solid rgba(255,255,255,0.15);
+    background: var(--c-bg-d);
+  }
+  .ig-story-proj .proj-image img { width: 100%; height: 100%; object-fit: cover; }
+  .ig-story-proj h1 {
+    font-size: 8.5cqi; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
+    text-align: center; margin-bottom: 2.5cqi;
+  }
+  .ig-story-proj h1 .em-cat { color: var(--cat-color); }
+  .ig-story-proj p {
+    font-size: 2.5cqi; font-weight: 300; font-style: italic; line-height: 1.45;
+    color: rgba(255,255,255,0.85);
+    text-align: center; max-width: 82%; margin-bottom: 4cqi;
+  }
+  .ig-story-proj p em { font-style: normal; font-weight: 700; color: white; }
+  .ig-story-proj .software-tag {
+    font-size: 2cqi; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--cat-color);
+    padding: 1.3cqi 3cqi;
+    border: 0.3cqi solid var(--cat-color);
+    border-radius: 100cqi;
+  }
+
+  /* ─── HIGHLIGHT COVER (1080×1920, content centered) ─── */
+  .ig-hl-cover {
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+  }
+  .ig-hl-cover::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, transparent 35%, rgba(0,0,0,0.35) 100%);
+  }
+  .ig-hl-cover::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.07; mix-blend-mode: overlay; pointer-events: none;
+  }
+  .ig-hl-cover.cover-cyan { background: var(--c-cyan); }
+  .ig-hl-cover.cover-lime { background: var(--c-lime); color: var(--c-bg-d); }
+  .ig-hl-cover.cover-mag  { background: var(--c-mag); }
+  .ig-hl-cover .hl-inner { position: relative; z-index: 2; text-align: center; padding: 0 8cqi; }
+  .ig-hl-cover .hl-letter {
+    font-size: 38cqi; font-weight: 900; letter-spacing: -0.05em; line-height: 0.88;
+    text-shadow: 0 2cqi 4cqi rgba(0,0,0,0.25);
+  }
+  .ig-hl-cover .hl-divider {
+    width: 14cqi; height: 0.6cqi; background: currentColor;
+    margin: 3.5cqi auto;
+    opacity: 0.4;
+  }
+  .ig-hl-cover .hl-label {
+    font-size: 4cqi; font-weight: 800; letter-spacing: 0.34em; text-transform: uppercase;
+    margin-bottom: 1.8cqi;
+  }
+  .ig-hl-cover .hl-subtitle {
+    font-size: 2.2cqi; font-weight: 500; font-style: italic;
+    opacity: 0.85; letter-spacing: 0.02em;
+  }
+
   /* ───────── YOUTUBE BANNER (2560×1440 = 16:9 with safe zone) ───────── */
   .yt-banner-piece {
     background: var(--c-bg-d);
@@ -846,6 +1002,118 @@
     </div>
   </div>
 </section>
+
+<!-- ─── INSTAGRAM CAROUSEL SLIDES 2 & 3 (18 × 1080×1080) ─── -->
+<section class="section">
+  <h2>Instagram · Carousel BTS <span class="dim">18 piezas · 1080×1080 · slides 2 &amp; 3 de cada post</span></h2>
+  <div class="grid-posts" id="carousel-section-grid"></div>
+</section>
+
+<!-- ─── INSTAGRAM PROJECT STORIES (9 × 1080×1920) ─── -->
+<section class="section">
+  <h2>Instagram · Stories por proyecto <span class="dim">9 piezas · 1080×1920 · para highlights custom</span></h2>
+  <div class="grid-stories" id="story-proj-section-grid"></div>
+</section>
+
+<!-- ─── INSTAGRAM HIGHLIGHT COVERS (3 × 1080×1920) ─── -->
+<section class="section">
+  <h2>Instagram · Highlight covers <span class="dim">3 piezas · 1080×1920 · AV / IX / ED</span></h2>
+  <div class="grid-stories" id="hl-covers-grid"></div>
+</section>
+
+<script>
+  const PROJECTS = [
+    { idx:'01', id:'nena',        cat:'cyan', catLbl:'Audiovisual', name:'NENA — Vicios',          h1:'NENA<br><span class="em-cat">Vicios</span>',                poster:'./assets/nena/poster.jpg',                  bts1:'./assets/nena/bts-1.jpg',           bts2:'./assets/nena/bts-2.jpg',           sw:'Premiere · DaVinci',         year:'2025', kicker:'2025 · Videoclip',           synopsis:'Videoclip realizado con celular. <em>Edición rítmica</em> y color cinematográfico.' },
+    { idx:'02', id:'paranoia',    cat:'cyan', catLbl:'Audiovisual', name:"PARANOIA Editor's Cut", h1:'PARANOIA<br><span class="em-cat">Editor\'s Cut</span>',     poster:'./assets/paranoia/poster.jpeg',             bts1:'./assets/paranoia/bts-1.jpeg',      bts2:'./assets/paranoia/bts-2.jpeg',      sw:'Premiere · DaVinci',         year:'2025', kicker:'2025 · Re-edit',             synopsis:'Re-edición de un corto. <em>Montaje paralelo</em> y diseño sonoro reescrito.' },
+    { idx:'03', id:'folioscopio', cat:'cyan', catLbl:'Audiovisual', name:'Folioscopio',           h1:'Folioscopio<br><span class="em-cat">(Flipbook)</span>',     poster:'./assets/folioscopio/poster.jpg',           bts1:'./assets/folioscopio/bts-1.jpeg',   bts2:'./assets/folioscopio/bts-2.jpeg',   sw:'Lápiz · Scanner · Premiere', year:'2026', kicker:'2026 · 2D Animation',        synopsis:'Animación cuadro a cuadro. <em>Proceso completo</em> en papel, escaneado y montado.' },
+    { idx:'04', id:'imagine',     cat:'lime', catLbl:'Interacción', name:'IMAGINE.AI',             h1:'IMAGINE<br><span class="em-cat">.AI</span>',                poster:'./assets/imagine-ai/poster.png',            bts1:'./assets/imagine-ai/bts-1.png',     bts2:'./assets/imagine-ai/bts-2.png',     sw:'React · OpenAI API',         year:'2025', kicker:'2025 · Web App',             synopsis:'App de exploración de prompts. <em>UX iterativa</em> sobre un modelo generativo.' },
+    { idx:'05', id:'lego',        cat:'lime', catLbl:'Interacción', name:'Infografía LEGO',        h1:'Infografía<br><span class="em-cat">LEGO</span>',            poster:'./assets/infografia/minifigura-lego.png',   bts1:'./assets/infografia/minifig-parts.webp',  bts2:'./assets/infografia/lego-screenshot.png', sw:'Illustrator · InDesign',     year:'2024', kicker:'2024 · Infografía',          synopsis:'Sistema visual sobre la anatomía de la minifigura. <em>Jerarquías</em> tipográficas y de color.' },
+    { idx:'06', id:'chess',       cat:'lime', catLbl:'Interacción', name:'CHESS Story Mode',       h1:'CHESS<br><span class="em-cat">Story Mode</span>',           poster:'./assets/chess/poster.png',                 bts1:'./assets/chess/bts-1.png',          bts2:'./assets/chess/bts-2.png',          sw:'Unity · C#',                 year:'2025', kicker:'2025 · Game Design',         synopsis:'Modo historia sobre ajedrez. <em>Diseño narrativo</em> + interfaz minimal.' },
+    { idx:'07', id:'publicacion', cat:'mag',  catLbl:'Editorial',   name:'Publicación TP1',        h1:'Publicación<br><span class="em-cat">Editorial TP1</span>',  poster:'./assets/new-editorial/poster.png',         bts1:'./assets/new-editorial/bts-1.png',  bts2:'./assets/new-editorial/bts-2.png',  sw:'InDesign',                   year:'2025', kicker:'2025 · Editorial',           synopsis:'Pieza editorial impresa. <em>Grilla modular</em> y juego entre imagen y vacío.' },
+    { idx:'08', id:'mimemo',      cat:'mag',  catLbl:'Editorial',   name:'DG3 Mi Me Mo',           h1:'DG3<br><span class="em-cat">Mi Me Mo</span>',               poster:'./assets/mimemo/poster.png',                bts1:'./assets/mimemo/bts-fisico-1.jpeg', bts2:'./assets/mimemo/bts-fisico-2.jpeg', sw:'Illustrator · Photoshop',    year:'2025', kicker:'2025 · Señalética',          synopsis:'Sistema de señalética para espacio cultural. <em>Marca + entorno</em> en convivencia.' },
+    { idx:'09', id:'shredded',    cat:'mag',  catLbl:'Editorial',   name:'Shredded Teen Spirit',   h1:'Shredded<br><span class="em-cat">Teen Spirit</span>',       poster:'./assets/shredded/poster.png',              bts1:'./assets/shredded/bts-1.png',       bts2:'./assets/shredded/bts-2.png',       sw:'InDesign · Photoshop · Ai',  year:'2025', kicker:'2025 · Editorial',           synopsis:'Editorial de cultura juvenil. <em>Contraste</em> tipográfico y fotografía intervenida.' }
+  ];
+
+  const HIGHLIGHTS = [
+    { id:'av', cover:'cover-cyan', letter:'A', label:'Audiovisual',   subtitle:'Videoclip · Corto · Animación' },
+    { id:'ix', cover:'cover-lime', letter:'I', label:'Interacción',   subtitle:'Web · Game · Infografía' },
+    { id:'ed', cover:'cover-mag',  letter:'E', label:'Editorial',     subtitle:'Print · Señalética · Marca' }
+  ];
+
+  const carouselGrid = document.getElementById('carousel-section-grid');
+  const storyGrid    = document.getElementById('story-proj-section-grid');
+  const hlGrid       = document.getElementById('hl-covers-grid');
+
+  // ── Carousel slides 2 & 3 (BTS) ─────────────────────────
+  PROJECTS.forEach(p => {
+    [['2', p.bts1, p.bts1Crop, 'Behind the Scenes'], ['3', p.bts2, p.bts2Crop, 'Proceso']].forEach(([slide, img, crop, frameLabel]) => {
+      const pid = `ig-post-${p.idx}-${p.id}-${slide}`;
+      const cropCls = crop ? `crop-${crop}` : '';
+      carouselGrid.insertAdjacentHTML('beforeend', `
+        <div class="piece-card" id="${pid}">
+          <div class="label"><span>${p.idx}.${slide} · ${p.name}</span><span class="dim">1080×1080</span></div>
+          <a class="preview" href="#${pid}">
+            <div class="wrap-1-1">
+              <div class="piece ig-post-bts">
+                <div class="bts-bg ${cropCls}"><img src="${img}" alt="${p.name} BTS ${slide}"></div>
+                <div class="cat-chip ${p.cat}"><span class="dot"></span><span class="lbl">${p.catLbl}</span></div>
+                <div class="brand-chip"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+                <div class="proj-title">${p.name}</div>
+                <div class="frame-label"><span class="seq">0${slide}</span>${frameLabel}</div>
+                <div class="handle-strip"><span>@maurisantos.design</span><span>Swipe ↗</span></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      `);
+    });
+  });
+
+  // ── Project stories (9 × 1080×1920) ─────────────────────
+  PROJECTS.forEach(p => {
+    const pid = `ig-story-proj-${p.idx}-${p.id}`;
+    storyGrid.insertAdjacentHTML('beforeend', `
+      <div class="piece-card" id="${pid}">
+        <div class="label"><span>${p.idx} · ${p.name}</span><span class="dim">1080×1920</span></div>
+        <a class="preview" href="#${pid}">
+          <div class="wrap-9-16">
+            <div class="piece ig-story-proj cat-${p.cat}">
+              <div class="content">
+                <div class="micro">${p.catLbl} · ${p.year}</div>
+                <div class="proj-image"><img src="${p.poster}" alt="${p.name}"></div>
+                <h1>${p.h1}</h1>
+                <p>${p.synopsis}</p>
+                <div class="software-tag">${p.sw}</div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    `);
+  });
+
+  // ── Highlight covers (3 × 1080×1920) ────────────────────
+  HIGHLIGHTS.forEach(h => {
+    const pid = `ig-hl-cover-${h.id}`;
+    hlGrid.insertAdjacentHTML('beforeend', `
+      <div class="piece-card" id="${pid}">
+        <div class="label"><span>${h.label} · cover</span><span class="dim">1080×1920</span></div>
+        <a class="preview" href="#${pid}">
+          <div class="wrap-9-16">
+            <div class="piece ig-hl-cover ${h.cover}">
+              <div class="hl-inner">
+                <div class="hl-letter">${h.letter}</div>
+                <div class="hl-divider"></div>
+                <div class="hl-label">${h.label}</div>
+                <div class="hl-subtitle">${h.subtitle}</div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    `);
+  });
+</script>
 
 </body>
 </html>
