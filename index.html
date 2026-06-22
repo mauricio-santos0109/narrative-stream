@@ -43,8 +43,8 @@
   @media (min-width: 640px)  { .rail-card { flex: 0 0 calc((100% - var(--grid-gap)) / 2); } }
   @media (min-width: 1024px) { .rail-card { flex: 0 0 calc((100% - 2 * var(--grid-gap)) / 3); } }
   .rail-card.featured { flex: 0 0 78vw; }
-  @media (min-width: 640px)  { .rail-card.featured { flex: 0 0 calc(((100% - var(--grid-gap)) / 2) * 1.4); } }
-  @media (min-width: 1024px) { .rail-card.featured { flex: 0 0 calc(((100% - 2 * var(--grid-gap)) / 3) * 1.5); } }
+  @media (min-width: 640px)  { .rail-card.featured { flex: 0 0 calc(((100% - var(--grid-gap)) / 2) * 1.2); } }
+  @media (min-width: 1024px) { .rail-card.featured { flex: 0 0 calc(((100% - 2 * var(--grid-gap)) / 3) * 1.25); } }
 
   body {
     background:
@@ -223,6 +223,19 @@ const PROJECTS = {
       poster:'./assets/infografia/minifigura-lego.png' },
   ],
   Editorial: [
+    { id:'ed3', featured:true, title:{ es:'Publicación Editorial TP1', en:'Editorial Publication TP1' },
+      year:2025, software:'InDesign', runtime:'Print',
+      context:{ es:'UADE · FADI', en:'UADE · FADI' },
+      still:true,
+      href:'https://www.behance.net/gallery/237220827',
+      synopsis:{ es:'Suplemento editorial impreso — publicación con grilla editorial clásica, jerarquías tipográficas firmes y composición sobre el eje narrativo.',
+                 en:'Print editorial supplement — publication with a classic editorial grid, firm typographic hierarchies and composition along the narrative axis.' },
+      poster:'./assets/new-editorial/poster.png',
+      bts:[
+        './assets/new-editorial/bts-1.png',
+        './assets/new-editorial/bts-2.png',
+        './assets/new-editorial/bts-3.png',
+      ] },
     { id:'ed1', title:'DG3 — Mi Me Mo', year:2025, software:'Illustrator · Photoshop',
       runtime:{ es:'Señalética', en:'Wayfinding' },
       context:{ es:'UADE · FADI', en:'UADE · FADI' },
@@ -242,19 +255,6 @@ const PROJECTS = {
         './assets/shredded/bts-1.png',
         './assets/shredded/bts-2.png',
         './assets/shredded/bts-3.png',
-      ] },
-    { id:'ed3', featured:true, title:{ es:'Publicación Editorial TP1', en:'Editorial Publication TP1' },
-      year:2025, software:'InDesign', runtime:'Print',
-      context:{ es:'UADE · FADI', en:'UADE · FADI' },
-      still:true,
-      href:'https://www.behance.net/gallery/237220827',
-      synopsis:{ es:'Suplemento editorial impreso — publicación con grilla editorial clásica, jerarquías tipográficas firmes y composición sobre el eje narrativo.',
-                 en:'Print editorial supplement — publication with a classic editorial grid, firm typographic hierarchies and composition along the narrative axis.' },
-      poster:'./assets/new-editorial/poster.png',
-      bts:[
-        './assets/new-editorial/bts-1.png',
-        './assets/new-editorial/bts-2.png',
-        './assets/new-editorial/bts-3.png',
       ] },
   ],
 };
