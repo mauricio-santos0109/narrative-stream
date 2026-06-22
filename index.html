@@ -42,6 +42,9 @@
   .rail-card { flex: 0 0 78vw; scroll-snap-align: start; }
   @media (min-width: 640px)  { .rail-card { flex: 0 0 calc((100% - var(--grid-gap)) / 2); } }
   @media (min-width: 1024px) { .rail-card { flex: 0 0 calc((100% - 2 * var(--grid-gap)) / 3); } }
+  .rail-card.featured { flex: 0 0 78vw; }
+  @media (min-width: 640px)  { .rail-card.featured { flex: 0 0 calc(((100% - var(--grid-gap)) / 2) * 1.4); } }
+  @media (min-width: 1024px) { .rail-card.featured { flex: 0 0 calc(((100% - 2 * var(--grid-gap)) / 3) * 1.5); } }
 
   body {
     background:
@@ -60,12 +63,12 @@
   /* ─── Type scale ─────────────────────────────────── */
   .h1      { font-size: clamp(56px, 10vw, 128px); font-weight: 900; letter-spacing: -0.035em; line-height: 0.92; }
   .h2      { font-size: clamp(32px, 5vw, 64px);   font-weight: 900; letter-spacing: -0.02em;  line-height: 0.98; }
-  .h3      { font-size: clamp(22px, 2.8vw, 36px); font-weight: 800; letter-spacing: -0.01em;  line-height: 1.15; }
+  .h3      { font-size: clamp(24px, 2.8vw, 36px); font-weight: 800; letter-spacing: -0.01em;  line-height: 1.15; }
   .h4      { font-size: clamp(28px, 3.2vw, 40px); font-weight: 800; letter-spacing: 0;        line-height: 1; }
-  .lead    { font-size: clamp(17px, 1.4vw, 22px); font-weight: 300; line-height: 1.55; }
-  .body    { font-size: clamp(14px, 1vw, 17px);   font-weight: 300; line-height: 1.7; }
-  .body-s  { font-size: clamp(12px, 0.9vw, 14px); font-weight: 400; line-height: 1.6; }
-  .eyebrow { font-size: clamp(9px, 0.7vw, 11px);  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+  .lead    { font-size: clamp(18px, 1.5vw, 24px); font-weight: 300; line-height: 1.55; }
+  .body    { font-size: clamp(15px, 1.1vw, 18px); font-weight: 300; line-height: 1.7; }
+  .body-s  { font-size: clamp(13px, 1vw, 15px);   font-weight: 400; line-height: 1.6; }
+  .eyebrow { font-size: clamp(11px, 0.8vw, 12px); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
   .section-pad-y { padding-top: clamp(80px, 12vw, 160px); padding-bottom: clamp(80px, 12vw, 160px); }
 
   /* ─── Surfaces ───────────────────────────────────── */
@@ -173,7 +176,7 @@ const V = (n) => `https://commondatastorage.googleapis.com/gtv-videos-bucket/sam
 
 const PROJECTS = {
   Audiovisual: [
-    { id:'av1', title:'NENA — Vicios', year:2025, software:'Photoshop · Premiere Pro · DaVinci', runtime:'Videoclip',
+    { id:'av1', featured:true, title:'NENA — Vicios', year:2025, software:'Photoshop · Premiere Pro · DaVinci', runtime:'Videoclip',
       context: { es:'Colectivo · Bs. As.', en:'Collective · Bs. As.' },
       href:'https://www.behance.net/gallery/233372039/NENA-Vicios-Videoclip-Diseno-Cintico',
       synopsis: { es:'Videoclip con titulación de diseño cinético — fotografía y montaje a lo largo de varias secuencias, realizado con un colectivo de Buenos Aires.',
@@ -210,7 +213,7 @@ const PROJECTS = {
       ] },
   ],
   Interaction: [
-    { id:'ix1', title:{ es:'Infografía — Minifigura LEGO', en:'Infographic — LEGO Minifigure' },
+    { id:'ix1', featured:true, title:{ es:'Infografía — Minifigura LEGO', en:'Infographic — LEGO Minifigure' },
       year:2025, software:'Illustrator', runtime:'Print · A3',
       context:{ es:'UADE · FADI', en:'UADE · FADI' },
       still:true,
@@ -240,7 +243,7 @@ const PROJECTS = {
         './assets/shredded/bts-2.png',
         './assets/shredded/bts-3.png',
       ] },
-    { id:'ed3', title:{ es:'Publicación Editorial TP1', en:'Editorial Publication TP1' },
+    { id:'ed3', featured:true, title:{ es:'Publicación Editorial TP1', en:'Editorial Publication TP1' },
       year:2025, software:'InDesign', runtime:'Print',
       context:{ es:'UADE · FADI', en:'UADE · FADI' },
       still:true,
@@ -341,7 +344,7 @@ function Loader({ done }) {
           </div>
           <div className="mt-4 h-px w-full bg-white/15" />
         </div>
-        <div className="mt-10 eyebrow text-white/70" style={{ fontSize: 'clamp(13px, 1.3vw, 18px)', letterSpacing: '0.5em' }}>{t('CARGANDO','LOADING')}</div>
+        <div className="mt-10 eyebrow text-white/85" style={{ fontSize: 'clamp(13px, 1.3vw, 18px)', letterSpacing: '0.5em' }}>{t('CARGANDO','LOADING')}</div>
       </div>
     </div>
   );
@@ -399,7 +402,7 @@ function Navbar({ onJump, lang, setLang }) {
             <button
               key={l.id}
               onClick={() => onJump(l.id)}
-              className="eyebrow px-2 sm:px-4 py-2 rounded-md text-white/70 hover:text-white transition-colors focus-ring whitespace-nowrap"
+              className="eyebrow px-2 sm:px-4 py-2 rounded-md text-white/85 hover:text-white transition-colors focus-ring whitespace-nowrap"
             >
               {l.label}
             </button>
@@ -455,7 +458,7 @@ function Hero({ onPlay }) {
           >
             <span style={{ color: C.video }}>M</span>AURICIO<br/><span style={{ color: C.editorial }}>S</span>ANTOS
           </h1>
-          <p className="lead italic text-white/80 mt-6 max-w-2xl anim-fade-up delay-3">
+          <p className="lead italic text-white/90 mt-6 max-w-2xl anim-fade-up delay-3">
             {t('Arquitecto de Historias','Architect of Stories')} <span className="text-brandGold not-italic">|</span> {t('Diseño de Sistemas Narrativos','Narrative Systems Design')}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3 anim-fade-up delay-4">
@@ -473,6 +476,11 @@ function Hero({ onPlay }) {
             >
               + {t('MÁS INFO','MORE INFO')}
             </button>
+          </div>
+          <div className="mt-4 flex items-center gap-2 anim-fade-up delay-4">
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#f9b03d', boxShadow: '0 0 8px #f9b03d' }} />
+            <span className="eyebrow text-white/85">{t('DESTACADO:','FEATURED:')}</span>
+            <span className="eyebrow" style={{ color: '#f9b03d' }}>NENA — Vicios</span>
           </div>
         </div>
       </div>
@@ -495,8 +503,10 @@ function Card({ item, color, onOpen, index }) {
   }, [hover]);
 
   const ring = hover
-    ? `0 28px 60px ${color}33, 0 8px 22px rgba(0,0,0,0.55), inset 0 0 0 1px ${color}88`
-    : '0 6px 18px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.06)';
+    ? `0 28px 60px ${item.featured ? GOLD : color}33, 0 8px 22px rgba(0,0,0,0.55), inset 0 0 0 1px ${item.featured ? GOLD : color}88`
+    : item.featured
+      ? `0 12px 28px ${GOLD}22, 0 6px 18px rgba(0,0,0,0.45), inset 0 0 0 1.5px ${GOLD}66`
+      : '0 6px 18px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.06)';
 
   const title = tr(item.title, t.lang);
   const synopsis = tr(item.synopsis, t.lang);
@@ -509,7 +519,7 @@ function Card({ item, color, onOpen, index }) {
       onFocus={() => setHover(true)}
       onBlur={() => setHover(false)}
       onClick={() => onOpen(item)}
-      className={`card rail-card group relative aspect-video rounded-xl overflow-hidden cursor-pointer text-left focus-ring reveal ${seen ? 'in' : ''}`}
+      className={`card rail-card ${item.featured ? 'featured' : ''} group relative aspect-video rounded-xl overflow-hidden cursor-pointer text-left focus-ring reveal ${seen ? 'in' : ''}`}
       style={{ boxShadow: ring, animationDelay: `${index * 0.06}s` }}
     >
       <img src={item.poster} alt={title} className="absolute inset-0 w-full h-full object-cover" />
@@ -531,7 +541,7 @@ function Card({ item, color, onOpen, index }) {
 
       <div className="absolute top-3 left-3 flex items-center gap-2 glass rounded-full px-2.5 py-1">
         <span className="w-1.5 h-1.5 rounded-full" style={{ background: color, boxShadow: `0 0 10px ${color}` }} />
-        <span className="eyebrow text-white/80">{item.year}</span>
+        <span className="eyebrow text-white/90">{item.year}</span>
       </div>
 
       <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
@@ -540,15 +550,23 @@ function Card({ item, color, onOpen, index }) {
           className="overflow-hidden transition-all duration-500"
           style={{ maxHeight: hover ? '150px' : '0px', opacity: hover ? 1 : 0 }}
         >
-          <div className="body-s mt-2 text-white/70">{synopsis}</div>
+          <div className="body-s mt-2 text-white/85">{synopsis}</div>
           <div className="eyebrow mt-2" style={{ color }}>{item.software}</div>
         </div>
       </div>
 
-      <div className="absolute top-3 right-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-        <span className="eyebrow text-brandGold">{item.href ? t('VER CASO','CASE STUDY') : t('VER','PLAY')}</span>
-        <div style={{ width:0, height:0, borderTop:'5px solid transparent', borderBottom:'5px solid transparent', borderLeft:`8px solid ${GOLD}`, filter:`drop-shadow(0 0 6px ${GOLD}aa)` }} />
-      </div>
+      {item.featured ? (
+        <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full"
+             style={{ background: `${GOLD}26`, border: `1px solid ${GOLD}66`, backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}>
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD, boxShadow: `0 0 8px ${GOLD}` }} />
+          <span className="eyebrow" style={{ color: GOLD }}>{t('DESTACADO','FEATURED')}</span>
+        </div>
+      ) : (
+        <div className="absolute top-3 right-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          <span className="eyebrow text-brandGold">{item.href ? t('VER CASO','CASE STUDY') : t('VER','PLAY')}</span>
+          <div style={{ width:0, height:0, borderTop:'5px solid transparent', borderBottom:'5px solid transparent', borderLeft:`8px solid ${GOLD}`, filter:`drop-shadow(0 0 6px ${GOLD}aa)` }} />
+        </div>
+      )}
     </button>
   );
 }
@@ -572,7 +590,7 @@ function Rail({ category, items, onOpen }) {
           <div>
             <div className="flex items-center gap-3">
               <span className="block w-8 h-[3px] rounded-full" style={{ background: color, boxShadow: `0 0 12px ${color}` }} />
-              <span className="eyebrow text-white/50">{kicker[t.lang]}</span>
+              <span className="eyebrow text-white/70">{kicker[t.lang]}</span>
             </div>
             <h2 className="h2 mt-2" style={{ color }}>{tag[t.lang]}</h2>
           </div>
@@ -651,7 +669,7 @@ function PlayerModal({ project, color, onClose }) {
           <div className="flex items-center justify-between px-4 sm:px-6 h-12 sm:h-14 border-b border-white/10">
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 rounded-full" style={{ background: color, boxShadow: `0 0 10px ${color}` }} />
-              <span className="eyebrow text-white/60">{t('REPRODUCIENDO','NOW PLAYING')} · {project.id.toUpperCase()}</span>
+              <span className="eyebrow text-white/75">{t('REPRODUCIENDO','NOW PLAYING')} · {project.id.toUpperCase()}</span>
             </div>
             <button onClick={onClose} aria-label={t('Cerrar','Close')} className="w-9 h-9 rounded-full hover:bg-white/10 flex items-center justify-center focus-ring">
               <svg width="14" height="14" viewBox="0 0 14 14"><path d="M2 2 L12 12 M12 2 L2 12" stroke="white" strokeWidth="1.6" strokeLinecap="round"/></svg>
@@ -685,7 +703,7 @@ function PlayerModal({ project, color, onClose }) {
                       <svg width="15" height="15" viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z" fill="white"/><path d="M14 7c1.8 1.2 3 3.1 3 5s-1.2 3.8-3 5" stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none"/></svg>
                     )}
                   </button>
-                  <div className="eyebrow text-white/70 w-12">{time}</div>
+                  <div className="eyebrow text-white/85 w-12">{time}</div>
                   <div className="relative flex-1 h-[3px] bg-white/15 rounded-full">
                     <div className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${progress}%`, background: color, boxShadow: `0 0 8px ${color}` }} />
                     <div
@@ -698,21 +716,21 @@ function PlayerModal({ project, color, onClose }) {
                       }}
                     />
                   </div>
-                  <div className="eyebrow text-white/40 w-12 text-right">{runtime}</div>
+                  <div className="eyebrow text-white/65 w-12 text-right">{runtime}</div>
                 </div>
               </div>
               </>)}
             </div>
 
             <aside className="p-5 sm:p-6 border-t lg:border-t-0 lg:border-l border-white/10">
-              <div className="eyebrow text-white/40 mb-2">{t('ESPECIFICACIONES TÉCNICAS','TECHNICAL SPECIFICATIONS')}</div>
+              <div className="eyebrow text-white/65 mb-2">{t('ESPECIFICACIONES TÉCNICAS','TECHNICAL SPECIFICATIONS')}</div>
               <h3 className="h3" style={{ color }}>{title}</h3>
-              <p className="body italic mt-4 text-white/75">{synopsis}</p>
+              <p className="body italic mt-4 text-white/85">{synopsis}</p>
               <dl className="mt-6 grid grid-cols-2 gap-y-4 gap-x-3">
-                <dt className="eyebrow text-white/40">{t('AÑO','YEAR')}</dt>          <dd className="body-s text-white/90 col-start-2 font-medium">{project.year}</dd>
-                <dt className="eyebrow text-white/40">{t('CONTEXTO','CONTEXT')}</dt>  <dd className="body-s text-white/90 col-start-2 font-medium">{context}</dd>
-                <dt className="eyebrow text-white/40">{t('DURACIÓN','RUNTIME')}</dt>  <dd className="body-s text-white/90 col-start-2 font-medium">{runtime}</dd>
-                <dt className="eyebrow text-white/40">SOFTWARE</dt>                   <dd className="body-s text-white/90 col-start-2 font-medium">{project.software}</dd>
+                <dt className="eyebrow text-white/65">{t('AÑO','YEAR')}</dt>          <dd className="body-s text-white/90 col-start-2 font-medium">{project.year}</dd>
+                <dt className="eyebrow text-white/65">{t('CONTEXTO','CONTEXT')}</dt>  <dd className="body-s text-white/90 col-start-2 font-medium">{context}</dd>
+                <dt className="eyebrow text-white/65">{t('DURACIÓN','RUNTIME')}</dt>  <dd className="body-s text-white/90 col-start-2 font-medium">{runtime}</dd>
+                <dt className="eyebrow text-white/65">SOFTWARE</dt>                   <dd className="body-s text-white/90 col-start-2 font-medium">{project.software}</dd>
               </dl>
               {project.href && (
                 <a href={project.href} target="_blank" rel="noopener"
@@ -734,14 +752,14 @@ function PlayerModal({ project, color, onClose }) {
           <div className="px-4 sm:px-6 py-6 border-t border-white/10">
             <div className="flex items-center gap-3 mb-4">
               <span className="block w-6 h-[2px] rounded-full" style={{ background: color }} />
-              <span className="eyebrow text-white/60">{t('DETRÁS DE ESCENA · PROCESO CRUDO','BEHIND THE SCENES · RAW PROCESS')}</span>
+              <span className="eyebrow text-white/75">{t('DETRÁS DE ESCENA · PROCESO CRUDO','BEHIND THE SCENES · RAW PROCESS')}</span>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {bts.map((src, i) => (
                 <div key={i} className="relative aspect-video rounded-md overflow-hidden" style={{ boxShadow: `0 8px 22px rgba(0,0,0,0.45), inset 0 0 0 1px ${color}22` }}>
                   <img src={src} className="absolute inset-0 w-full h-full object-cover" alt={`Behind the scenes ${i+1}`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <div className="absolute bottom-2 left-2 eyebrow text-white/70">FRAME / 0{i+1}</div>
+                  <div className="absolute bottom-2 left-2 eyebrow text-white/85">FRAME / 0{i+1}</div>
                 </div>
               ))}
             </div>
@@ -774,7 +792,7 @@ function About() {
               <>I'm a multimedia &amp; graphic designer <em className="text-white not-italic font-medium">in training</em> — I pair the rigor of editorial design with the technical chops of interactive experiences and the rhythm of audiovisual language. I build <em className="text-white not-italic font-medium">narrative systems</em> that work across multiple supports: from print to the virtual to video.</>
             )}
           </p>
-          <p className="body mt-5 text-white/65">
+          <p className="body mt-5 text-white/80">
             {t(
               <>Creo en la <em className="text-white not-italic font-medium">transparencia del proceso</em>: mostrar la cocina de un proyecto — bocetos, errores de código, pruebas de montaje — le da un valor que el render final no tiene. Por eso mi diferencial es el <em className="not-italic font-medium" style={{ color: C.gold }}>“Behind the Scenes”</em>: cada trabajo viene con su video de proceso para que veas cómo pasé del concepto a la realidad.</>,
               <>I believe in <em className="text-white not-italic font-medium">process transparency</em>: showing a project's kitchen — sketches, broken code, montage tests — gives it a value the polished render can't. That's why my differentiator is the <em className="not-italic font-medium" style={{ color: C.gold }}>“Behind the Scenes”</em>: every project ships with its own process video, so you see how I got from concept to reality.</>
@@ -800,8 +818,8 @@ function About() {
                      className="contact-tile group glass rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-center"
                      style={{ aspectRatio:'1 / 1', boxShadow:`inset 0 0 0 1px ${s.color}40`, '--brand': s.color }}>
                   <span className="block w-9 h-9 sm:w-11 sm:h-11 mb-3 text-white/85">{ICONS[s.icon]}</span>
-                  <span className="body-s text-white/70 leading-tight">{s.name}</span>
-                  <span className="block eyebrow mt-1" style={{ color: isAdv ? C.gold : 'rgba(255,255,255,0.4)' }}>{lvl}</span>
+                  <span className="body-s text-white/85 leading-tight">{s.name}</span>
+                  <span className="block eyebrow mt-1" style={{ color: isAdv ? C.gold : 'rgba(255,255,255,0.7)' }}>{lvl}</span>
                 </div>
               );
             })}
@@ -842,11 +860,11 @@ function Contact() {
                className="contact-tile group glass rounded-xl p-4 sm:p-5 flex flex-col items-center justify-center text-center focus-ring"
                style={{ aspectRatio:'1 / 1', boxShadow:`inset 0 0 0 1px ${l.color}40`, '--brand': l.color }}>
               <span className="block w-9 h-9 sm:w-11 sm:h-11 mb-3 text-white/85">{ICONS[l.icon]}</span>
-              <span className="body-s text-white/60 break-all leading-tight">{l.label}</span>
+              <span className="body-s text-white/75 break-all leading-tight">{l.label}</span>
             </a>
           ))}
         </div>
-        <div className="mt-16 flex items-center gap-4 text-white/40 eyebrow">
+        <div className="mt-16 flex items-center gap-4 text-white/65 eyebrow">
           <Monogram size={28} />
           <span>© 2026 · MAURICIO SANTOS</span>
           <div className="flex-1 h-px bg-white/10" />
