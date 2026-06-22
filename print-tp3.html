@@ -124,13 +124,15 @@
   .strat-card .audience { font-size: 7pt; color: #666; margin-top: 2.5mm; padding-top: 2mm; border-top: 0.2mm dashed #ddd; }
   .strat-card .audience strong { font-weight: 700; color: #1B1919; }
 
-  /* PAGE 2 — 3 columns of platforms */
+  /* PAGE 2 — LinkedIn wide arriba + IG y YT mobile abajo */
   .three-platforms {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
     gap: 5mm;
     margin-bottom: 6mm;
   }
+  .three-platforms .plat-col.full { grid-column: 1 / -1; }
   .plat-col {
     background: white;
     border: 0.2mm solid #ddd;
@@ -542,6 +544,35 @@
   .portfolio-showcase .pf-caption li { font-size: 7pt; line-height: 1.5; margin-bottom: 0.5mm; }
   .portfolio-showcase .pf-caption li strong { color: #c01d70; }
 
+  /* LinkedIn wide block (horizontal LinkedIn + side caption/QR) */
+  .li-wide {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 4mm;
+    align-items: stretch;
+  }
+  .li-aside { display: flex; flex-direction: column; }
+  .li-aside .qr-strip { border-top: none; padding-top: 0; margin-top: auto; }
+
+  /* Mobile vertical screenshot wrappers (IG / YT cells) — phone-shaped, centered */
+  .mobile-screen {
+    background: #1B1919;
+    border: 0.4mm solid #1B1919;
+    border-radius: 2.5mm;
+    overflow: hidden;
+    aspect-ratio: 9 / 19.5;
+    height: 105mm;
+    width: auto;
+    margin: 0 auto;
+    padding: 1mm;
+  }
+  .mobile-screen .shot {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+    display: block;
+    border-radius: 1.5mm;
+  }
+
   /* PAGE 2 — Real screen wrappers (LinkedIn / YouTube) */
   .real-screen {
     background: #fff;
@@ -745,29 +776,52 @@
   <h2 class="section-title">Vidrieras <span class="ink" style="color:#e32285;">cross-platform.</span></h2>
 
   <p class="body" style="margin-bottom: 6mm; max-width: 220mm;">
-    Tres redes, una sola marca. Cada plataforma adapta el sistema visual a su lenguaje nativo (grilla cuadrada en IG, banner ancho en LinkedIn, banner 16:9 en YouTube) manteniendo la paleta, la tipografía y el <em class="hl">monograma "M"</em> como anclaje. Los QR llevan al portfolio web (TP2) — punto de aterrizaje único.
+    Tres redes, una sola marca. Cada plataforma adapta el sistema visual a su lenguaje nativo (desktop wide en LinkedIn, mobile vertical en Instagram y YouTube) manteniendo la paleta, la tipografía y el <em class="hl">monograma "M"</em> como anclaje. Los QR llevan a cada plataforma directamente.
   </p>
 
   <div class="three-platforms">
+
+    <!-- ── LINKEDIN (full width arriba) ── -->
+    <div class="plat-col full">
+      <div class="plat-head lime">
+        <span class="dot"></span>
+        <span class="name">LinkedIn</span>
+        <span class="role">Networking profesional · Desktop</span>
+      </div>
+      <div class="li-wide">
+        <div class="real-screen li-screen">
+          <div class="browser-bar">
+            <span class="dot" style="background:#ff5f57;"></span>
+            <span class="dot" style="background:#ffbd2e;"></span>
+            <span class="dot" style="background:#28ca42;"></span>
+            <span class="url">linkedin.com/in/nbdesigner</span>
+          </div>
+          <img class="shot" src="./assets/screens-tp3/linkedin-real.png" alt="LinkedIn perfil real">
+        </div>
+        <div class="li-aside">
+          <p class="body" style="font-size:8pt; margin-bottom:3mm;">
+            <strong style="color:#1B1919;">Perfil real publicado.</strong> Banner horizontal con el sistema de marca, foto de perfil con monograma sobre paleta brand, headline alineado a la estrategia: <em class="hl">"Multimedia &amp; Graphic Designer · Sistemas narrativos del papel al video"</em>. La descripción incluye las 3 áreas (Editorial · Interacción · Audiovisual) y el link al portfolio.
+          </p>
+          <div class="qr-strip" style="margin-top:auto;">
+            <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/nbdesigner/&margin=1&color=1B1919" alt="QR LI"></div>
+            <div class="qr-meta">
+              <strong>linkedin.com/in/<br>nbdesigner</strong>
+              <span class="hand">→ Ir a LinkedIn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ── INSTAGRAM ── -->
     <div class="plat-col">
       <div class="plat-head cyan">
         <span class="dot"></span>
         <span class="name">Instagram</span>
-        <span class="role">Profunda</span>
+        <span class="role">Profunda · Mobile</span>
       </div>
-      <div class="real-screen">
-        <div class="browser-bar">
-          <span class="dot" style="background:#ff5f57;"></span>
-          <span class="dot" style="background:#ffbd2e;"></span>
-          <span class="dot" style="background:#28ca42;"></span>
-          <span class="url">instagram.com/maurisantos.design</span>
-        </div>
+      <div class="mobile-screen">
         <img class="shot" src="./assets/screens-tp3/ig-real-3.jpeg" alt="Perfil real IG">
-        <div class="caption">
-          <strong>Perfil real publicado.</strong> Foto de perfil con la M sobre el sistema de marca, 4 highlights customs (E/I/A/M), grilla 3×3 con los 9 trabajos del catálogo subidos como posts.
-        </div>
       </div>
       <div class="qr-strip">
         <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com/maurisantos.design&margin=1&color=1B1919" alt="QR IG"></div>
@@ -778,59 +832,15 @@
       </div>
     </div>
 
-    <!-- ── LINKEDIN ── -->
-    <div class="plat-col">
-      <div class="plat-head lime">
-        <span class="dot"></span>
-        <span class="name">LinkedIn</span>
-        <span class="role">Networking</span>
-      </div>
-      <div class="real-screen">
-        <div class="browser-bar">
-          <span class="dot" style="background:#ff5f57;"></span>
-          <span class="dot" style="background:#ffbd2e;"></span>
-          <span class="dot" style="background:#28ca42;"></span>
-          <span class="url">linkedin.com/in/nbdesigner</span>
-        </div>
-        <img class="shot" src="./assets/screens-tp3/linkedin-real.png" alt="LinkedIn perfil real">
-        <div class="caption">
-          <strong>Perfil real publicado.</strong> Banner con el sistema de marca, foto de perfil con monograma sobre paleta brand, y headline alineado con la estrategia: <em>"Multimedia &amp; Graphic Designer · Sistemas narrativos del papel al video"</em>.
-        </div>
-      </div>
-      <div class="qr-strip">
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/nbdesigner/&margin=1&color=1B1919" alt="QR LI"></div>
-        <div class="qr-meta">
-          <strong>linkedin.com/in/<br>nbdesigner</strong>
-          <span class="hand">→ Ir a LinkedIn</span>
-        </div>
-      </div>
-    </div>
-
     <!-- ── YOUTUBE ── -->
     <div class="plat-col">
       <div class="plat-head mag">
         <span class="dot"></span>
         <span class="name">YouTube</span>
-        <span class="role">Bitácora</span>
+        <span class="role">Bitácora · Mobile</span>
       </div>
-      <div class="yt-real-card">
-        <div class="browser-bar">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="yt-mini">YouTube</span>
-          <span class="url">youtube.com/@mauro6026</span>
-        </div>
-        <img class="banner-shot" src="./assets/social/yt-banner.png" alt="YouTube banner">
-        <div class="yt-row">
-          <div class="yt-pp"><img src="./assets/social/ig-profile-pic.png" alt="PP"></div>
-          <div class="yt-info">
-            <div class="yt-name">Mauricio Santos</div>
-            <div class="yt-handle-line">@mauro6026 · Bitácora de procesos · El detrás de cámaras</div>
-          </div>
-          <div class="yt-sub-cta">Suscribirse</div>
-        </div>
-        <div class="caption" style="font-size:6.5pt; padding:1.8mm 3mm;">
-          <strong style="color:#1B1919;">Banner channel art</strong> diseñado bajo el sistema de marca: wordmark MAURICIO SANTOS con M cian + S magenta, timeline editorial con playhead gold, eyebrow "El detrás de cámaras" y barras brand como firma en la esquina inferior izquierda.
-        </div>
+      <div class="mobile-screen">
+        <img class="shot" src="./assets/screens-tp3/youtube-real.jpeg" alt="Canal real YouTube">
       </div>
       <div class="qr-strip">
         <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/@mauro6026&margin=1&color=1B1919" alt="QR YT"></div>
