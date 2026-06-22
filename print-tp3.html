@@ -339,36 +339,25 @@
   .yt-thumb { aspect-ratio: 16/9; background: #1B1919; border-radius: 0.5mm; overflow: hidden; }
   .yt-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* PAGE 3 — Instagram DETAIL */
-  .ig-detail-grid {
+  /* PAGE 3 — Instagram DETAIL · 3 phones reales lado a lado */
+  .ig-detail-grid.three {
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 5mm;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm;
     margin-bottom: 4mm;
-    height: 215mm;  /* fit available A3 vertical space */
   }
-  .ig-detail-grid .right-col { display: grid; grid-template-rows: 1.18fr 1fr; gap: 5mm; min-height: 0; }
-  .ig-detail-grid .bot-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; min-height: 0; }
   .ig-card-wrap {
-    display:flex; flex-direction: column; gap: 1.2mm;
+    display:flex; flex-direction: column; gap: 1.5mm;
     min-height: 0;
   }
-  /* Phones in detail grid: stretch to fill cell, crop with object-fit */
-  .ig-detail-grid .ig-phone { flex: 1; min-height: 0; padding: 1mm; }
+  .ig-detail-grid .ig-phone { padding: 1mm; }
   .ig-detail-grid .ig-phone .screen {
-    aspect-ratio: auto;
-    height: 100%;
-    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    height: auto; width: 100%;
   }
   .ig-detail-grid .ig-phone .screen img {
     width: 100%; height: 100%;
     object-fit: cover; object-position: top;
-  }
-  /* Reel: same height behavior */
-  .ig-detail-grid .ig-reel {
-    aspect-ratio: auto;
-    height: 100%;
-    flex: 1; min-height: 0;
   }
   .ig-card-wrap .ig-card-caption { font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #888; font-weight: 700; }
 
@@ -768,45 +757,16 @@
         <span class="name">Instagram</span>
         <span class="role">Profunda</span>
       </div>
-      <div class="ig-mock">
-        <div class="ig-topbar">
-          <span class="ig-handle-top">maurisantos.design</span>
-          <span>≡</span>
+      <div class="real-screen">
+        <div class="browser-bar">
+          <span class="dot" style="background:#ff5f57;"></span>
+          <span class="dot" style="background:#ffbd2e;"></span>
+          <span class="dot" style="background:#28ca42;"></span>
+          <span class="url">instagram.com/maurisantos.design</span>
         </div>
-        <div class="ig-prof-row">
-          <div class="ig-avatar"><div class="inner"><img src="./assets/social/ig-profile-pic.png" alt="PP"></div></div>
-          <div class="ig-stats">
-            <div class="ig-stat"><div class="ig-stat-n">9</div><div class="ig-stat-lbl">publicaciones</div></div>
-            <div class="ig-stat"><div class="ig-stat-n">6</div><div class="ig-stat-lbl">seguidores</div></div>
-            <div class="ig-stat"><div class="ig-stat-n">17</div><div class="ig-stat-lbl">seguidos</div></div>
-          </div>
-        </div>
-        <div class="ig-prof-info">
-          <div class="ig-name">Mauricio Santos</div>
-          <div class="ig-bio">Multimedia &amp; Graphic Designer<br>El detrás de cámaras de cada proyecto ↓</div>
-          <div class="ig-link">↗ mauricio-santos0109.github.io/narrative-stream/</div>
-        </div>
-        <div class="ig-actions">
-          <div class="ig-btn follow">Seguir</div>
-          <div class="ig-btn msg">Mensaje</div>
-          <div class="ig-btn more">+</div>
-        </div>
-        <div class="ig-highlights">
-          <div class="ig-hl-item"><div class="ig-hl-circle mag"><span class="hl-letter">E</span></div><div class="ig-hl-lbl">Editorial</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle lime"><span class="hl-letter">I</span></div><div class="ig-hl-lbl">Interacción</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle cyan"><span class="hl-letter">A</span></div><div class="ig-hl-lbl">Audiovisual</div></div>
-          <div class="ig-hl-item"><div class="ig-hl-circle dark"><span class="hl-letter">M</span></div><div class="ig-hl-lbl">¿Quién soy?</div></div>
-        </div>
-        <div class="ig-grid">
-          <div class="ig-post"><img src="./assets/social/ig-post-09-shredded.png" alt="Shredded"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-08-mimemo.png" alt="MiMeMo"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-07-publicacion.png" alt="Pub TP1"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-06-chess.png" alt="CHESS"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-05-lego.png" alt="LEGO"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-04-imagine.png" alt="IMAGINE.AI"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-03-folioscopio.png" alt="Folioscopio"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-02-paranoia.png" alt="PARANOIA"></div>
-          <div class="ig-post"><img src="./assets/social/ig-post-01-nena.png" alt="NENA"></div>
+        <img class="shot" src="./assets/screens-tp3/ig-real-3.jpeg" alt="Perfil real IG">
+        <div class="caption">
+          <strong>Perfil real publicado.</strong> Foto de perfil con la M sobre el sistema de marca, 4 highlights customs (E/I/A/M), grilla 3×3 con los 9 trabajos del catálogo subidos como posts.
         </div>
       </div>
       <div class="qr-strip">
@@ -908,12 +868,12 @@
   <h2 class="section-title">La cuenta <span class="ink">funcionando.</span></h2>
 
   <p class="body" style="margin-bottom: 5mm; max-width: 220mm;">
-    Instagram es la red más desarrollada porque concentra <em class="hl">5 formatos nativos</em> distintos: perfil + post detalle + story + reel + highlights. Las primeras 3 vistas son <em class="mag">capturas reales de la cuenta en producción</em> (subidas durante esta entrega); la 4ª (reel) queda como mockup proyectado y los highlight covers son las piezas diseñadas a dimensión exacta de IG.
+    Instagram es la red más desarrollada. Las 3 vistas de abajo son <em class="mag">capturas reales de la cuenta en producción</em> — perfil con grilla 3×3, post abierto con carousel y story con sticker de link. Los 5 highlight covers que cierran la lámina son las piezas diseñadas a dimensión exacta de IG (1080×1920) que se ven recortadas a círculo en el perfil real.
   </p>
 
-  <div class="ig-detail-grid">
+  <div class="ig-detail-grid three">
 
-    <!-- PROFILE REAL (left) -->
+    <!-- PROFILE REAL -->
     <div class="ig-card-wrap">
       <div class="ig-card-caption">01 · Perfil real · @maurisantos.design</div>
       <div class="ig-phone">
@@ -921,72 +881,22 @@
       </div>
     </div>
 
-    <!-- right col: post + story/reel -->
-    <div class="right-col">
-
-      <!-- POST DETAIL — captura real -->
-      <div class="ig-card-wrap">
-        <div class="ig-card-caption">02 · Post real · NENA — Vicios (carousel)</div>
-        <div class="ig-phone">
-          <div class="screen"><img src="./assets/screens-tp3/ig-real-1.jpeg" alt="Post real IG"></div>
-        </div>
-      </div>
-
-      <!-- bottom row: story REAL + reel sintético -->
-      <div class="bot-row">
-
-        <!-- STORY REAL -->
-        <div class="ig-card-wrap">
-          <div class="ig-card-caption">03 · Story real · Shredded</div>
-          <div class="ig-phone">
-            <div class="screen"><img src="./assets/screens-tp3/ig-real-2.jpeg" alt="Story real IG"></div>
-          </div>
-        </div>
-
-        <!-- REEL (mockup — futuro contenido) -->
-        <div class="ig-card-wrap">
-          <div class="ig-card-caption">04 · Reel (proyectado) · Folioscopio BTS</div>
-          <div class="ig-reel">
-            <div class="reel-img"><img src="./assets/folioscopio/bts-1.jpeg" alt="reel"></div>
-            <div class="reel-overlay">
-              <div class="reel-top">
-                <span class="reel-label">Reels</span>
-                <svg viewBox="0 0 24 24" fill="white"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
-              </div>
-              <div class="reel-bottom">
-                <div class="reel-info">
-                  <div class="reel-handle">
-                    <div class="av"><img src="./assets/social/ig-profile-pic.png" alt=""></div>
-                    <div class="nm">maurisantos.design</div>
-                  </div>
-                  <div class="reel-caption">
-                    <strong>BTS:</strong> Cómo hice el Folioscopio cuadro a cuadro · de papel a render
-                  </div>
-                  <div class="reel-music">
-                    ♫ sonido original · maurisantos.design
-                  </div>
-                </div>
-                <div class="reel-actions">
-                  <div class="act">
-                    <svg class="ic" viewBox="0 0 24 24" fill="white"><path d="M16.7 4.5C14.6 4.5 13 6 12 7.6 11 6 9.4 4.5 7.3 4.5 4.4 4.5 2 7 2 10c0 5.4 10 11.5 10 11.5s10-6.1 10-11.5c0-3-2.4-5.5-5.3-5.5z"/></svg>
-                    <span class="cnt">—</span>
-                  </div>
-                  <div class="act">
-                    <svg class="ic" viewBox="0 0 24 24" fill="white"><path d="M21 12c0 4-4 7.5-9 7.5-1.5 0-3-.3-4.3-.9L3 20l1.5-4.2C3.5 14.4 3 13.2 3 12c0-4 4-7.5 9-7.5s9 3.5 9 7.5z"/></svg>
-                    <span class="cnt">—</span>
-                  </div>
-                  <div class="act">
-                    <svg class="ic" viewBox="0 0 24 24" fill="white"><path d="M2 21l20-9L2 3v6l14 3-14 3z"/></svg>
-                    <span class="cnt">—</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <!-- POST REAL -->
+    <div class="ig-card-wrap">
+      <div class="ig-card-caption">02 · Post real · NENA — Vicios (carousel)</div>
+      <div class="ig-phone">
+        <div class="screen"><img src="./assets/screens-tp3/ig-real-1.jpeg" alt="Post real IG"></div>
       </div>
     </div>
+
+    <!-- STORY REAL -->
+    <div class="ig-card-wrap">
+      <div class="ig-card-caption">03 · Story real · Shredded Teen Spirit</div>
+      <div class="ig-phone">
+        <div class="screen"><img src="./assets/screens-tp3/ig-real-2.jpeg" alt="Story real IG"></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- HIGHLIGHTS STRIP — Highlight covers reales -->
