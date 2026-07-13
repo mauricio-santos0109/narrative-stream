@@ -44,25 +44,7 @@
   }
   @page { margin: 0; }
 
-  /* ─── HEADER ─── */
-  .header {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    padding-bottom: 4mm;
-    border-bottom: 0.3mm solid var(--c-ink);
-    margin-bottom: 8mm;
-  }
-  .brand-word {
-    font-size: 34pt; font-weight: 900; letter-spacing: -0.03em; line-height: 0.9;
-    color: var(--c-ink);
-  }
-  .meta {
-    font-size: 7.5pt; text-align: right; line-height: 1.45; color: #555;
-    max-width: 100mm;
-  }
-  .meta strong { color: var(--c-ink); font-weight: 700; }
-  .meta .sep { margin: 0 1.5mm; color: #bbb; }
-
-  /* Eyebrows + Section titles */
+  /* Eyebrows + section titles */
   .eyebrow {
     display: inline-block; padding: 1.2mm 3mm;
     font-size: 7pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
@@ -70,12 +52,8 @@
     border-radius: 100mm;
     margin-bottom: 4mm;
   }
-  .eyebrow.cy { background: var(--c-cyan); }
-  .eyebrow.li { background: var(--c-lime); color: var(--c-bg-d); }
-  .eyebrow.mg { background: var(--c-mag); }
-  .eyebrow.gd { background: var(--c-gold); color: var(--c-bg-d); }
   .section-title {
-    font-size: 32pt; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
+    font-size: 34pt; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
     margin-bottom: 6mm;
   }
   .section-title .ink { color: var(--c-mag); }
@@ -83,48 +61,57 @@
   .body { font-size: 9pt; line-height: 1.55; color: #333; }
   .body strong { font-weight: 700; color: var(--c-ink); }
 
-  /* URL strip footer */
-  .url-strip {
-    position: absolute; bottom: 8mm; left: 16mm; right: 16mm;
-    display: flex; justify-content: space-between; align-items: center;
-    padding-top: 3mm;
-    border-top: 0.2mm solid #ccc;
-    font-size: 7pt; color: #888;
-    letter-spacing: 0.15em; text-transform: uppercase;
-  }
-  .url-strip .url { font-weight: 600; color: var(--c-ink); }
-  .url-strip .page-num { font-weight: 500; }
-
   /* ═════════════════════════════════════════════
-     PAGE 1 · MANIFIESTO (A4)
+     PAGE 1 · MANIFIESTO (A4) — con columnas
      ═════════════════════════════════════════════ */
-  .mani-eyebrow-row { display: flex; align-items: center; gap: 4mm; margin-bottom: 4mm; }
+  .mani {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 8mm;
+    height: 100%;
+  }
+  .mani-eyebrow-row { display: flex; align-items: center; gap: 4mm; }
   .mani-eyebrow-row .rule { flex: 1; height: 0.3mm; background: var(--c-ink); }
   .mani-title {
     font-size: 56pt; font-weight: 900; letter-spacing: -0.04em; line-height: 0.85;
-    margin-bottom: 10mm;
   }
   .mani-title .accent { color: var(--c-mag); }
-  .mani-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 8mm; margin-bottom: 8mm; }
-  .mani-block h3 {
-    font-size: 11pt; font-weight: 800; letter-spacing: -0.01em;
-    margin-bottom: 2mm;
-    padding-left: 3mm;
+  .mani-title .sub {
+    font-size: 10pt; font-weight: 500; letter-spacing: -0.01em; line-height: 1.4;
+    color: #555; margin-top: 3mm; max-width: 130mm;
+  }
+  .mani-title .sub em { font-style: italic; color: var(--c-mag); font-weight: 700; }
+
+  .mani-cols {
+    column-count: 2;
+    column-gap: 8mm;
+    column-rule: 0.2mm solid #ddd;
+  }
+  .mani-block {
+    break-inside: avoid;
+    margin-bottom: 5mm;
+    padding-left: 4mm;
     border-left: 1.2mm solid var(--c-mag);
   }
-  .mani-block.cy h3 { border-left-color: var(--c-cyan); }
-  .mani-block.li h3 { border-left-color: var(--c-lime); }
-  .mani-block.gd h3 { border-left-color: var(--c-gold); }
-  .mani-block p {
-    font-size: 8.5pt; line-height: 1.5; color: #444;
-    padding-left: 3mm;
+  .mani-block.cy { border-left-color: var(--c-cyan); }
+  .mani-block.li { border-left-color: var(--c-lime); }
+  .mani-block.gd { border-left-color: var(--c-gold); }
+  .mani-block h3 {
+    font-size: 11pt; font-weight: 800; letter-spacing: -0.01em;
+    margin-bottom: 1.5mm;
   }
+  .mani-block p {
+    font-size: 8.5pt; line-height: 1.55; color: #444;
+    text-align: justify;
+    hyphens: auto;
+  }
+  .mani-block p strong { font-weight: 700; color: var(--c-ink); }
+
   .mani-footer {
     display: flex; align-items: center; gap: 6mm;
-    padding-top: 6mm; border-top: 0.3mm solid var(--c-ink);
-    margin-top: auto;
+    padding-top: 5mm; border-top: 0.3mm solid var(--c-ink);
   }
-  .mani-footer .signo { width: 30mm; flex: 0 0 30mm; }
+  .mani-footer .signo { width: 26mm; flex: 0 0 26mm; }
   .mani-footer .signo img { width: 100%; }
   .mani-footer .who .name {
     font-size: 14pt; font-weight: 900; letter-spacing: -0.02em;
@@ -136,60 +123,110 @@
   }
 
   /* ═════════════════════════════════════════════
-     PAGE 2 · CV (A4)
+     PAGE 2 · CV STANDALONE (A4) — 2 columnas
      ═════════════════════════════════════════════ */
+  .cv {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 8mm;
+    height: 100%;
+  }
   .cv-hero {
     display: flex; gap: 6mm; align-items: center;
     padding-bottom: 6mm;
-    border-bottom: 0.3mm solid var(--c-ink);
-    margin-bottom: 6mm;
+    border-bottom: 0.5mm solid var(--c-ink);
   }
-  .cv-hero .logo { flex: 0 0 30mm; }
+  .cv-hero .logo { flex: 0 0 26mm; }
   .cv-hero .logo img { width: 100%; }
   .cv-hero .name {
-    font-size: 26pt; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
+    font-size: 24pt; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
   }
   .cv-hero .name .c { color: var(--c-cyan); }
   .cv-hero .name .l { color: var(--c-lime); }
   .cv-hero .name .m { color: var(--c-mag); }
   .cv-hero .role {
     font-size: 9pt; font-weight: 700; margin-top: 2mm;
+    color: #444;
   }
-  .cv-hero .contact {
-    font-size: 7.5pt; color: #555; margin-top: 1mm;
+  .cv-hero .contact-inline {
+    font-size: 7.5pt; color: #666; margin-top: 1.5mm;
+    display: flex; flex-wrap: wrap; gap: 3mm;
   }
-  .cv-section { margin-bottom: 6mm; }
-  .cv-section h2 {
-    font-size: 9pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
+  .cv-hero .contact-inline .item { display: inline-block; }
+  .cv-hero .contact-inline .item strong { color: var(--c-ink); font-weight: 700; }
+
+  .cv-body {
+    display: grid;
+    grid-template-columns: 60mm 1fr;
+    gap: 10mm;
+  }
+
+  .cv-sec { margin-bottom: 6mm; }
+  .cv-sec .sec-hd {
+    font-size: 8pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--c-gold); margin-bottom: 3mm;
     padding-bottom: 1mm;
+    border-bottom: 0.3mm solid #ccc;
+  }
+  .cv-sec .row {
+    margin-bottom: 3mm;
+    break-inside: avoid;
+  }
+  .cv-sec .row .lbl {
+    font-size: 8.5pt; font-weight: 700; color: var(--c-ink); line-height: 1.3;
+  }
+  .cv-sec .row .sub {
+    font-size: 7.5pt; color: #666; line-height: 1.4; margin-top: 0.5mm;
+  }
+  .cv-sec .row .sub em {
+    color: var(--c-ink); font-weight: 600; font-style: normal;
+  }
+  .cv-sec .row .link {
+    font-size: 7pt; color: var(--c-mag); font-weight: 600;
+    word-break: break-all;
+  }
+
+  .cv-summary {
+    font-size: 8.5pt; line-height: 1.55; color: #333;
+    text-align: justify;
+    margin-bottom: 6mm;
+  }
+
+  .cv-skills-list {
+    display: flex; flex-direction: column; gap: 1.5mm;
+  }
+  .cv-skills-list .skl {
+    font-size: 7.5pt; padding: 1.2mm 3mm;
+    background: white; border: 0.2mm solid #ccc; border-radius: 100mm;
+  }
+
+  .cv-langs-list {
+    display: flex; flex-direction: column; gap: 1.5mm;
+  }
+  .cv-langs-list .lang {
+    font-size: 8pt; line-height: 1.3;
+  }
+  .cv-langs-list .lang strong { color: var(--c-ink); font-weight: 700; }
+  .cv-langs-list .lang .lvl {
+    color: #666; font-weight: 500; display: block; font-size: 6.5pt; letter-spacing: 0.02em;
+    margin-top: 0.3mm;
+  }
+
+  .cv-signo-mini {
+    margin-bottom: 5mm;
+    display: flex; align-items: center; gap: 3mm;
+    padding-bottom: 4mm;
     border-bottom: 0.2mm solid #ddd;
   }
-  .cv-section .row { margin-bottom: 3mm; }
-  .cv-section .row .lbl {
-    font-size: 8.5pt; font-weight: 700; color: var(--c-ink);
+  .cv-signo-mini img { width: 12mm; }
+  .cv-signo-mini .lbl {
+    font-size: 7pt; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #666;
   }
-  .cv-section .row .sub {
-    font-size: 7.5pt; color: #666; line-height: 1.35; margin-top: 0.5mm;
-  }
-  .cv-section .row .sub em { color: #444; font-weight: 600; font-style: normal; }
-  .cv-skills {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm 4mm;
-  }
-  .cv-skills .skill {
-    font-size: 7.5pt; padding: 1mm 2.5mm;
-    background: white; border: 0.2mm solid #ccc; border-radius: 100mm;
-    text-align: center;
-  }
-  .cv-langs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2mm 6mm; }
-  .cv-langs .lang { font-size: 8pt; }
-  .cv-langs .lang strong { color: var(--c-ink); font-weight: 700; }
-  .cv-langs .lang .lvl { color: #666; font-weight: 500; }
 
   /* ═════════════════════════════════════════════
-     PAGE 3 · CONCEPTO + SIGNO (A3)
+     PAGE 3 · CONCEPTO + SIGNO (A3) — con columnas
      ═════════════════════════════════════════════ */
-  /* ¿Quién?, ¿Qué?, ¿Para quién? cards */
   .three-questions {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm;
     margin-bottom: 8mm;
@@ -203,152 +240,105 @@
   .q-card.li { border-top-color: var(--c-lime); }
   .q-card.gd { border-top-color: var(--c-gold); }
   .q-card h4 {
-    font-size: 12pt; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 2mm;
+    font-size: 13pt; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 2mm;
   }
-  .q-card p { font-size: 8pt; line-height: 1.5; color: #444; }
+  .q-card p { font-size: 8.5pt; line-height: 1.5; color: #444; text-align: justify; hyphens: auto; }
   .q-card p strong { color: var(--c-ink); font-weight: 700; }
 
-  /* Argumentación conceptual */
   .argument-box {
     background: var(--c-bg-d); color: var(--c-paper);
-    padding: 6mm 7mm;
+    padding: 7mm 8mm;
     border-radius: 2mm;
     margin-bottom: 8mm;
   }
   .argument-box .kicker {
     font-size: 7pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--c-gold); margin-bottom: 2mm;
+    color: var(--c-gold); margin-bottom: 3mm;
   }
   .argument-box h3 {
-    font-size: 15pt; font-weight: 900; letter-spacing: -0.02em; line-height: 1.05;
-    margin-bottom: 3mm;
+    font-size: 17pt; font-weight: 900; letter-spacing: -0.02em; line-height: 1.05;
+    margin-bottom: 4mm;
   }
   .argument-box h3 span.cy { color: var(--c-cyan); }
   .argument-box h3 span.li { color: var(--c-lime); }
   .argument-box h3 span.mg { color: var(--c-mag); }
-  .argument-box p { font-size: 8.5pt; line-height: 1.55; color: rgba(255,255,255,0.85); }
-  .argument-box p em { color: var(--c-gold); font-weight: 700; font-style: normal; }
+  .argument-box .arg-cols {
+    column-count: 2; column-gap: 10mm;
+  }
+  .argument-box .arg-cols p {
+    font-size: 8.5pt; line-height: 1.6; color: rgba(255,255,255,0.85);
+    margin-bottom: 3mm; text-align: justify; hyphens: auto;
+    break-inside: avoid;
+  }
+  .argument-box .arg-cols p em { color: var(--c-gold); font-weight: 700; font-style: normal; }
 
-  /* Signo section */
+  /* Signo Variables */
   .signo-block {
     background: white; border: 0.3mm solid #ddd; border-radius: 2mm;
-    padding: 5mm;
-    margin-bottom: 4mm;
+    padding: 6mm;
   }
   .signo-block h4 {
     font-size: 8pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--c-gold); margin-bottom: 3mm;
+    color: var(--c-gold); margin-bottom: 5mm;
   }
   .signo-variants {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 3mm;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 4mm;
   }
   .signo-variants .var {
     border: 0.2mm solid #ddd; border-radius: 1.5mm;
-    padding: 3mm;
-    display: flex; flex-direction: column; align-items: center; gap: 2mm;
-    aspect-ratio: 1;
-    justify-content: center;
+    padding: 6mm 3mm 4mm;
+    display: flex; flex-direction: column; align-items: center; gap: 3mm;
+    aspect-ratio: 0.85;
+    justify-content: space-between;
+    background: white;
   }
-  .signo-variants .var.dark { background: var(--c-bg-d); }
-  .signo-variants .var.gray { background: #999; }
-  .signo-variants .var img { width: 60%; }
+  .signo-variants .var.dark { background: var(--c-bg-d); border-color: var(--c-bg-d); }
+  .signo-variants .var .signo-img {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+  }
+  .signo-variants .var .signo-img img { max-width: 65%; max-height: 100%; }
   .signo-variants .var .lbl {
     font-size: 6pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
     color: #555; text-align: center;
   }
-  .signo-variants .var.dark .lbl,
-  .signo-variants .var.gray .lbl { color: rgba(255,255,255,0.9); }
-
-  .signo-tech-row {
-    display: grid; grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 4mm;
-    margin-top: 4mm;
+  .signo-variants .var.dark .lbl { color: rgba(255,255,255,0.85); }
+  .signo-variants .var .horiz-row {
+    display: flex; align-items: center; gap: 2mm;
   }
-  .tech-card {
-    background: white; border: 0.3mm solid #ddd; border-radius: 2mm;
-    padding: 4mm;
+  .signo-variants .var .horiz-row img { width: 8mm; }
+  .signo-variants .var .horiz-row .txt {
+    font-size: 7pt; font-weight: 900; letter-spacing: -0.02em; text-align: left; line-height: 1;
   }
-  .tech-card h4 {
-    font-size: 7pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--c-gold); margin-bottom: 3mm;
+  .signo-variants .var .horiz-row .txt .c { color: var(--c-cyan); }
+  .signo-variants .var .horiz-row .txt .s { color: var(--c-mag); }
+  .signo-variants .var .vert-stack {
+    display: flex; flex-direction: column; align-items: center; gap: 1.5mm;
   }
-  .tech-card p { font-size: 7pt; line-height: 1.4; color: #555; }
-
-  /* Grid construction visualization */
-  .grid-viz {
-    background: #f0f0f0; border-radius: 1.5mm;
-    aspect-ratio: 1.5;
-    background-image:
-      linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
-    background-size: 10% 10%;
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 2mm;
+  .signo-variants .var .vert-stack img { width: 12mm; }
+  .signo-variants .var .vert-stack .txt {
+    font-size: 6pt; font-weight: 900; letter-spacing: -0.02em; text-align: center; line-height: 1;
   }
-  .grid-viz img { width: 55%; }
-  .grid-viz .axis-h { position: absolute; left: 0; right: 0; height: 0.3mm; background: var(--c-mag); }
-  .grid-viz .axis-h.t { top: 25%; }
-  .grid-viz .axis-h.b { bottom: 25%; }
-  .grid-viz .axis-v { position: absolute; top: 0; bottom: 0; width: 0.3mm; background: var(--c-mag); }
-  .grid-viz .axis-v.l { left: 30%; }
-  .grid-viz .axis-v.r { right: 30%; }
-
-  /* Clear space */
-  .clear-space {
-    background: #f0f0f0; border-radius: 1.5mm;
-    aspect-ratio: 1;
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 2mm;
-    padding: 20%;
-  }
-  .clear-space img { width: 100%; }
-  .clear-space::before {
-    content: ""; position: absolute; inset: 15%;
-    border: 0.3mm dashed var(--c-gold);
-    border-radius: 1mm;
-  }
-  .clear-space .x {
-    position: absolute; font-size: 6pt; font-weight: 700; color: var(--c-gold);
-  }
-  .clear-space .x.t { top: 5%; left: 50%; transform: translateX(-50%); }
-  .clear-space .x.r { right: 5%; top: 50%; transform: translateY(-50%); }
-
-  /* Min size */
-  .min-size {
-    background: #f0f0f0; border-radius: 1.5mm;
-    aspect-ratio: 1;
-    display: flex; align-items: center; justify-content: space-around;
-    padding: 3mm;
-    gap: 2mm;
-    margin-bottom: 2mm;
-  }
-  .min-size .step {
-    display: flex; flex-direction: column; align-items: center; gap: 1mm;
-  }
-  .min-size .step img { display: block; }
-  .min-size .step img.big { width: 18mm; }
-  .min-size .step img.mid { width: 12mm; }
-  .min-size .step img.tiny { width: 6mm; }
-  .min-size .step .sz {
-    font-size: 6pt; font-weight: 700; color: #666;
-  }
+  .signo-variants .var .vert-stack .txt .c { color: var(--c-cyan); }
+  .signo-variants .var .vert-stack .txt .s { color: var(--c-mag); }
 
   /* ═════════════════════════════════════════════
      PAGE 4 · SISTEMA GRÁFICO + ESTRATEGIA (A3)
      ═════════════════════════════════════════════ */
-  .sys-grid {
+  .sys-2col {
     display: grid; grid-template-columns: 1fr 1fr; gap: 6mm;
     margin-bottom: 8mm;
   }
   .sys-card {
     background: white; border: 0.3mm solid #ddd; border-radius: 2mm;
-    padding: 5mm;
+    padding: 6mm;
   }
   .sys-card h3 {
     font-size: 8pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--c-gold); margin-bottom: 4mm;
+    color: var(--c-gold); margin-bottom: 5mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.2mm solid #eee;
   }
   .sys-card h3 .num {
     display: inline-block; background: var(--c-ink); color: var(--c-paper);
@@ -356,12 +346,15 @@
     margin-right: 2mm;
     font-size: 6.5pt;
   }
+  .sys-card > p {
+    font-size: 7.5pt; color: #666; line-height: 1.5; margin-top: 4mm;
+  }
 
   /* Palette with roles */
   .palette-roles { display: grid; grid-template-columns: 1fr; gap: 3mm; }
   .swatch-role {
     display: flex; align-items: center; gap: 4mm;
-    padding: 3mm 4mm;
+    padding: 3.5mm 4mm;
     border-radius: 1.5mm;
     color: white;
   }
@@ -371,17 +364,17 @@
   .swatch-role.gold { background: var(--c-gold); color: var(--c-bg-d); }
   .swatch-role.dark { background: var(--c-bg-d); color: var(--c-paper); }
   .swatch-role .role {
-    font-size: 8pt; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    font-size: 8.5pt; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
     flex: 1;
   }
-  .swatch-role .role .rl { font-size: 6.5pt; opacity: 0.85; letter-spacing: 0.08em; font-weight: 600; display: block; margin-top: 0.5mm; }
+  .swatch-role .role .rl { font-size: 6.5pt; opacity: 0.9; letter-spacing: 0.06em; font-weight: 600; display: block; margin-top: 0.5mm; text-transform: none; }
   .swatch-role .hex {
     font-family: 'Courier New', monospace;
-    font-size: 8pt; font-weight: 700; letter-spacing: 0.05em;
+    font-size: 8.5pt; font-weight: 700; letter-spacing: 0.05em;
   }
 
   /* Typography system */
-  .type-system { display: flex; flex-direction: column; gap: 4mm; }
+  .type-system { display: flex; flex-direction: column; gap: 3mm; }
   .type-row {
     display: grid; grid-template-columns: 22mm 1fr auto; gap: 4mm; align-items: baseline;
     padding-bottom: 3mm;
@@ -402,264 +395,175 @@
     font-family: 'Courier New', monospace; font-size: 6pt; color: #888;
   }
 
-  /* Grid base viz */
-  .grid-base {
-    aspect-ratio: 1.6;
-    background: #f0f0f0;
-    background-image:
-      linear-gradient(to right, rgba(227,34,133,0.15) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(227,34,133,0.08) 1px, transparent 1px);
-    background-size: 12.5% 12.5%;
-    border-radius: 1.5mm;
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
+  /* Estrategia de portfolio + redes strip */
+  .strategy-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6mm;
   }
-  .grid-base .modules {
-    position: absolute; inset: 12.5%;
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 2%;
-  }
-  .grid-base .modules .mod {
-    background: rgba(41,171,227,0.2);
-    border: 0.3mm solid rgba(41,171,227,0.5);
-    border-radius: 1mm;
-  }
-  .grid-base .caption {
-    position: absolute; bottom: 3mm; left: 3mm;
-    font-size: 6pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--c-mag);
-  }
-
-  /* Texture / noise pattern demo */
-  .texture-demo {
-    aspect-ratio: 1.6;
-    background:
-      radial-gradient(circle at 22% 25%, rgba(41,171,227,0.55), transparent 45%),
-      radial-gradient(circle at 78% 28%, rgba(143,192,69,0.35), transparent 40%),
-      radial-gradient(circle at 50% 90%, rgba(227,34,133,0.45), transparent 45%),
-      radial-gradient(circle at 50% 50%, rgba(249,176,61,0.15), transparent 50%),
-      var(--c-bg-d);
-    border-radius: 1.5mm;
-    position: relative;
-    overflow: hidden;
-  }
-  .texture-demo::after {
-    content: ""; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    opacity: 0.15; mix-blend-mode: overlay;
-  }
-  .texture-demo .caption {
-    position: absolute; bottom: 3mm; left: 3mm;
-    font-size: 6pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--c-paper);
-  }
-
-  /* Estrategia de redes */
-  .strategy-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm;
-    margin-top: 4mm;
-  }
-  .strat-card {
+  .strat-block {
     background: white; border: 0.3mm solid #ddd; border-radius: 2mm;
-    padding: 4mm;
-    border-left: 2mm solid var(--c-cyan);
+    padding: 6mm;
   }
-  .strat-card.li { border-left-color: var(--c-lime); }
-  .strat-card.mg { border-left-color: var(--c-mag); }
-  .strat-card .kicker {
-    font-size: 6.5pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  .strat-block h3 {
+    font-size: 8pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--c-gold); margin-bottom: 5mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.2mm solid #eee;
+  }
+  .strat-cols {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm;
+  }
+  .strat-cols .cell {
+    padding: 3mm; background: #f5f5f5; border-radius: 1.5mm;
+    border-left: 1.5mm solid var(--c-cyan);
+  }
+  .strat-cols .cell.li { border-left-color: var(--c-lime); }
+  .strat-cols .cell.mg { border-left-color: var(--c-mag); }
+  .strat-cols .cell .lbl {
+    font-size: 6pt; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
     color: #888; margin-bottom: 1mm;
   }
-  .strat-card h4 {
-    font-size: 11pt; font-weight: 900; margin-bottom: 2mm;
+  .strat-cols .cell .name {
+    font-size: 9.5pt; font-weight: 800; margin-bottom: 1.5mm; letter-spacing: -0.01em;
   }
-  .strat-card p {
-    font-size: 7pt; line-height: 1.45; color: #444;
+  .strat-cols .cell .desc {
+    font-size: 7pt; color: #555; line-height: 1.45; text-align: justify; hyphens: auto;
   }
-  .strat-card .audience {
-    margin-top: 2mm; padding-top: 2mm; border-top: 0.2mm solid #eee;
+  .strat-cols .cell .aud {
+    margin-top: 2mm; padding-top: 2mm; border-top: 0.2mm solid #ddd;
     font-size: 6.5pt; color: #666;
   }
-  .strat-card .audience strong { color: var(--c-ink); font-weight: 700; }
-
-  /* Portfolio strategy strip */
-  .portfolio-strategy {
-    background: white; border: 0.3mm solid #ddd; border-radius: 2mm;
-    padding: 4mm 5mm;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm;
-    margin-bottom: 4mm;
-  }
-  .portfolio-strategy .cell .lbl {
-    font-size: 7pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--c-gold); margin-bottom: 1mm;
-  }
-  .portfolio-strategy .cell .name {
-    font-size: 10pt; font-weight: 800; margin-bottom: 1mm;
-  }
-  .portfolio-strategy .cell .desc {
-    font-size: 7pt; color: #555; line-height: 1.35;
-  }
+  .strat-cols .cell .aud strong { color: var(--c-ink); font-weight: 700; }
 
   /* ═════════════════════════════════════════════
-     PAGE 5 · APLICACIONES + TARJETA + OBJETO (A3)
+     PAGE 5 · TARJETA + OBJETO (A3)
      ═════════════════════════════════════════════ */
-  /* 6 applications grid */
-  .apps-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm;
-    margin-bottom: 8mm;
+  .tarj-obj {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+    margin-top: 4mm;
   }
-  .app-card {
-    background: white; border: 0.3mm solid #ddd; border-radius: 2mm;
+  .side-block h3 {
+    font-size: 8pt; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--c-gold); margin-bottom: 4mm;
+    padding-bottom: 2mm;
+    border-bottom: 0.3mm solid #ccc;
+  }
+  .side-block .lead {
+    font-size: 9pt; line-height: 1.55; color: #444;
+    text-align: justify; hyphens: auto;
+    margin-bottom: 6mm;
+  }
+  .side-block .lead strong { color: var(--c-ink); font-weight: 700; }
+  .side-block .lead em { font-style: normal; font-weight: 700; color: var(--c-mag); }
+
+  /* Business card 90x50mm — real design from PDF */
+  .biz-card {
+    width: 100%; max-width: 108mm;
+    aspect-ratio: 9 / 5;
+    border-radius: 2mm;
+    position: relative;
     overflow: hidden;
-    display: flex; flex-direction: column;
-  }
-  .app-card .head {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 3mm 4mm;
-    font-size: 6.5pt; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-  }
-  .app-card .head .lbl { color: var(--c-ink); }
-  .app-card .head .plat { color: #888; font-weight: 600; }
-  .app-card.cy .head { border-bottom: 0.5mm solid var(--c-cyan); }
-  .app-card.li .head { border-bottom: 0.5mm solid var(--c-lime); }
-  .app-card.mg .head { border-bottom: 0.5mm solid var(--c-mag); }
-  .app-card.gd .head { border-bottom: 0.5mm solid var(--c-gold); }
-  .app-card .art {
+    box-shadow: 0 4mm 12mm rgba(0,0,0,0.2);
     background: var(--c-bg-d);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    flex: 1;
+    display: flex;
+    margin: 0 auto 4mm;
   }
-  .app-card .art.square { aspect-ratio: 1; }
-  .app-card .art.tall { aspect-ratio: 9 / 16; max-height: 60mm; }
-  .app-card .art.wide { aspect-ratio: 16 / 9; }
-  .app-card .art.li-wide { aspect-ratio: 4; }
-  .app-card .art img {
+  .biz-card .card-label {
+    position: absolute; top: -6mm; left: 0;
+    font-size: 6pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #999;
+  }
+  .biz-card::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(41,171,227,0.08), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(227,34,133,0.08), transparent 40%);
+  }
+  .biz-card::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.09; mix-blend-mode: overlay;
+  }
+
+  /* Frente card: signo grande centrado */
+  .biz-card.front .signo-big {
+    position: relative; z-index: 2;
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .biz-card.front .signo-big img {
+    height: 65%;
+  }
+
+  /* Dorso: info izquierda + QR derecha */
+  .biz-card.back .content {
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 22mm;
+    gap: 4mm;
+    padding: 5mm 6mm;
+    align-items: center;
+    width: 100%; height: 100%;
+    color: var(--c-paper);
+  }
+  .biz-card.back .info .name {
+    font-size: 10pt; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
+  }
+  .biz-card.back .info .name .c { color: var(--c-cyan); }
+  .biz-card.back .info .name .s { color: var(--c-mag); }
+  .biz-card.back .info .role {
+    font-size: 6.5pt; font-weight: 600; margin-top: 1mm;
+    color: rgba(255,255,255,0.85);
+  }
+  .biz-card.back .info .contact {
+    font-size: 6.5pt; color: rgba(255,255,255,0.85); margin-top: 3mm; line-height: 1.6;
+  }
+  .biz-card.back .info .contact strong { color: white; font-weight: 700; }
+  .biz-card.back .qr-box {
+    background: white; padding: 1.5mm; border-radius: 1mm;
+    display: flex;
+  }
+  .biz-card.back .qr-box img { width: 100%; height: auto; }
+
+  .card-wrapper {
+    position: relative;
+    padding-top: 8mm;
+    margin-bottom: 4mm;
+  }
+  .card-wrapper .kicker {
+    position: absolute; top: 0; left: 0;
+    font-size: 6pt; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #888;
+  }
+  .card-wrapper .kicker .dim {
+    color: #bbb; font-weight: 500; margin-left: 3mm;
+  }
+
+  /* Object photo — Asset Tag */
+  .object-photo {
+    background: white; border-radius: 2mm; overflow: hidden;
+    box-shadow: 0 4mm 12mm rgba(0,0,0,0.15);
+    aspect-ratio: 3 / 4;
+    margin-bottom: 5mm;
+  }
+  .object-photo img {
     width: 100%; height: 100%;
     object-fit: cover;
+    display: block;
   }
-  .app-card .caption {
-    padding: 2mm 4mm;
-    font-size: 6.5pt; color: #666; line-height: 1.4;
-    border-top: 0.2mm solid #eee;
+  .object-meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4mm;
+    font-size: 7.5pt;
   }
-
-  /* Card frente/dorso */
-  .card-strip {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 6mm; margin-bottom: 6mm;
+  .object-meta .meta-block .lbl {
+    font-size: 6pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--c-mag); margin-bottom: 1mm;
   }
-  .card-cell {
-    display: flex; flex-direction: column; gap: 2mm;
+  .object-meta .meta-block .val {
+    font-size: 8pt; color: #333; line-height: 1.4;
   }
-  .card-cell .kicker {
-    font-size: 7pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--c-gold);
-  }
-  .biz-card {
-    width: 90mm; height: 50mm;
-    border-radius: 2mm;
-    padding: 4mm 5mm;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 3mm 8mm rgba(0,0,0,0.15);
-  }
-  /* Frente: paper */
-  .biz-card.front {
-    background: var(--c-paper);
-    display: grid;
-    grid-template-columns: 12mm 1fr;
-    gap: 4mm;
-    align-items: center;
-  }
-  .biz-card.front .signo-mini img { width: 100%; }
-  .biz-card.front .info .name {
-    font-size: 11pt; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
-  }
-  .biz-card.front .info .name .c { color: var(--c-cyan); }
-  .biz-card.front .info .name .s { color: var(--c-mag); }
-  .biz-card.front .info .role {
-    font-size: 6.5pt; font-weight: 600; margin-top: 0.5mm;
-    color: #555; letter-spacing: 0.02em;
-  }
-  .biz-card.front .info .contact {
-    font-size: 6pt; color: #666; margin-top: 2mm; line-height: 1.4;
-  }
-  .biz-card.front .info .contact strong { color: var(--c-ink); font-weight: 700; }
-  .biz-card.front::after {
-    content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1.2mm;
-    background: linear-gradient(90deg,
-      var(--c-cyan) 0%, var(--c-cyan) 33%,
-      var(--c-lime) 33%, var(--c-lime) 66%,
-      var(--c-mag) 66%, var(--c-mag) 100%);
-  }
-  /* Dorso: dark */
-  .biz-card.back {
-    background: var(--c-bg-d);
-    color: var(--c-paper);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-  }
-  .biz-card.back .signo-big {
-    width: 22mm;
-  }
-  .biz-card.back .signo-big img { width: 100%; }
-  .biz-card.back .word {
-    position: absolute; bottom: 3.5mm; left: 5mm; right: 5mm;
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 5.5pt; letter-spacing: 0.28em; text-transform: uppercase;
-    font-weight: 700; color: rgba(255,255,255,0.6);
-  }
-  .biz-card.back .word .g { color: var(--c-gold); }
-  .biz-card.back .qr {
-    position: absolute; right: 4mm; top: 4mm;
-    width: 12mm; height: 12mm;
-    background: white; padding: 0.8mm; border-radius: 1mm;
-  }
-  .biz-card.back .qr img { width: 100%; height: 100%; }
-
-  /* Objeto (Asset Tag) */
-  .object-block {
-    background: white; border: 0.3mm solid #ddd; border-radius: 2mm;
-    padding: 5mm;
-    display: grid; grid-template-columns: 60mm 1fr;
-    gap: 6mm; align-items: center;
-  }
-  .object-block .tag-viz {
-    background: var(--c-bg-d);
-    border-radius: 2mm;
-    aspect-ratio: 0.75;
-    padding: 5mm 3mm;
-    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-    position: relative;
-  }
-  .object-block .tag-viz::before {
-    content: ""; position: absolute; top: 3mm;
-    width: 4mm; height: 4mm; border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 0 0 0.5mm rgba(255,255,255,0.25);
-  }
-  .object-block .tag-viz .signo { width: 55%; margin-top: 6mm; }
-  .object-block .tag-viz .signo img { width: 100%; }
-  .object-block .tag-viz .word {
-    font-size: 7pt; font-weight: 900; color: var(--c-paper);
-    letter-spacing: 0.05em; text-align: center;
-    line-height: 1.1;
-  }
-  .object-block .tag-viz .word .role {
-    font-size: 5pt; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--c-gold); display: block; margin-bottom: 1mm;
-  }
-  .object-block .obj-text h3 {
-    font-size: 14pt; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 2mm;
-  }
-  .object-block .obj-text p {
-    font-size: 8pt; line-height: 1.5; color: #444; margin-bottom: 2mm;
-  }
-  .object-block .obj-text p em { color: var(--c-mag); font-weight: 700; font-style: normal; }
-  .object-block .obj-text .specs {
-    font-size: 6.5pt; color: #888; letter-spacing: 0.05em; margin-top: 2mm;
-  }
-  .object-block .obj-text .specs strong { color: var(--c-ink); font-weight: 700; }
+  .object-meta .meta-block .val strong { color: var(--c-ink); font-weight: 700; }
 
 </style>
 </head>
@@ -668,178 +572,175 @@
 <!-- ═══════════════════════════════════════════════════════════
      PAGE 1 · MANIFIESTO — A4
      ═══════════════════════════════════════════════════════════ -->
-<section class="page a4" style="display: flex; flex-direction: column;">
-  <header class="header">
-    <div class="brand-word">TP_1</div>
-    <div class="meta">
-      <strong>Identidad Visual Personal:</strong> Concepto + Signo + Naming + Estrategia + Aplicaciones<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
-
-  <div class="mani-eyebrow-row">
-    <div class="eyebrow">Manifiesto</div>
-    <div class="rule"></div>
-    <div style="font-size:7pt; letter-spacing:0.2em; text-transform:uppercase; color:#888;">01 / 05</div>
-  </div>
-
-  <h1 class="mani-title">
-    Diseño en <span class="accent">tres</span> canales.
-  </h1>
-
-  <div class="mani-blocks">
-    <div class="mani-block mg">
-      <h3>Vengo del papel.</h3>
-      <p>
-        Empecé maquetando publicaciones editoriales — entendiendo que una <strong>grilla no es una cárcel, es un idioma</strong>. Después vino el código (HTML, CSS, Twine) y descubrí que las mismas jerarquías tipográficas funcionan en pantalla, sólo que ahora las lee un scroll. Y cuando el proyecto pide movimiento, edito el video yo mismo. El ritmo se piensa junto al mensaje, no después.
-      </p>
+<section class="page a4">
+  <div class="mani">
+    <div class="mani-eyebrow-row">
+      <div class="eyebrow">Manifiesto</div>
+      <div class="rule"></div>
+      <div style="font-size:7pt; letter-spacing:0.2em; text-transform:uppercase; color:#888;">Identidad Visual Personal</div>
     </div>
 
-    <div class="mani-block li">
-      <h3>Construyo sistemas narrativos.</h3>
-      <p>
-        Piezas que funcionan cruzando soportes. Una <strong>infografía LEGO</strong> que también podría ser un poster. Una <strong>señalética urbana</strong> que respira como marca. Un <strong>flipbook animado</strong> que empezó a lápiz y terminó en DaVinci. El proyecto es uno; la piel cambia.
-      </p>
+    <div>
+      <h1 class="mani-title">Diseño en <span class="accent">tres</span> canales.</h1>
+      <div class="mani-title">
+        <div class="sub">
+          Editorial, interacción y audiovisual — al mismo tiempo, en el mismo proyecto. <em>No soy especialista de uno solo</em>: soy alguien que ve la conversación entre los tres.
+        </div>
+      </div>
     </div>
 
-    <div class="mani-block cy">
-      <h3>Muestro la cocina.</h3>
-      <p>
-        Cada trabajo viene con su <strong>video de proceso</strong> — bocetos, errores de código, pruebas de montaje. No es transparencia por transparencia: es evidencia de que las decisiones son intencionales. El resultado final oculta más de lo que muestra.
-      </p>
+    <div class="mani-cols">
+      <div class="mani-block">
+        <h3>Vengo del papel.</h3>
+        <p>Empecé maquetando publicaciones editoriales — entendiendo que una <strong>grilla no es una cárcel, es un idioma</strong>. Después vino el código (HTML, CSS, Twine) y descubrí que las mismas jerarquías tipográficas funcionan en pantalla, sólo que ahora las lee un scroll. Y cuando el proyecto pide movimiento, edito el video yo mismo. El ritmo se piensa junto al mensaje, no después.</p>
+      </div>
+
+      <div class="mani-block li">
+        <h3>Construyo sistemas narrativos.</h3>
+        <p>Piezas que funcionan cruzando soportes. Una <strong>infografía LEGO</strong> que también podría ser un poster. Una <strong>señalética urbana</strong> que respira como marca. Un <strong>flipbook animado</strong> que empezó a lápiz y terminó en DaVinci. El proyecto es uno; la piel cambia.</p>
+      </div>
+
+      <div class="mani-block cy">
+        <h3>Muestro la cocina.</h3>
+        <p>Cada trabajo viene con su <strong>video de proceso</strong> — bocetos, errores de código, pruebas de montaje. No es transparencia por transparencia: es evidencia de que las decisiones son intencionales. El resultado final oculta más de lo que muestra.</p>
+      </div>
+
+      <div class="mani-block gd">
+        <h3>Pienso en varios idiomas.</h3>
+        <p><strong>Portugués y español nativos, inglés B2, italiano básico.</strong> Leo bibliografía técnica sin filtros, trabajo con equipos remotos y entiendo que el diseño tiene tantos acentos como los idiomas. Un extra que se traduce en flexibilidad de tono.</p>
+      </div>
+
+      <div class="mani-block">
+        <h3>Busco donde no haya que elegir.</h3>
+        <p><strong>Estudios de branding transmedia, agencias de contenido digital y desarrolladoras indie</strong> donde el diseñador no tenga que optar entre saber pensar y saber ejecutar. Editar video en Premiere y a la vez armar la grilla en InDesign no son dos habilidades separadas para mí — son la misma disciplina cambiando de herramienta.</p>
+      </div>
     </div>
 
-    <div class="mani-block gd">
-      <h3>Pienso en varios idiomas.</h3>
-      <p>
-        <strong>Portugués y español nativos, inglés B2, italiano básico.</strong> Leo bibliografía técnica sin filtros, trabajo con equipos remotos y entiendo que el diseño tiene tantos acentos como los idiomas. Un extra que se traduce en flexibilidad de tono.
-      </p>
+    <div class="mani-footer">
+      <div class="signo"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+      <div class="who">
+        <div class="name"><span class="c">M</span>auricio <span class="s">S</span>antos</div>
+        <div class="sub">Diseñador Gráfico y Multimedia · UADE FADI · <strong>@maurisantos.design</strong></div>
+      </div>
     </div>
-
-    <div class="mani-block" style="grid-column: 1 / -1;">
-      <h3>Busco donde no haya que elegir.</h3>
-      <p>
-        <strong>Estudios de branding transmedia, agencias de contenido digital y desarrolladoras indie</strong> donde el diseñador no tenga que optar entre saber pensar y saber ejecutar. Editar video en Premiere y a la vez armar la grilla en InDesign no son dos habilidades separadas para mí — son <em class="hl">la misma disciplina cambiando de herramienta</em>.
-      </p>
-    </div>
-  </div>
-
-  <div class="mani-footer">
-    <div class="signo"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-    <div class="who">
-      <div class="name"><span class="c">M</span>auricio <span class="s">S</span>antos</div>
-      <div class="sub">Diseñador Gráfico y Multimedia · UADE FADI · <strong>@maurisantos.design</strong></div>
-    </div>
-  </div>
-
-  <div class="url-strip">
-    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">01 / 05 · MANIFIESTO</span>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     PAGE 2 · CV — A4
+     PAGE 2 · CV STANDALONE — A4
      ═══════════════════════════════════════════════════════════ -->
 <section class="page a4">
-  <header class="header">
-    <div class="brand-word">CV</div>
-    <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
+  <div class="cv">
+    <div class="cv-hero">
+      <div class="logo"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+      <div>
+        <div class="name"><span class="c">M</span>AURICIO <span class="l">E</span>ZEQUIEL <span class="m">S</span>ANTOS</div>
+        <div class="role">Diseñador Gráfico y Diseñador Multimedia en formación</div>
+        <div class="contact-inline">
+          <span class="item"><strong>mepobox@gmail.com</strong></span>
+          <span class="item"><strong>mausantos@uade.edu.ar</strong></span>
+          <span class="item"><strong>+54 376 4186318</strong></span>
+          <span class="item">Buenos Aires · AR</span>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <div class="cv-hero">
-    <div class="logo"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-    <div>
-      <div class="name"><span class="c">M</span>AURICIO <span class="l">E</span>ZEQUIEL <span class="m">S</span>ANTOS</div>
-      <div class="role">Diseñador Gráfico y Diseñador Multimedia en formación</div>
-      <div class="contact">mepobox@gmail.com · mausantos@uade.edu.ar · +54 376 4186318 · Buenos Aires, AR</div>
-    </div>
-  </div>
+    <div class="cv-body">
+      <!-- Left column: Contact + Skills + Languages -->
+      <div>
+        <div class="cv-sec">
+          <div class="sec-hd">Habilidades técnicas</div>
+          <div class="cv-skills-list">
+            <div class="skl">Adobe Photoshop</div>
+            <div class="skl">Adobe Illustrator</div>
+            <div class="skl">Adobe InDesign</div>
+            <div class="skl">DaVinci Resolve</div>
+            <div class="skl">Adobe Premiere Pro</div>
+            <div class="skl">Figma</div>
+            <div class="skl">HTML · CSS · React</div>
+            <div class="skl">Diseño Editorial</div>
+            <div class="skl">Edición y montaje de video</div>
+            <div class="skl">Señalética · Wayfinding</div>
+            <div class="skl">Branding · Identidad</div>
+            <div class="skl">UX/UI en formación</div>
+          </div>
+        </div>
 
-  <div class="cv-section">
-    <h2>Resumen profesional</h2>
-    <p class="body" style="font-size:8.5pt;">
-      Diseñador Gráfico y Multimedia formándose en el 4to año de la carrera en la Universidad Argentina de la Empresa (UADE). Experiencia en diseño editorial, UX/UI básico y proyectos académicos relacionados con infografía y video. Competencias en Adobe Photoshop, Illustrator, InDesign, DaVinci Resolve y Figma.
-    </p>
-  </div>
+        <div class="cv-sec">
+          <div class="sec-hd">Idiomas</div>
+          <div class="cv-langs-list">
+            <div class="lang"><strong>Español</strong><span class="lvl">Competencia Nativa</span></div>
+            <div class="lang"><strong>Portugués</strong><span class="lvl">Competencia Bilingüe / Nativa</span></div>
+            <div class="lang"><strong>Inglés</strong><span class="lvl">Competencia Básica Profesional · B2</span></div>
+            <div class="lang"><strong>Italiano</strong><span class="lvl">Competencia Básica</span></div>
+          </div>
+        </div>
 
-  <div class="cv-section">
-    <h2>Educación</h2>
-    <div class="row">
-      <div class="lbl">Universidad Argentina de la Empresa (UADE) · Buenos Aires</div>
-      <div class="sub"><em>Doble Titulación en Diseño Gráfico y Diseño Multimedia e Interacción</em> — 4to año</div>
-    </div>
-    <div class="row">
-      <div class="lbl">Liceo Naval Almirante Storni (LNAS) · Misiones</div>
-      <div class="sub">Bachiller en Economía y Administración</div>
-    </div>
-    <div class="row">
-      <div class="lbl">Escuela Da Vinci (Virtual) · Buenos Aires</div>
-      <div class="sub">Curso de Formación Profesional en Diseño Gráfico Digital</div>
-    </div>
-    <div class="row">
-      <div class="lbl">Cambridge University Press &amp; Assessment</div>
-      <div class="sub">B2 FIRST English Test — 167</div>
-    </div>
-  </div>
+        <div class="cv-sec">
+          <div class="sec-hd">Enlaces</div>
+          <div class="cv-langs-list">
+            <div class="lang"><strong>Portfolio Web</strong><span class="lvl">mauricio-santos0109.github.io/narrative-stream</span></div>
+            <div class="lang"><strong>Behance</strong><span class="lvl">behance.net/maurisantos1</span></div>
+            <div class="lang"><strong>LinkedIn</strong><span class="lvl">linkedin.com/in/nbdesigner</span></div>
+            <div class="lang"><strong>Instagram</strong><span class="lvl">@maurisantos.design</span></div>
+          </div>
+        </div>
+      </div>
 
-  <div class="cv-section">
-    <h2>Experiencia relevante</h2>
-    <p class="body" style="font-size:7.5pt; color:#666; margin-bottom:2mm;">Algunos de mis proyectos académicos que considero relevantes.</p>
-    <div class="row">
-      <div class="lbl">Infografía "Minifigura LEGO" · UADE</div>
-      <div class="sub">Diseño de infografía visual A3 tipo blueprint · <em>Adobe Illustrator</em> · <span style="color:var(--c-mag)">behance.net/gallery/233446807</span></div>
-    </div>
-    <div class="row">
-      <div class="lbl">Videominuto "PARANOIA" · UADE</div>
-      <div class="sub">Editor's cut de videominuto con tratamiento de grano cinematográfico · <em>DaVinci Resolve</em> · <span style="color:var(--c-mag)">behance.net/gallery/233402927</span></div>
-    </div>
-    <div class="row">
-      <div class="lbl">DG3 — Mi Me Mo · UADE</div>
-      <div class="sub">Sistema de señalética + wayfinding con maqueta a escala · <em>Illustrator · Photoshop</em> · <span style="color:var(--c-mag)">behance.net/gallery/238609381</span></div>
-    </div>
-    <div class="row">
-      <div class="lbl">Portfolio Web "Narrative Stream" · Auto-iniciado</div>
-      <div class="sub">Portfolio React con 9 proyectos + BTS por trabajo · <em>React · Tailwind · GitHub Pages</em> · <span style="color:var(--c-mag)">mauricio-santos0109.github.io/narrative-stream/</span></div>
-    </div>
-  </div>
+      <!-- Right column: Summary + Education + Experience -->
+      <div>
+        <div class="cv-sec">
+          <div class="sec-hd">Resumen profesional</div>
+          <p class="cv-summary">
+            Diseñador Gráfico y Multimedia formándose en el 4to año de la Universidad Argentina de la Empresa (UADE). Trabajo cruzando <strong>diseño editorial, UX/UI y producción audiovisual</strong> — no como especialista de uno solo sino desde la <strong>conversación entre los tres</strong>. Experiencia en infografía, señalética, publicación editorial impresa, y edición y montaje de video. Diferencial: cada proyecto viene acompañado por su <strong>Behind the Scenes</strong> — proceso a la vista.
+          </p>
+        </div>
 
-  <div class="cv-section">
-    <h2>Habilidades técnicas</h2>
-    <div class="cv-skills">
-      <span class="skill">Adobe Photoshop</span>
-      <span class="skill">Adobe Illustrator</span>
-      <span class="skill">Adobe InDesign</span>
-      <span class="skill">DaVinci Resolve</span>
-      <span class="skill">Premiere Pro</span>
-      <span class="skill">Figma</span>
-      <span class="skill">HTML · CSS</span>
-      <span class="skill">Diseño Editorial</span>
-      <span class="skill">Edición de video</span>
-      <span class="skill">UX/UI en formación</span>
-      <span class="skill">Señalética</span>
-      <span class="skill">Branding</span>
-    </div>
-  </div>
+        <div class="cv-sec">
+          <div class="sec-hd">Educación</div>
+          <div class="row">
+            <div class="lbl">Universidad Argentina de la Empresa (UADE) · Buenos Aires</div>
+            <div class="sub"><em>Doble Titulación en Diseño Gráfico y Diseño Multimedia e Interacción</em> · 4to año</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Liceo Naval Almirante Storni (LNAS) · Misiones</div>
+            <div class="sub">Bachiller en Economía y Administración</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Escuela Da Vinci (Virtual) · Buenos Aires</div>
+            <div class="sub">Curso de Formación Profesional en Diseño Gráfico Digital</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Cambridge University Press &amp; Assessment</div>
+            <div class="sub">B2 FIRST English Test · Puntaje 167</div>
+          </div>
+        </div>
 
-  <div class="cv-section">
-    <h2>Idiomas</h2>
-    <div class="cv-langs">
-      <div class="lang"><strong>Español</strong> · <span class="lvl">Competencia Nativa</span></div>
-      <div class="lang"><strong>Portugués</strong> · <span class="lvl">Competencia Bilingüe / Nativa</span></div>
-      <div class="lang"><strong>Inglés</strong> · <span class="lvl">Competencia Básica Profesional (B2)</span></div>
-      <div class="lang"><strong>Italiano</strong> · <span class="lvl">Competencia Básica</span></div>
+        <div class="cv-sec">
+          <div class="sec-hd">Experiencia relevante</div>
+          <div class="row">
+            <div class="lbl">Portfolio Web "Narrative Stream"</div>
+            <div class="sub">Portfolio interactivo React con 9 proyectos y BTS por trabajo. <em>React · Tailwind · GitHub Pages</em></div>
+            <div class="link">mauricio-santos0109.github.io/narrative-stream</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Infografía "Minifigura LEGO" · UADE</div>
+            <div class="sub">Infografía A3 estilo blueprint sobre historia y anatomía de la minifigura LEGO. <em>Adobe Illustrator</em></div>
+            <div class="link">behance.net/gallery/233446807</div>
+          </div>
+          <div class="row">
+            <div class="lbl">DG3 · Mi Me Mo · UADE</div>
+            <div class="sub">Sistema de señalética y wayfinding para recorrido barrial, con maqueta a escala. <em>Illustrator · Photoshop</em></div>
+            <div class="link">behance.net/gallery/238609381</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Videominuto "PARANOIA" · UADE</div>
+            <div class="sub">Editor's cut de videominuto con tratamiento de grano cinematográfico. <em>DaVinci Resolve</em></div>
+            <div class="link">behance.net/gallery/233402927</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="url-strip">
-    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">02 / 05 · CURRICULUM VITAE</span>
   </div>
 </section>
 
@@ -847,129 +748,78 @@
      PAGE 3 · CONCEPTO + SIGNO IDENTIFICADOR — A3
      ═══════════════════════════════════════════════════════════ -->
 <section class="page a3">
-  <header class="header">
-    <div class="brand-word">PORTFOLIO</div>
-    <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal · Concepto + Signo<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
-
   <div class="eyebrow">CH·01 · CONCEPTO Y SIGNO IDENTIFICADOR</div>
   <h2 class="section-title">Tres canales, <span class="ink">una firma.</span></h2>
+
+  <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
+    El discurso de marca se construye respondiendo tres preguntas base — quién, qué, para quién — y se resuelve en un signo que representa <em class="hl">no una disciplina sino un modo de operar entre disciplinas</em>. A continuación, el marco conceptual y las variantes del signo pensadas para distintos contextos de aplicación.
+  </p>
 
   <!-- 3 preguntas -->
   <div class="three-questions">
     <div class="q-card mg">
       <h4>¿Quién soy?</h4>
-      <p>
-        Diseñador multimedia y gráfico <strong>en formación</strong>. Uno la <em class="hl">formalidad del editorial</em> con la <strong>capacidad técnica</strong> de las experiencias interactivas y el <strong>ritmo del lenguaje audiovisual</strong>. No como especialista de un solo canal — como alguien que ve la conversación entre los tres.
-      </p>
+      <p>Diseñador multimedia y gráfico <strong>en formación</strong>. Uno la <strong>formalidad del editorial</strong> con la capacidad técnica de las experiencias interactivas y el <strong>ritmo del lenguaje audiovisual</strong>. No como especialista de un solo canal — como alguien que ve la conversación entre los tres.</p>
     </div>
     <div class="q-card li">
       <h4>¿Qué hago?</h4>
-      <p>
-        Construyo <strong>sistemas narrativos</strong>. No sólo piezas estáticas: proyectos que funcionan cruzando soportes — del papel al entorno virtual y al video. Cada trabajo viene con su <em>Behind the Scenes</em> como evidencia del proceso.
-      </p>
+      <p>Construyo <strong>sistemas narrativos</strong>. No sólo piezas estáticas: proyectos que funcionan cruzando soportes — del papel al entorno virtual y al video. Cada trabajo viene con su <em>Behind the Scenes</em> como evidencia del proceso.</p>
     </div>
     <div class="q-card cy">
       <h4>¿Para quién?</h4>
-      <p>
-        <strong>Estudios de branding transmedia</strong>, <strong>agencias de contenido digital</strong> y <strong>desarrolladoras indie</strong> que necesiten a alguien que entienda tanto de front-end como de montaje de video. Donde el diseñador no tenga que elegir entre pensar y ejecutar.
-      </p>
+      <p><strong>Estudios de branding transmedia</strong>, <strong>agencias de contenido digital</strong> y <strong>desarrolladoras indie</strong> que busquen a alguien que entienda tanto de front-end como de montaje de video. Donde el diseñador no tenga que elegir entre pensar y ejecutar.</p>
     </div>
   </div>
 
   <!-- Argumentación conceptual (nuevo framing) -->
   <div class="argument-box">
     <div class="kicker">Argumentación conceptual · Reframing del signo</div>
-    <h3>Las 3 barras no son una timeline de video: son los <span class="mg">3 canales</span> del oficio — <span class="mg">Editorial</span>, <span class="li">Interacción</span>, <span class="cy">Audiovisual</span>.</h3>
-    <p>
-      La lectura literal del signo (barras verticales + playhead) sugiere una timeline audiovisual, pero <em>ese es sólo el punto de entrada</em>. La estructura real es la del oficio: <em>tres columnas paralelas</em> que representan las 3 áreas del perfil. El playhead gold no reproduce nada específico: es el <em>cursor personal</em> que decide en qué canal enfocar cada proyecto. <em>La M emerge cuando los 3 canales trabajan juntos</em> — es la síntesis del sistema, no el logotipo de una sola disciplina. Naming directo (Mauricio Santos), sin alias ni marca-estudio: el diferencial es la persona operando entre canales.
-    </p>
+    <h3>Las 3 barras no son una timeline: son los <span class="mg">3 canales</span> del oficio — <span class="mg">Editorial</span>, <span class="li">Interacción</span>, <span class="cy">Audiovisual</span>.</h3>
+    <div class="arg-cols">
+      <p>
+        La lectura literal del signo (barras verticales + playhead) sugiere una timeline audiovisual, pero <em>ese es sólo el punto de entrada</em>. La estructura real es la del oficio: <em>tres columnas paralelas</em> que representan las 3 áreas del perfil. El signo no está por debajo de una sola disciplina; está por encima de las tres.
+      </p>
+      <p>
+        El playhead gold no reproduce nada específico: es el <em>cursor personal</em> que decide en qué canal enfocar cada proyecto. La <em>M emerge cuando los tres canales trabajan juntos</em> — es la síntesis del sistema, no el logotipo de una disciplina única. Naming directo (Mauricio Santos), sin alias ni marca-estudio: el diferencial es la persona operando entre canales, no una etiqueta comercial.
+      </p>
+    </div>
   </div>
 
-  <!-- Signo Variables -->
+  <!-- Variables del signo -->
   <div class="signo-block">
     <h4>Variables del signo · Versatilidad de aplicación</h4>
     <div class="signo-variants">
       <div class="var">
-        <img src="./assets/logo/MarcaFINAL.png" alt="Positivo color">
+        <div class="signo-img"><img src="./assets/logo/MarcaFINAL.png" alt="Positivo color"></div>
         <div class="lbl">Positivo · color</div>
       </div>
       <div class="var dark">
-        <img src="./assets/logo/MarcaFINAL.png" alt="Sobre fondo oscuro">
+        <div class="signo-img"><img src="./assets/logo/MarcaFINAL.png" alt="Sobre fondo oscuro"></div>
         <div class="lbl">Sobre oscuro</div>
       </div>
-      <div class="var" style="background:#f5f5f5;">
-        <svg viewBox="0 0 100 100" style="width:60%;" xmlns="http://www.w3.org/2000/svg"><polygon points="30,15 45,15 37.5,30" fill="#1B1919"/><polygon points="55,15 70,15 62.5,30" fill="#1B1919"/><rect x="25" y="30" width="15" height="60" fill="#1B1919"/><rect x="42.5" y="30" width="15" height="55" fill="#1B1919"/><rect x="60" y="30" width="15" height="60" fill="#1B1919"/></svg>
-        <div class="lbl">Monocromo</div>
+      <div class="var">
+        <div class="signo-img"><img src="./assets/logo/MarcaBN.png" alt="B&N"></div>
+        <div class="lbl">Blanco &amp; Negro</div>
       </div>
       <div class="var">
-        <div style="width:80%; text-align:center;">
-          <div style="display:flex; align-items:center; justify-content:center; gap:2mm;">
-            <img src="./assets/logo/MarcaFINAL.png" alt="M" style="width:8mm;">
-            <div style="font-size:8pt; font-weight:900; letter-spacing:-0.02em; text-align:left; line-height:1;">MAURICIO<br>SANTOS</div>
+        <div class="signo-img">
+          <div class="horiz-row">
+            <img src="./assets/logo/MarcaFINAL.png" alt="M">
+            <div class="txt"><span class="c">M</span>AURICIO<br><span class="s">S</span>ANTOS</div>
           </div>
         </div>
         <div class="lbl">Horizontal · imagotipo</div>
       </div>
       <div class="var">
-        <img src="./assets/logo/MarcaFINAL.png" alt="Vertical" style="width:45%;">
-        <div style="font-size:7pt; font-weight:900; letter-spacing:-0.02em; text-align:center; line-height:1; margin-top:1mm;">MAURICIO<br>SANTOS</div>
+        <div class="signo-img">
+          <div class="vert-stack">
+            <img src="./assets/logo/MarcaFINAL.png" alt="M">
+            <div class="txt"><span class="c">M</span>AURICIO<br><span class="s">S</span>ANTOS</div>
+          </div>
+        </div>
         <div class="lbl">Vertical · imagotipo</div>
       </div>
     </div>
-  </div>
-
-  <!-- Grid + Clear Space + Min Size -->
-  <div class="signo-tech-row">
-    <div class="tech-card">
-      <h4>Construcción · Grilla base X</h4>
-      <div class="grid-viz">
-        <div class="axis-h t"></div>
-        <div class="axis-h b"></div>
-        <div class="axis-v l"></div>
-        <div class="axis-v r"></div>
-        <img src="./assets/logo/MarcaFINAL.png" alt="Construcción">
-      </div>
-      <p>Módulo base <strong>X</strong> = ancho de una barra. Altura total = 6X. Playheads = triángulos rectos con base X sobre las barras cyan y magenta. Espacio negativo entre barras = X/2.</p>
-    </div>
-
-    <div class="tech-card">
-      <h4>Área de reserva</h4>
-      <div class="clear-space">
-        <img src="./assets/logo/MarcaFINAL.png" alt="Clear space">
-        <span class="x t">X</span>
-        <span class="x r">X</span>
-      </div>
-      <p>Mantener un <strong>margen mínimo de X</strong> alrededor del signo en cualquier aplicación. No permitir textos, imágenes ni otros signos dentro de ese perímetro.</p>
-    </div>
-
-    <div class="tech-card">
-      <h4>Tamaño mínimo</h4>
-      <div class="min-size">
-        <div class="step">
-          <img class="big" src="./assets/logo/MarcaFINAL.png" alt="20mm">
-          <div class="sz">20 mm</div>
-        </div>
-        <div class="step">
-          <img class="mid" src="./assets/logo/MarcaFINAL.png" alt="12mm">
-          <div class="sz">12 mm</div>
-        </div>
-        <div class="step">
-          <img class="tiny" src="./assets/logo/MarcaFINAL.png" alt="6mm">
-          <div class="sz">6 mm · mín.</div>
-        </div>
-      </div>
-      <p>Print: <strong>6 mm</strong> de alto mínimo para mantener legibilidad de barras. Digital: <strong>32 px</strong> mínimo (favicon / avatar chico).</p>
-    </div>
-  </div>
-
-  <div class="url-strip">
-    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">03 / 05 · CONCEPTO + SIGNO IDENTIFICADOR</span>
   </div>
 </section>
 
@@ -977,19 +827,14 @@
      PAGE 4 · SISTEMA GRÁFICO + ESTRATEGIA — A3
      ═══════════════════════════════════════════════════════════ -->
 <section class="page a3">
-  <header class="header">
-    <div class="brand-word">PORTFOLIO</div>
-    <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal · Sistema + Estrategia<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
-
   <div class="eyebrow">CH·02 · SISTEMA GRÁFICO</div>
   <h2 class="section-title">El programa <span class="ink">visual.</span></h2>
 
-  <div class="sys-grid">
+  <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
+    Dos ejes sostienen la identidad visual: la <em class="hl">paleta cromática con roles funcionales</em> — cada color representa un área del oficio y no se usa arbitrariamente — y el <em class="hl">sistema tipográfico Montserrat</em>, una sola familia resuelta por variaciones de peso y tracking. La restricción es intencional: un sistema simple es más fácil de mantener coherente entre soportes.
+  </p>
+
+  <div class="sys-2col">
 
     <!-- Palette with roles -->
     <div class="sys-card">
@@ -1008,7 +853,7 @@
           <div class="hex">#29ABE3</div>
         </div>
         <div class="swatch-role gold">
-          <div class="role">Playhead / CTA <span class="rl">Acento · llamados de acción · destacados</span></div>
+          <div class="role">Playhead / CTA <span class="rl">Acento · llamados de acción</span></div>
           <div class="hex">#F9B03D</div>
         </div>
         <div class="swatch-role dark">
@@ -1016,6 +861,7 @@
           <div class="hex">#1B1919</div>
         </div>
       </div>
+      <p>Cada color representa un área del perfil y se aplica <strong>como codificación semántica</strong>, no como decoración. El gold funciona como acento transversal y como CTA. El fondo neutro sostiene el contraste en piezas oscuras.</p>
     </div>
 
     <!-- Typography system -->
@@ -1039,8 +885,8 @@
         </div>
         <div class="type-row">
           <div class="role">Body</div>
-          <div class="sample body">Aa Bb Cc Dd Ee Ff Gg Hh</div>
-          <div class="spec">400 · 0em · 8–10pt · lh 1.5</div>
+          <div class="sample body">Aa Bb Cc Dd Ee Ff Gg</div>
+          <div class="spec">400 · 0em · 8–10pt</div>
         </div>
         <div class="type-row">
           <div class="role">Eyebrow</div>
@@ -1048,206 +894,135 @@
           <div class="spec">700 · 0.22em · 7pt · upper</div>
         </div>
       </div>
-      <p style="font-size:7pt; color:#666; margin-top:4mm; line-height:1.4;">
-        <strong>Una sola familia tipográfica</strong> (Montserrat) para toda la comunicación. La jerarquía se resuelve por <em>peso</em> y <em>tracking</em>, no por combinar tipografías. Contraste alto entre display (900) y body (400) sostiene la legibilidad en pantalla y en print.
-      </p>
+      <p><strong>Una sola familia tipográfica</strong> (Montserrat) para toda la comunicación. La jerarquía se resuelve por <em>peso</em> y <em>tracking</em>, no combinando tipografías. El contraste alto entre display (900) y body (400) sostiene la legibilidad en pantalla y en print.</p>
     </div>
+  </div>
 
-    <!-- Grid base -->
-    <div class="sys-card">
-      <h3><span class="num">03</span>Grilla base · 12 columnas modulares</h3>
-      <div class="grid-base">
-        <div class="modules">
-          <div class="mod"></div>
-          <div class="mod"></div>
-          <div class="mod"></div>
-          <div class="mod"></div>
-          <div class="mod"></div>
-          <div class="mod"></div>
+  <!-- Estrategia -->
+  <div class="strategy-row">
+    <div class="strat-block">
+      <h3><span class="num">03</span>Estrategia de portfolio</h3>
+      <div class="strat-cols">
+        <div class="cell">
+          <div class="lbl">01 · Principal</div>
+          <div class="name">Behance · Portfolio Web</div>
+          <div class="desc">Trabajos completos con explicación técnica. Piezas terminadas, sinopsis, herramientas, BTS embebido.</div>
         </div>
-        <div class="caption">6 col base · escalable a 12</div>
+        <div class="cell li">
+          <div class="lbl">02 · Secundario</div>
+          <div class="name">CV · Landing PDF</div>
+          <div class="desc">Formato compacto para búsqueda de pasantías. Doble titulación + proyectos seleccionados + skills + idiomas.</div>
+        </div>
+        <div class="cell mg">
+          <div class="lbl">03 · Social</div>
+          <div class="name">Instagram · YouTube</div>
+          <div class="desc">Bitácora de proceso creativo. Videos cortos y dinámicos, posts con carousel BTS, stories de sección.</div>
+        </div>
       </div>
-      <p style="font-size:7pt; color:#666; margin-top:3mm; line-height:1.4;">
-        <strong>Grilla modular editorial</strong> aplicada a los tres soportes: A3 print (6 columnas), portfolio web (12 columnas responsive) y social media (3×3 en IG). El sistema es el mismo — cambia la cantidad de columnas.
-      </p>
     </div>
 
-    <!-- Texture/pattern -->
-    <div class="sys-card">
-      <h3><span class="num">04</span>Textura de marca · Gradiente + noise</h3>
-      <div class="texture-demo">
-        <div class="caption">Fondos de piezas sociales · SVG noise + brand tint</div>
+    <div class="strat-block">
+      <h3><span class="num">04</span>Estrategia de redes sociales</h3>
+      <div class="strat-cols">
+        <div class="cell">
+          <div class="lbl">Profunda</div>
+          <div class="name">Instagram</div>
+          <div class="desc">Vidriera principal del proceso. Posts curados + stories + highlights por sección.</div>
+          <div class="aud"><strong>Pares de diseño + reclutadores creativos</strong></div>
+        </div>
+        <div class="cell li">
+          <div class="lbl">Networking</div>
+          <div class="name">LinkedIn</div>
+          <div class="desc">Header + foto + headline + about. Portfolio formal para estudios y agencias.</div>
+          <div class="aud"><strong>Estudios · agencias · pasantías</strong></div>
+        </div>
+        <div class="cell mg">
+          <div class="lbl">Bitácora</div>
+          <div class="name">YouTube</div>
+          <div class="desc">Canal complementario donde Instagram no alcanza por duración. Procesos largos.</div>
+          <div class="aud"><strong>Curiosos del proceso · estudiantes</strong></div>
+        </div>
       </div>
-      <p style="font-size:7pt; color:#666; margin-top:3mm; line-height:1.4;">
-        <strong>Textura del sistema:</strong> gradientes radiales de los 4 colores brand sobre fondo <span style="color:#1B1919; font-weight:700;">#1B1919</span> + filtro SVG de <em>fractal noise</em> con blend-mode overlay. Aplica en highlight covers, stories, banner LinkedIn y YouTube. Da profundidad sin necesidad de imágenes de stock.
-      </p>
     </div>
-
-  </div>
-
-  <!-- Portfolio strategy -->
-  <div class="eyebrow" style="margin-top:4mm; margin-bottom:3mm;">CH·03 · ESTRATEGIA DE PORTFOLIO</div>
-  <div class="portfolio-strategy">
-    <div class="cell">
-      <div class="lbl">01 · Principal</div>
-      <div class="name">Behance · Portfolio Web</div>
-      <div class="desc">Trabajos completos con explicación técnica. Piezas terminadas, sinopsis, herramientas, BTS embebido. Dirigido a estudios y reclutadores.</div>
-    </div>
-    <div class="cell">
-      <div class="lbl">02 · Secundario</div>
-      <div class="name">CV · Landing PDF</div>
-      <div class="desc">Formato compacto para búsqueda de pasantías. Doble titulación destacada + proyectos seleccionados + skills + idiomas. Descargable.</div>
-    </div>
-    <div class="cell">
-      <div class="lbl">03 · Social</div>
-      <div class="name">Instagram · YouTube</div>
-      <div class="desc">Bitácora de proceso creativo. Videos cortos y dinámicos de edición, posts con carousel BTS, stories de sección. Muestra la cocina.</div>
-    </div>
-  </div>
-
-  <div class="eyebrow" style="margin-top:5mm; margin-bottom:3mm;">CH·04 · ESTRATEGIA DE REDES SOCIALES</div>
-  <div class="strategy-grid">
-    <div class="strat-card">
-      <div class="kicker">Plataforma profunda</div>
-      <h4>Instagram</h4>
-      <p>Vidriera principal del proceso. Posts curados + stories BTS. Donde la marca se ve completa: grilla, historia, highlights.</p>
-      <div class="audience"><strong>Audiencia:</strong> pares de diseño + reclutadores creativos</div>
-    </div>
-    <div class="strat-card li">
-      <div class="kicker">Networking profesional</div>
-      <h4>LinkedIn</h4>
-      <p>Header + foto + headline + about. Portfolio formal para estudios y agencias. Menos densidad, más claridad, tono profesional.</p>
-      <div class="audience"><strong>Audiencia:</strong> estudios · agencias · pasantías</div>
-    </div>
-    <div class="strat-card mg">
-      <div class="kicker">Bitácora extendida</div>
-      <h4>YouTube</h4>
-      <p>Canal complementario donde Instagram no alcanza por duración. Procesos largos, walkthroughs. BTS en formato extendido.</p>
-      <div class="audience"><strong>Audiencia:</strong> curiosos del proceso · estudiantes</div>
-    </div>
-  </div>
-
-  <div class="url-strip">
-    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">04 / 05 · SISTEMA GRÁFICO + ESTRATEGIA</span>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     PAGE 5 · APLICACIONES MARCARIAS + TARJETA + OBJETO — A3
+     PAGE 5 · TARJETA + OBJETO — A3
      ═══════════════════════════════════════════════════════════ -->
 <section class="page a3">
-  <header class="header">
-    <div class="brand-word">PORTFOLIO</div>
-    <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal · Aplicaciones<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
+  <div class="eyebrow">CH·03 · APLICACIONES FÍSICAS</div>
+  <h2 class="section-title">La marca <span class="ink">se toca.</span></h2>
 
-  <div class="eyebrow">CH·05 · APLICACIONES MARCARIAS</div>
-  <h2 class="section-title">La marca <span class="ink">en producción.</span></h2>
-
-  <p class="body" style="margin-bottom:5mm; max-width:220mm;">
-    Ocho aplicaciones reales — no mockups — que muestran el sistema funcionando cross-plataforma. Cada pieza respeta la <em class="hl">jerarquía cromática por área</em> (cyan/lime/magenta), la <em class="hl">tipografía única</em> (Montserrat) y el <em class="hl">signo como anclaje</em>. Piezas producidas para el TP_3 (Estrategia de Redes) que operan también como manual de marca vivo.
+  <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
+    Dos objetos donde la identidad se materializa: la <em class="hl">tarjeta personal</em> (contacto inmediato en formato tradicional 9×5 cm) y el <em class="hl">Asset Tag</em> (accesorio colgante — llavero, mochila o proyecto físico — que traslada la lógica del "material en crudo" desde el entorno digital al espacio físico).
   </p>
 
-  <div class="apps-grid">
-    <div class="app-card cy">
-      <div class="head"><span class="lbl">01 · Foto de perfil</span><span class="plat">Instagram</span></div>
-      <div class="art square"><img src="./assets/social/ig-profile-pic.png" alt="Profile pic"></div>
-      <div class="caption">M sobre sistema completo con anillo gold. Legible en el crop circular a cualquier escala.</div>
-    </div>
+  <div class="tarj-obj">
+    <!-- Left column: Tarjeta -->
+    <div class="side-block">
+      <h3>Tarjeta personal · 9 × 5 cm</h3>
+      <p class="lead">
+        Tarjeta clásica pensada para <em>momentos formales de networking</em> — eventos, pasantías, primeros contactos. El <strong>frente</strong> es puramente signo (impacto visual, memoria a golpe de ojo). El <strong>dorso</strong> concentra la información funcional: nombre, rol, contacto directo y QR al portfolio. Los dos lados sobre el mismo fondo oscuro para mantener cohesión al girarla.
+      </p>
 
-    <div class="app-card cy">
-      <div class="head"><span class="lbl">02 · Post feed</span><span class="plat">Instagram · 1080×1080</span></div>
-      <div class="art square"><img src="./assets/social/ig-post-01-nena.png" alt="Post NENA"></div>
-      <div class="caption">Sistema unificado por proyecto. Chip categoría + monograma + strip gold + handle. NENA — Vicios.</div>
-    </div>
+      <div class="card-wrapper">
+        <div class="kicker">Frente <span class="dim">· 90 × 50 mm</span></div>
+        <div class="biz-card front">
+          <div class="signo-big"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+        </div>
+      </div>
 
-    <div class="app-card cy">
-      <div class="head"><span class="lbl">03 · Story</span><span class="plat">Instagram · 1080×1920</span></div>
-      <div class="art tall"><img src="./assets/social/ig-story-01-manifesto.png" alt="Story"></div>
-      <div class="caption">Gradiente diagonal con paleta brand. Content centrado en safe zone (evita header + comment input de IG).</div>
-    </div>
-
-    <div class="app-card cy">
-      <div class="head"><span class="lbl">04 · Highlight cover</span><span class="plat">Instagram · 1080×1920</span></div>
-      <div class="art tall"><img src="./assets/social/ig-hl-cover-ed.png" alt="Highlight Editorial"></div>
-      <div class="caption">Letra grande centrada para el crop circular. Bg color por área (magenta = Editorial).</div>
-    </div>
-
-    <div class="app-card li">
-      <div class="head"><span class="lbl">05 · Banner LinkedIn</span><span class="plat">LinkedIn · 1584×396</span></div>
-      <div class="art li-wide"><img src="./assets/social/li-banner.png" alt="LI banner"></div>
-      <div class="caption">Horizontal 4:1. Wordmark con M cian + S magenta + timeline bars + handle. Networking formal.</div>
-    </div>
-
-    <div class="app-card mg">
-      <div class="head"><span class="lbl">06 · Banner YouTube</span><span class="plat">YouTube · 2560×1440</span></div>
-      <div class="art wide"><img src="./assets/social/yt-banner.png" alt="YT banner"></div>
-      <div class="caption">Safe zone 1546×423 respetada. "El detrás de cámaras" como línea editorial del canal.</div>
-    </div>
-  </div>
-
-  <!-- Card + Object row -->
-  <div class="eyebrow">CH·06 · TARJETA PERSONAL · 9×5 cm</div>
-
-  <div class="card-strip">
-    <div class="card-cell">
-      <div class="kicker">Frente</div>
-      <div class="biz-card front">
-        <div class="signo-mini"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-        <div class="info">
-          <div class="name"><span class="c">M</span>auricio <span class="s">S</span>antos</div>
-          <div class="role">Diseñador Gráfico y Multimedia</div>
-          <div class="contact">
-            <strong>mepobox@gmail.com</strong><br>
-            <strong>+54 376 4186318</strong> · Buenos Aires · AR
+      <div class="card-wrapper">
+        <div class="kicker">Dorso <span class="dim">· 90 × 50 mm</span></div>
+        <div class="biz-card back">
+          <div class="content">
+            <div class="info">
+              <div class="name"><span class="c">M</span>AURICIO <span class="s">S</span>ANTOS</div>
+              <div class="role">Diseñador Gráfico y Multimedia</div>
+              <div class="contact">
+                <strong>mepobox@gmail.com</strong><br>
+                <strong>+54 376 4186318</strong>
+              </div>
+            </div>
+            <div class="qr-box">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1&color=1B1919" alt="QR">
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="card-cell">
-      <div class="kicker">Dorso</div>
-      <div class="biz-card back">
-        <div class="signo-big"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1&color=1B1919" alt="QR"></div>
-        <div class="word">
-          <span>@maurisantos.design</span>
-          <span class="g">↗ Portfolio</span>
+
+    <!-- Right column: Asset Tag (OBJETO) -->
+    <div class="side-block">
+      <h3>Asset Tag · Objeto colgante</h3>
+      <p class="lead">
+        Etiqueta inspirada en los <em>asset tags de rodajes profesionales</em> — las que identifican cámara, lente, tarjeta, cinta. El objeto se cuelga: del cuello (lanyard), de la mochila, del llavero, o de proyectos físicos (maquetas, libros). Traslada al espacio físico el concepto de <em>"material en crudo"</em> (RAW) que atraviesa toda la marca personal. Refuerza el manifiesto — <em>muestro la cocina</em> — porque no somos el resultado terminado; somos alguien que carga sus assets crudos a todos lados.
+      </p>
+
+      <div class="object-photo">
+        <img src="./assets/logo/objeto-asset-tag.png" alt="Asset Tag colgado">
+      </div>
+
+      <div class="object-meta">
+        <div class="meta-block">
+          <div class="lbl">Materialidad</div>
+          <div class="val">PVC rígido negro · impresión UV · <strong>4/0 tintas + gold</strong></div>
+        </div>
+        <div class="meta-block">
+          <div class="lbl">Formato</div>
+          <div class="val">40 × 55 mm · anilla metálica · <strong>ojal reforzado</strong></div>
+        </div>
+        <div class="meta-block">
+          <div class="lbl">Uso</div>
+          <div class="val">Lanyard · mochila · llavero · marcador de proyecto físico</div>
+        </div>
+        <div class="meta-block">
+          <div class="lbl">Sistema</div>
+          <div class="val">Signo grande + <strong>tagline extendido</strong> · fondo neutro</div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="eyebrow">CH·07 · OBJETO · Asset Tag</div>
-  <div class="object-block">
-    <div class="tag-viz">
-      <div class="signo"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-      <div class="word">
-        <span class="role">RAW · Behind the Scenes</span>
-        MAURICIO<br>SANTOS
-      </div>
-    </div>
-    <div class="obj-text">
-      <h3>Asset Tag · Material en crudo.</h3>
-      <p>
-        Etiqueta de identificación inspirada en las <em>asset tags de rodajes profesionales</em> — las que identifican cámara, lente, tarjeta, cinta. Traslada la identidad del entorno digital al espacio físico: el objeto <em>hace real el concepto de "material en crudo"</em> (RAW) que atraviesa la marca personal.
-      </p>
-      <p>
-        Se usa como llavero, como accesorio de mochila, o colgado en los proyectos físicos (maquetas de señalética, libros editoriales). Refuerza el manifiesto "muestro la cocina" — no soy el producto terminado; soy alguien que se lleva sus assets crudos a todos lados.
-      </p>
-      <div class="specs">
-        <strong>Materialidad:</strong> PVC rígido negro impreso UV · 40×55mm · anilla metálica dorada · impresión a 4/0 tintas + tinta gold especial · sistema de agujero reforzado con ojal metálico
-      </div>
-    </div>
-  </div>
-
-  <div class="url-strip">
-    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">05 / 05 · APLICACIONES + TARJETA + OBJETO</span>
   </div>
 </section>
 
