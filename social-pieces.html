@@ -154,7 +154,7 @@
   /* Brand chip top-left · left safe zone protegido para no cortarse en grid del perfil */
   .ig-post .cat-chip {
     position: absolute;
-    top: 4cqi; left: 10cqi;
+    top: 4cqi; left: 14cqi;
     background: rgba(15,15,15,0.65);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.15);
@@ -177,7 +177,7 @@
   /* Monogram chip top-right (gold) */
   .ig-post .brand-chip {
     position: absolute;
-    top: 4cqi; right: 4cqi;
+    top: 4cqi; right: 12cqi;
     width: 8.4cqi; height: 8.4cqi;
     border-radius: 50%;
     background: rgba(15,15,15,0.65);
@@ -190,10 +190,10 @@
   }
   .ig-post .brand-chip img { max-width: 100%; max-height: 100%; }
 
-  /* Bottom info · left safe zone (10cqi) para que no se corte en el grid del perfil */
+  /* Bottom info · safe zones L y R para que nada se corte en el grid del perfil */
   .ig-post .info-zone {
     position: relative;
-    padding: 5cqi 5cqi 5cqi 10cqi;
+    padding: 5cqi 12cqi 5cqi 14cqi;
     z-index: 2;
   }
   .ig-post .info-zone .eyebrow {
@@ -215,7 +215,7 @@
     bottom: 0; left: 0; right: 0;
     background: var(--c-gold);
     color: var(--c-bg-d);
-    padding: 1.6cqi 5cqi 1.6cqi 10cqi;
+    padding: 1.6cqi 12cqi 1.6cqi 14cqi;
     font-size: 1.7cqi; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
     display: flex; align-items: center; justify-content: space-between;
   }
@@ -464,7 +464,7 @@
     z-index: 1;
   }
   .ig-post-bts .cat-chip {
-    position: absolute; top: 4cqi; left: 10cqi; z-index: 3;
+    position: absolute; top: 4cqi; left: 14cqi; z-index: 3;
     background: rgba(15,15,15,0.65);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.15);
@@ -478,7 +478,7 @@
   .ig-post-bts .cat-chip.mag  .dot { background: var(--c-mag);  box-shadow: 0 0 1.2cqi var(--c-mag); }
   .ig-post-bts .cat-chip .lbl { font-size: 1.6cqi; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: white; }
   .ig-post-bts .brand-chip {
-    position: absolute; top: 4cqi; right: 4cqi; z-index: 3;
+    position: absolute; top: 4cqi; right: 12cqi; z-index: 3;
     width: 8.4cqi; height: 8.4cqi; border-radius: 50%;
     background: rgba(15,15,15,0.65);
     backdrop-filter: blur(8px);
@@ -489,12 +489,12 @@
   }
   .ig-post-bts .brand-chip img { max-width: 100%; max-height: 100%; }
   .ig-post-bts .proj-title {
-    position: absolute; bottom: 11cqi; left: 10cqi; right: 5cqi; z-index: 3;
+    position: absolute; bottom: 11cqi; left: 14cqi; right: 12cqi; z-index: 3;
     font-size: 5.5cqi; font-weight: 900; letter-spacing: -0.025em; line-height: 0.95;
     color: white; text-shadow: 0 0.3cqi 1cqi rgba(0,0,0,0.7);
   }
   .ig-post-bts .frame-label {
-    position: absolute; bottom: 7cqi; left: 10cqi; z-index: 3;
+    position: absolute; bottom: 7cqi; left: 14cqi; z-index: 3;
     font-size: 1.8cqi; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
     color: rgba(255,255,255,0.8);
     text-shadow: 0 0.2cqi 0.6cqi rgba(0,0,0,0.6);
@@ -503,7 +503,7 @@
   .ig-post-bts .handle-strip {
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
     background: var(--c-gold); color: var(--c-bg-d);
-    padding: 1.4cqi 5cqi 1.4cqi 10cqi;
+    padding: 1.4cqi 12cqi 1.4cqi 14cqi;
     font-size: 1.6cqi; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
     display: flex; align-items: center; justify-content: space-between;
   }
@@ -645,6 +645,57 @@
     filter: drop-shadow(0 1.5cqi 3cqi rgba(0,0,0,0.6));
   }
 
+  /* ─── PROFILE PIC POR RED · bg brand-color con M en centro ─── */
+  .pp-network {
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pp-network::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.10; mix-blend-mode: overlay; pointer-events: none;
+    z-index: 1;
+  }
+  .pp-network.bg-cyan { background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(0,0,0,0.25), transparent 55%),
+    var(--c-cyan); }
+  .pp-network.bg-lime { background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.20), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(0,0,0,0.22), transparent 55%),
+    var(--c-lime); }
+  .pp-network.bg-mag  { background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(0,0,0,0.28), transparent 55%),
+    var(--c-mag); }
+  .pp-network .pp-inner {
+    position: relative; z-index: 2;
+    width: 74%; height: 74%;
+    border-radius: 50%;
+    background: rgba(15,15,15,0.42);
+    backdrop-filter: blur(4px);
+    border: 0.7cqi solid var(--c-gold);
+    box-shadow:
+      0 0 6cqi rgba(249,176,61,0.5),
+      inset 0 0 5cqi rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    padding: 11cqi;
+  }
+  .pp-network .pp-inner img {
+    max-width: 100%; max-height: 100%;
+    filter: drop-shadow(0 1.5cqi 3cqi rgba(0,0,0,0.7));
+  }
+  /* Etiqueta de red abajo (tenue) */
+  .pp-network .pp-badge {
+    position: absolute; bottom: 5cqi; left: 50%; transform: translateX(-50%);
+    z-index: 3;
+    font-family: 'Courier New', monospace;
+    font-size: 1.6cqi; font-weight: 700; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 0.2cqi 0.8cqi rgba(0,0,0,0.6);
+  }
+  .pp-network.bg-lime .pp-badge { color: rgba(27,25,25,0.85); text-shadow: 0 0.2cqi 0.8cqi rgba(255,255,255,0.3); }
+
   /* ───────── YOUTUBE BANNER (2560×1440 = 16:9 with safe zone) ───────── */
   .yt-banner-piece {
     background: var(--c-bg-d);
@@ -757,16 +808,52 @@
   <p class="sub">14 piezas dimensionadas exacto a cada plataforma. <strong>Click sobre cualquiera</strong> para abrirla a tamaño real en una pestaña nueva — útil para screenshot manual. O usá el render script para generar PNGs auto-renderizados a <code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:3px;">assets/social/</code>.</p>
 </div>
 
-<!-- ─── INSTAGRAM PROFILE PIC (1 × 1080×1080, IG la crop a círculo) ─── -->
+<!-- ─── PROFILE PICS (4 × 1080×1080, IG la crop a círculo) ─── -->
 <section class="section">
-  <h2>Instagram · Profile picture <span class="dim">1 pieza · 1080×1080 (crop circular)</span></h2>
+  <h2>Profile pictures <span class="dim">4 piezas · 1080×1080 (crop circular) · 1 base + 3 por red</span></h2>
   <div class="grid-stories">
     <div class="piece-card" id="ig-profile-pic">
-      <div class="label"><span>01 · Foto de perfil</span><span class="dim">1080×1080</span></div>
+      <div class="label"><span>00 · Base · sistema completo</span><span class="dim">1080×1080</span></div>
       <a class="preview" href="#ig-profile-pic">
         <div class="wrap-1-1">
           <div class="piece ig-profile-pic">
             <div class="pp-ring"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="piece-card" id="pp-instagram">
+      <div class="label"><span>01 · Instagram · cian</span><span class="dim">1080×1080</span></div>
+      <a class="preview" href="#pp-instagram">
+        <div class="wrap-1-1">
+          <div class="piece pp-network bg-cyan">
+            <div class="pp-inner"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+            <div class="pp-badge">Instagram</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="piece-card" id="pp-linkedin">
+      <div class="label"><span>02 · LinkedIn · lima</span><span class="dim">1080×1080</span></div>
+      <a class="preview" href="#pp-linkedin">
+        <div class="wrap-1-1">
+          <div class="piece pp-network bg-lime">
+            <div class="pp-inner"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+            <div class="pp-badge">LinkedIn</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="piece-card" id="pp-youtube">
+      <div class="label"><span>03 · YouTube · magenta</span><span class="dim">1080×1080</span></div>
+      <a class="preview" href="#pp-youtube">
+        <div class="wrap-1-1">
+          <div class="piece pp-network bg-mag">
+            <div class="pp-inner"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+            <div class="pp-badge">YouTube</div>
           </div>
         </div>
       </a>
