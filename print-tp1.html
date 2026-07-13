@@ -85,41 +85,41 @@
   .mani {
     display: grid;
     grid-template-rows: auto auto 1fr auto;
-    gap: 8mm;
+    gap: 6mm;
     height: 100%;
   }
   .mani-eyebrow-row { display: flex; align-items: center; gap: 4mm; }
   .mani-eyebrow-row .rule { flex: 1; height: 0.3mm; background: var(--c-ink); }
   .mani-title {
-    font-size: 56pt; font-weight: 900; letter-spacing: -0.04em; line-height: 0.85;
+    font-size: 44pt; font-weight: 900; letter-spacing: -0.04em; line-height: 0.9;
   }
   .mani-title .accent { color: var(--c-mag); }
   .mani-title .sub {
-    font-size: 10pt; font-weight: 500; letter-spacing: -0.01em; line-height: 1.4;
-    color: #555; margin-top: 3mm; max-width: 130mm;
+    font-size: 9.5pt; font-weight: 500; letter-spacing: -0.01em; line-height: 1.4;
+    color: #555; margin-top: 2.5mm; max-width: 130mm;
   }
   .mani-title .sub em { font-style: italic; color: var(--c-mag); font-weight: 700; }
 
   .mani-cols {
     column-count: 2;
-    column-gap: 8mm;
+    column-gap: 7mm;
     column-rule: 0.2mm solid #ddd;
   }
   .mani-block {
     break-inside: avoid;
-    margin-bottom: 5mm;
-    padding-left: 4mm;
+    margin-bottom: 3.5mm;
+    padding-left: 3.5mm;
     border-left: 1.2mm solid var(--c-mag);
   }
   .mani-block.cy { border-left-color: var(--c-cyan); }
   .mani-block.li { border-left-color: var(--c-lime); }
   .mani-block.gd { border-left-color: var(--c-gold); }
   .mani-block h3 {
-    font-size: 11pt; font-weight: 800; letter-spacing: -0.01em;
-    margin-bottom: 1.5mm;
+    font-size: 10pt; font-weight: 800; letter-spacing: -0.01em;
+    margin-bottom: 1mm;
   }
   .mani-block p {
-    font-size: 8.5pt; line-height: 1.55; color: #444;
+    font-size: 8pt; line-height: 1.5; color: #444;
     text-align: justify;
     hyphens: auto;
   }
@@ -127,17 +127,17 @@
 
   .mani-footer {
     display: flex; align-items: center; gap: 6mm;
-    padding-top: 5mm; border-top: 0.3mm solid var(--c-ink);
+    padding-top: 4mm; border-top: 0.3mm solid var(--c-ink);
   }
-  .mani-footer .signo { width: 26mm; flex: 0 0 26mm; }
+  .mani-footer .signo { width: 22mm; flex: 0 0 22mm; }
   .mani-footer .signo img { width: 100%; }
   .mani-footer .who .name {
-    font-size: 14pt; font-weight: 900; letter-spacing: -0.02em;
+    font-size: 13pt; font-weight: 900; letter-spacing: -0.02em;
   }
   .mani-footer .who .name .c { color: var(--c-cyan); }
   .mani-footer .who .name .s { color: var(--c-mag); }
   .mani-footer .who .sub {
-    font-size: 8pt; color: #555; margin-top: 1mm;
+    font-size: 7.5pt; color: #555; margin-top: 1mm;
   }
 
   /* ═════════════════════════════════════════════
@@ -313,7 +313,8 @@
   }
   .signo-variants .var.wide {
     grid-column: span 3;
-    aspect-ratio: 1.35;
+    aspect-ratio: 1.5;
+    padding: 8mm 6mm 5mm;
   }
   .signo-variants .var.dark { background: var(--c-bg-d); border-color: var(--c-bg-d); }
   .signo-variants .var .signo-img {
@@ -328,20 +329,20 @@
   }
   .signo-variants .var.dark .lbl { color: rgba(255,255,255,0.85); }
   .signo-variants .var .horiz-row {
-    display: flex; align-items: center; gap: 4mm;
+    display: flex; align-items: center; gap: 7mm;
   }
-  .signo-variants .var .horiz-row img { width: 16mm; }
+  .signo-variants .var .horiz-row img { width: 32mm; }
   .signo-variants .var .horiz-row .txt {
-    font-size: 13pt; font-weight: 900; letter-spacing: -0.02em; text-align: left; line-height: 1;
+    font-size: 26pt; font-weight: 900; letter-spacing: -0.02em; text-align: left; line-height: 0.95;
   }
   .signo-variants .var .horiz-row .txt .c { color: var(--c-cyan); }
   .signo-variants .var .horiz-row .txt .s { color: var(--c-mag); }
   .signo-variants .var .vert-stack {
-    display: flex; flex-direction: column; align-items: center; gap: 3mm;
+    display: flex; flex-direction: column; align-items: center; gap: 4mm;
   }
-  .signo-variants .var .vert-stack img { width: 22mm; }
+  .signo-variants .var .vert-stack img { width: 40mm; }
   .signo-variants .var .vert-stack .txt {
-    font-size: 11pt; font-weight: 900; letter-spacing: -0.02em; text-align: center; line-height: 1;
+    font-size: 20pt; font-weight: 900; letter-spacing: -0.02em; text-align: center; line-height: 0.95;
   }
   .signo-variants .var .vert-stack .txt .c { color: var(--c-cyan); }
   .signo-variants .var .vert-stack .txt .s { color: var(--c-mag); }
