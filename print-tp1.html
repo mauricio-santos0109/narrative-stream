@@ -300,15 +300,20 @@
     color: var(--c-gold); margin-bottom: 5mm;
   }
   .signo-variants {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 4mm;
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 4mm;
   }
   .signo-variants .var {
+    grid-column: span 2;
     border: 0.2mm solid #ddd; border-radius: 1.5mm;
     padding: 6mm 3mm 4mm;
     display: flex; flex-direction: column; align-items: center; gap: 3mm;
     aspect-ratio: 0.85;
     justify-content: space-between;
     background: white;
+  }
+  .signo-variants .var.wide {
+    grid-column: span 3;
+    aspect-ratio: 1.35;
   }
   .signo-variants .var.dark { background: var(--c-bg-d); border-color: var(--c-bg-d); }
   .signo-variants .var .signo-img {
@@ -323,20 +328,20 @@
   }
   .signo-variants .var.dark .lbl { color: rgba(255,255,255,0.85); }
   .signo-variants .var .horiz-row {
-    display: flex; align-items: center; gap: 2mm;
+    display: flex; align-items: center; gap: 4mm;
   }
-  .signo-variants .var .horiz-row img { width: 8mm; }
+  .signo-variants .var .horiz-row img { width: 16mm; }
   .signo-variants .var .horiz-row .txt {
-    font-size: 7pt; font-weight: 900; letter-spacing: -0.02em; text-align: left; line-height: 1;
+    font-size: 13pt; font-weight: 900; letter-spacing: -0.02em; text-align: left; line-height: 1;
   }
   .signo-variants .var .horiz-row .txt .c { color: var(--c-cyan); }
   .signo-variants .var .horiz-row .txt .s { color: var(--c-mag); }
   .signo-variants .var .vert-stack {
-    display: flex; flex-direction: column; align-items: center; gap: 1.5mm;
+    display: flex; flex-direction: column; align-items: center; gap: 3mm;
   }
-  .signo-variants .var .vert-stack img { width: 12mm; }
+  .signo-variants .var .vert-stack img { width: 22mm; }
   .signo-variants .var .vert-stack .txt {
-    font-size: 6pt; font-weight: 900; letter-spacing: -0.02em; text-align: center; line-height: 1;
+    font-size: 11pt; font-weight: 900; letter-spacing: -0.02em; text-align: center; line-height: 1;
   }
   .signo-variants .var .vert-stack .txt .c { color: var(--c-cyan); }
   .signo-variants .var .vert-stack .txt .s { color: var(--c-mag); }
@@ -973,7 +978,7 @@
         <div class="signo-img"><img src="./assets/logo/MarcaBN.png" alt="B&N"></div>
         <div class="lbl">Blanco &amp; Negro</div>
       </div>
-      <div class="var">
+      <div class="var wide">
         <div class="signo-img">
           <div class="horiz-row">
             <img src="./assets/logo/MarcaFINAL.png" alt="M">
@@ -982,7 +987,7 @@
         </div>
         <div class="lbl">Horizontal · imagotipo</div>
       </div>
-      <div class="var">
+      <div class="var wide">
         <div class="signo-img">
           <div class="vert-stack">
             <img src="./assets/logo/MarcaFINAL.png" alt="M">
