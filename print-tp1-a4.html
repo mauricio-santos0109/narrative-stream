@@ -84,14 +84,14 @@
      ═════════════════════════════════════════════ */
   .mani {
     display: grid;
-    grid-template-rows: auto auto 1fr auto;
-    gap: 6mm;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    gap: 5mm;
     height: 100%;
   }
   .mani-eyebrow-row { display: flex; align-items: center; gap: 4mm; }
   .mani-eyebrow-row .rule { flex: 1; height: 0.3mm; background: var(--c-ink); }
   .mani-title {
-    font-size: 40pt; font-weight: 900; letter-spacing: -0.04em; line-height: 0.9;
+    font-size: 34pt; font-weight: 900; letter-spacing: -0.04em; line-height: 0.9;
   }
   .mani-title .accent { color: var(--c-mag); }
   .mani .sub {
@@ -104,10 +104,12 @@
     column-count: 2;
     column-gap: 7mm;
     column-rule: 0.2mm solid #ddd;
+    overflow: hidden;
+    min-height: 0;
   }
   .mani-block {
     break-inside: avoid;
-    margin-bottom: 3.5mm;
+    margin-bottom: 2.5mm;
     padding-left: 3.5mm;
     border-left: 1.2mm solid var(--c-mag);
   }
@@ -127,7 +129,7 @@
 
   .mani-footer {
     display: flex; align-items: center; gap: 6mm;
-    padding-top: 4mm; border-top: 0.3mm solid var(--c-ink);
+    padding-top: 3mm; border-top: 0.3mm solid var(--c-ink);
   }
   .mani-footer .signo { width: 22mm; flex: 0 0 22mm; }
   .mani-footer .signo img { width: 100%; }
@@ -850,385 +852,187 @@
 </head>
 <body>
 
-
 <!-- ═══════════════════════════════════════════════════════════
-     PAGE 3 · CONCEPTO + SIGNO IDENTIFICADOR — A3
+     PAGE 1 · MANIFIESTO — A4
      ═══════════════════════════════════════════════════════════ -->
-<section class="page a3">
+<section class="page a4">
   <header class="header">
     <div class="brand-word">PORTFOLIO</div>
     <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal · Concepto + Signo Identificador<br>
+      <strong>TP_1:</strong> Identidad Visual Personal · Concepto + Signo + Naming + Estrategia + Aplicaciones<br>
       <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
       <strong>Alumno:</strong> Santos Mauricio Ezequiel
     </div>
   </header>
 
-  <div class="eyebrow">CH·01 · CONCEPTO Y SIGNO IDENTIFICADOR</div>
-  <h2 class="section-title">Concepto y <span class="ink">signo.</span></h2>
-
-  <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
-    El discurso de marca se construye respondiendo tres preguntas base — quién, qué, para quién — y se resuelve en un signo que representa <em class="hl">no una disciplina sino un modo de operar entre disciplinas</em>. A continuación, el marco conceptual y las variantes del signo pensadas para distintos contextos de aplicación.
-  </p>
-
-  <!-- 3 preguntas -->
-  <div class="three-questions">
-    <div class="q-card mg">
-      <h4>¿Quién soy?</h4>
-      <p>Diseñador multimedia y gráfico <strong>en formación</strong>. Uno la <strong>formalidad del editorial</strong> con la capacidad técnica de las experiencias interactivas y el <strong>ritmo del lenguaje audiovisual</strong>. No como especialista de un solo canal — como alguien que ve la conversación entre los tres.</p>
+  <div class="mani">
+    <div class="mani-eyebrow-row">
+      <div class="eyebrow">Manifiesto</div>
+      <div class="rule"></div>
+      <div style="font-size:7pt; letter-spacing:0.2em; text-transform:uppercase; color:#888;">Identidad Visual Personal</div>
     </div>
-    <div class="q-card li">
-      <h4>¿Qué hago?</h4>
-      <p>Construyo <strong>sistemas narrativos</strong>. No sólo piezas estáticas: proyectos que funcionan cruzando soportes — del papel al entorno virtual y al video. Cada trabajo viene con su <em>Behind the Scenes</em> como evidencia del proceso.</p>
-    </div>
-    <div class="q-card cy">
-      <h4>¿Para quién?</h4>
-      <p><strong>Estudios de branding transmedia</strong>, <strong>agencias de contenido digital</strong> y <strong>desarrolladoras indie</strong> que busquen a alguien que entienda tanto de front-end como de montaje de video. Donde el diseñador no tenga que elegir entre pensar y ejecutar.</p>
-    </div>
-  </div>
 
-  <!-- Argumentación conceptual (nuevo framing) -->
-  <div class="argument-box">
-    <div class="kicker">Argumentación conceptual · Reframing del signo</div>
-    <h3>Las 3 barras no son una timeline: son los <span class="mg">3 canales</span> del oficio — <span class="mg">Editorial</span>, <span class="li">Interacción</span>, <span class="cy">Audiovisual</span>.</h3>
-    <div class="arg-cols">
-      <p>
-        La lectura literal del signo (barras verticales + playhead) sugiere una timeline audiovisual, pero <em>ese es sólo el punto de entrada</em>. La estructura real es la del oficio: <em>tres columnas paralelas</em> que representan las 3 áreas del perfil. El signo no está por debajo de una sola disciplina; está por encima de las tres.
-      </p>
-      <p>
-        El playhead gold no reproduce nada específico: es el <em>cursor personal</em> que decide en qué canal enfocar cada proyecto. La <em>M emerge cuando los tres canales trabajan juntos</em> — es la síntesis del sistema, no el logotipo de una disciplina única. Naming directo (Mauricio Santos), sin alias ni marca-estudio: el diferencial es la persona operando entre canales, no una etiqueta comercial.
-      </p>
+    <div>
+      <h1 class="mani-title">Manifiesto.</h1>
+      <div class="sub">
+        Editorial, interacción y audiovisual — al mismo tiempo, en el mismo proyecto. <em>No soy especialista de uno solo</em>: soy alguien que ve la conversación entre los tres.
+      </div>
     </div>
-  </div>
 
-  <!-- Variables del signo -->
-  <div class="signo-block">
-    <h4>Variables del signo · Versatilidad de aplicación</h4>
-    <div class="signo-variants">
-      <div class="var">
-        <div class="signo-img"><img src="./assets/logo/MarcaFINAL.png" alt="Positivo color"></div>
-        <div class="lbl">Positivo · color</div>
+    <div class="mani-cols">
+      <div class="mani-block">
+        <h3>Vengo del papel.</h3>
+        <p>Empecé maquetando publicaciones editoriales — entendiendo que una <strong>grilla no es una cárcel, es un idioma</strong>. Después vino el código (HTML, CSS, Twine) y descubrí que las mismas jerarquías tipográficas funcionan en pantalla, sólo que ahora las lee un scroll. Y cuando el proyecto pide movimiento, edito el video yo mismo. El ritmo se piensa junto al mensaje, no después.</p>
       </div>
-      <div class="var dark">
-        <div class="signo-img"><img src="./assets/logo/MarcaFINAL.png" alt="Sobre fondo oscuro"></div>
-        <div class="lbl">Sobre oscuro</div>
+
+      <div class="mani-block li">
+        <h3>Construyo sistemas narrativos.</h3>
+        <p>Piezas que funcionan cruzando soportes. Una <strong>infografía LEGO</strong> que también podría ser un poster. Una <strong>señalética urbana</strong> que respira como marca. Un <strong>flipbook animado</strong> que empezó a lápiz y terminó en DaVinci. El proyecto es uno; la piel cambia.</p>
       </div>
-      <div class="var">
-        <div class="signo-img"><img src="./assets/logo/MarcaBN.png" alt="B&N"></div>
-        <div class="lbl">Blanco &amp; Negro</div>
+
+      <div class="mani-block cy">
+        <h3>Muestro la cocina.</h3>
+        <p>Cada trabajo viene con su <strong>video de proceso</strong> — bocetos, errores de código, pruebas de montaje. No es transparencia por transparencia: es evidencia de que las decisiones son intencionales. El resultado final oculta más de lo que muestra.</p>
       </div>
-      <div class="var wide">
-        <div class="signo-img">
-          <div class="horiz-row">
-            <img src="./assets/logo/MarcaFINAL.png" alt="M">
-            <div class="txt"><span class="c">M</span>AURICIO<br><span class="s">S</span>ANTOS</div>
-          </div>
-        </div>
-        <div class="lbl">Horizontal · imagotipo</div>
+
+      <div class="mani-block gd">
+        <h3>Pienso en varios idiomas.</h3>
+        <p><strong>Portugués y español nativos, inglés B2, italiano básico.</strong> Leo bibliografía técnica sin filtros, trabajo con equipos remotos y entiendo que el diseño tiene tantos acentos como los idiomas. Un extra que se traduce en flexibilidad de tono.</p>
       </div>
-      <div class="var wide">
-        <div class="signo-img">
-          <div class="vert-stack">
-            <img src="./assets/logo/MarcaFINAL.png" alt="M">
-            <div class="txt"><span class="c">M</span>AURICIO<br><span class="s">S</span>ANTOS</div>
-          </div>
-        </div>
-        <div class="lbl">Vertical · imagotipo</div>
+
+      <div class="mani-block">
+        <h3>Busco donde no haya que elegir.</h3>
+        <p><strong>Estudios de branding transmedia, agencias de contenido digital y desarrolladoras indie</strong> donde el diseñador no tenga que optar entre saber pensar y saber ejecutar. Editar video en Premiere y a la vez armar la grilla en InDesign no son dos habilidades separadas para mí — son la misma disciplina cambiando de herramienta.</p>
+      </div>
+    </div>
+
+    <div class="mani-footer">
+      <div class="signo"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+      <div class="who">
+        <div class="name"><span class="c">M</span>auricio <span class="s">S</span>antos</div>
+        <div class="sub">Diseñador Gráfico y Multimedia · UADE FADI · <strong>@maurisantos.design</strong></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════
-     PAGE 4 · SISTEMA GRÁFICO + ESTRATEGIA — A3
+     PAGE 2 · CV STANDALONE — A4
      ═══════════════════════════════════════════════════════════ -->
-<section class="page a3">
-  <header class="header">
-    <div class="brand-word">PORTFOLIO</div>
-    <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal · Sistema Gráfico + Estrategia<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
-
-  <div class="eyebrow">CH·02 · SISTEMA GRÁFICO</div>
-  <h2 class="section-title">Sistema <span class="ink">gráfico.</span></h2>
-
-  <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
-    Dos ejes sostienen la identidad visual: la <em class="hl">paleta cromática con roles funcionales</em> — cada color representa un área del oficio y no se usa arbitrariamente — y el <em class="hl">sistema tipográfico Montserrat</em>, una sola familia resuelta por variaciones de peso y tracking. La restricción es intencional: un sistema simple es más fácil de mantener coherente entre soportes.
-  </p>
-
-  <div class="sys-2col">
-
-    <!-- Palette with roles -->
-    <div class="sys-card">
-      <h3><span class="num">01</span>Paleta cromática · Roles</h3>
-      <div class="palette-roles">
-        <div class="swatch-role mag">
-          <div class="role">Editorial <span class="rl">Print · Identidad · Tipografía</span></div>
-          <div class="hex">#E32285</div>
-        </div>
-        <div class="swatch-role lime">
-          <div class="role">Interacción <span class="rl">Web · Multimedia · Instalación</span></div>
-          <div class="hex">#8FC045</div>
-        </div>
-        <div class="swatch-role cyan">
-          <div class="role">Audiovisual <span class="rl">Movimiento · Film · Color</span></div>
-          <div class="hex">#29ABE3</div>
-        </div>
-        <div class="swatch-role gold">
-          <div class="role">Playhead / CTA <span class="rl">Acento · llamados de acción</span></div>
-          <div class="hex">#F9B03D</div>
-        </div>
-        <div class="swatch-role dark">
-          <div class="role">Fondo neutro <span class="rl">Base · legibilidad · contraste</span></div>
-          <div class="hex">#1B1919</div>
+<section class="page a4">
+  <div class="cv">
+    <div class="cv-hero">
+      <div class="logo"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+      <div>
+        <div class="name"><span class="c">M</span>AURICIO <span class="l">E</span>ZEQUIEL <span class="m">S</span>ANTOS</div>
+        <div class="role">Diseñador Gráfico y Diseñador Multimedia en formación</div>
+        <div class="contact-inline">
+          <span class="item"><strong>mepobox@gmail.com</strong></span>
+          <span class="item"><strong>mausantos@uade.edu.ar</strong></span>
+          <span class="item"><strong>+54 376 4186318</strong></span>
+          <span class="item">Buenos Aires · AR</span>
         </div>
       </div>
-      <p>Cada color representa un área del perfil y se aplica <strong>como codificación semántica</strong>, no como decoración. El gold funciona como acento transversal y como CTA. El fondo neutro sostiene el contraste en piezas oscuras.</p>
     </div>
 
-    <!-- Typography system -->
-    <div class="sys-card">
-      <h3><span class="num">02</span>Sistema tipográfico · Montserrat</h3>
-      <div class="type-system">
-        <div class="type-row">
-          <div class="role">Display</div>
-          <div class="sample h1">Aa</div>
-          <div class="spec">900 · -0.03em · 34pt+</div>
+    <div class="cv-body">
+      <!-- Left column: Contact + Skills + Languages -->
+      <div>
+        <div class="cv-sec">
+          <div class="sec-hd">Habilidades técnicas</div>
+          <div class="cv-skills-list">
+            <div class="skl">Adobe Photoshop</div>
+            <div class="skl">Adobe Illustrator</div>
+            <div class="skl">Adobe InDesign</div>
+            <div class="skl">DaVinci Resolve</div>
+            <div class="skl">Adobe Premiere Pro</div>
+            <div class="skl">Figma</div>
+            <div class="skl">HTML · CSS · React</div>
+            <div class="skl">Diseño Editorial</div>
+            <div class="skl">Edición y montaje de video</div>
+            <div class="skl">Señalética · Wayfinding</div>
+            <div class="skl">Branding · Identidad</div>
+            <div class="skl">UX/UI en formación</div>
+          </div>
         </div>
-        <div class="type-row">
-          <div class="role">Subhead</div>
-          <div class="sample h2">Aa Bb Cc</div>
-          <div class="spec">800 · -0.02em · 14–22pt</div>
-        </div>
-        <div class="type-row">
-          <div class="role">Body strong</div>
-          <div class="sample h3">Aa Bb Cc Dd</div>
-          <div class="spec">700 · 0em · 10–12pt</div>
-        </div>
-        <div class="type-row">
-          <div class="role">Body</div>
-          <div class="sample body">Aa Bb Cc Dd Ee Ff Gg</div>
-          <div class="spec">400 · 0em · 8–10pt</div>
-        </div>
-        <div class="type-row">
-          <div class="role">Eyebrow</div>
-          <div class="sample eyebrow">Kicker · categoría</div>
-          <div class="spec">700 · 0.22em · 7pt · upper</div>
-        </div>
-      </div>
-      <p><strong>Una sola familia tipográfica</strong> (Montserrat) para toda la comunicación. La jerarquía se resuelve por <em>peso</em> y <em>tracking</em>, no combinando tipografías. El contraste alto entre display (900) y body (400) sostiene la legibilidad en pantalla y en print.</p>
-    </div>
-  </div>
 
-  <!-- Tarjeta + Credencial (aplicaciones físicas, ahora integradas aquí) -->
-  <div class="eyebrow" style="margin-top: 8mm; margin-bottom: 3mm;">CH·03 · APLICACIONES FÍSICAS</div>
-  <div class="tarj-obj">
-    <div class="side-block">
-      <h3>Tarjeta personal</h3>
-      <p class="lead">
-        Frente puramente signo. Dorso con nombre, rol, contacto directo y QR al portfolio. Fondo oscuro compartido entre las dos caras para cohesión al girarla.
-      </p>
-      <div class="card-wrapper">
-        <div class="kicker">Frente</div>
-        <div class="biz-card front">
-          <div class="signo-big"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+        <div class="cv-sec">
+          <div class="sec-hd">Idiomas</div>
+          <div class="cv-langs-list">
+            <div class="lang"><strong>Español</strong><span class="lvl">Competencia Nativa</span></div>
+            <div class="lang"><strong>Portugués</strong><span class="lvl">Competencia Bilingüe / Nativa</span></div>
+            <div class="lang"><strong>Inglés</strong><span class="lvl">Competencia Básica Profesional · B2</span></div>
+            <div class="lang"><strong>Italiano</strong><span class="lvl">Competencia Básica</span></div>
+          </div>
         </div>
-      </div>
-      <div class="card-wrapper">
-        <div class="kicker">Dorso</div>
-        <div class="biz-card back">
-          <div class="content">
-            <div class="info">
-              <div class="name"><span class="c">M</span>AURICIO <span class="s">S</span>ANTOS</div>
-              <div class="role">Diseñador Gráfico y Multimedia</div>
-              <div class="contact">
-                <strong>mepobox@gmail.com</strong><br>
-                <strong>+54 376 4186318</strong>
-              </div>
-            </div>
-            <div class="qr-box">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fmauricio-santos0109.github.io%2Fnarrative-stream%2F" alt="QR">
-            </div>
+
+        <div class="cv-sec">
+          <div class="sec-hd">Enlaces</div>
+          <div class="cv-langs-list">
+            <div class="lang"><strong>Portfolio Web</strong><span class="lvl">mauricio-santos0109.github.io/narrative-stream</span></div>
+            <div class="lang"><strong>Behance</strong><span class="lvl">behance.net/maurisantos1</span></div>
+            <div class="lang"><strong>LinkedIn</strong><span class="lvl">linkedin.com/in/nbdesigner</span></div>
+            <div class="lang"><strong>Instagram</strong><span class="lvl">@maurisantos.design</span></div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="side-block">
-      <h3>Credencial · Objeto colgante</h3>
-      <p class="lead">
-        Credencial pensada para llevar colgada del cuello con lanyard — el objeto que te acompaña en jornadas de trabajo, eventos y presentaciones. Dos caras: frente como declaración de marca, dorso como ficha con los datos y el QR al portfolio.
-      </p>
-      <div class="tag-showcase">
-        <div class="tag-wrap">
-          <div class="kicker">Frente</div>
-          <div class="asset-tag front">
-            <div class="hole"></div>
-            <div class="content">
-              <div class="signo-lg"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-              <div class="name"><span class="c">M</span>AURICIO<br><span class="s">S</span>ANTOS</div>
-              <div class="tagline">El detrás de cámaras</div>
-            </div>
-            <div class="color-strip">
-              <span class="cy"></span><span class="li"></span><span class="mg"></span><span class="gd"></span>
-            </div>
+      <!-- Right column: Summary + Education + Experience -->
+      <div>
+        <div class="cv-sec">
+          <div class="sec-hd">Resumen profesional</div>
+          <p class="cv-summary">
+            Diseñador Gráfico y Multimedia formándose en el 4to año de la Universidad Argentina de la Empresa (UADE). Trabajo cruzando <strong>diseño editorial, UX/UI y producción audiovisual</strong> — no como especialista de uno solo sino desde la <strong>conversación entre los tres</strong>. Experiencia en infografía, señalética, publicación editorial impresa, y edición y montaje de video. Diferencial: cada proyecto viene acompañado por su <strong>Behind the Scenes</strong> — proceso a la vista.
+          </p>
+        </div>
+
+        <div class="cv-sec">
+          <div class="sec-hd">Educación</div>
+          <div class="row">
+            <div class="lbl">Universidad Argentina de la Empresa (UADE) · Buenos Aires</div>
+            <div class="sub"><em>Doble Titulación en Diseño Gráfico y Diseño Multimedia e Interacción</em> · 4to año</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Liceo Naval Almirante Storni (LNAS) · Misiones</div>
+            <div class="sub">Bachiller en Economía y Administración</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Escuela Da Vinci (Virtual) · Buenos Aires</div>
+            <div class="sub">Curso de Formación Profesional en Diseño Gráfico Digital</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Cambridge University Press &amp; Assessment</div>
+            <div class="sub">B2 FIRST English Test · Puntaje 167</div>
           </div>
         </div>
-        <div class="tag-wrap">
-          <div class="kicker">Dorso</div>
-          <div class="asset-tag back">
-            <div class="hole"></div>
-            <div class="content">
-              <div class="head-strip">
-                <span>CREDENCIAL</span>
-                <span>№ 001</span>
-              </div>
-              <div class="field">
-                <div class="lbl">Nombre</div>
-                <div class="val">Mauricio Santos</div>
-              </div>
-              <div class="field">
-                <div class="lbl">Áreas</div>
-                <div class="channels">
-                  <span class="chip e">E</span>
-                  <span class="chip i">I</span>
-                  <span class="chip a">A</span>
-                </div>
-              </div>
-              <div class="field">
-                <div class="lbl">Rol</div>
-                <div class="val mono">Diseñador multimedia</div>
-              </div>
-              <div class="qr-mini">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fmauricio-santos0109.github.io%2Fnarrative-stream%2F" alt="QR">
-              </div>
-              <div class="bot-strip">
-                <span>@maurisantos.design</span>
-                <span class="g">Portfolio ↗</span>
-              </div>
-            </div>
+
+        <div class="cv-sec">
+          <div class="sec-hd">Experiencia relevante</div>
+          <div class="row">
+            <div class="lbl">Portfolio Web "Narrative Stream"</div>
+            <div class="sub">Portfolio interactivo React con 9 proyectos y BTS por trabajo. <em>React · Tailwind · GitHub Pages</em></div>
+            <div class="link">mauricio-santos0109.github.io/narrative-stream</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Infografía "Minifigura LEGO" · UADE</div>
+            <div class="sub">Infografía A3 estilo blueprint sobre historia y anatomía de la minifigura LEGO. <em>Adobe Illustrator</em></div>
+            <div class="link">behance.net/gallery/233446807</div>
+          </div>
+          <div class="row">
+            <div class="lbl">DG3 · Mi Me Mo · UADE</div>
+            <div class="sub">Sistema de señalética y wayfinding para recorrido barrial, con maqueta a escala. <em>Illustrator · Photoshop</em></div>
+            <div class="link">behance.net/gallery/238609381</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Videominuto "PARANOIA" · UADE</div>
+            <div class="sub">Editor's cut de videominuto con tratamiento de grano cinematográfico. <em>DaVinci Resolve</em></div>
+            <div class="link">behance.net/gallery/233402927</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE 5 · APLICACIONES DIGITALES (REDES) — A3
-     ═══════════════════════════════════════════════════════════ -->
-<section class="page a3">
-  <header class="header">
-    <div class="brand-word">PORTFOLIO</div>
-    <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal · Aplicaciones Digitales<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
-
-  <div class="eyebrow">CH·03 · APLICACIONES EN REDES</div>
-  <h2 class="section-title">Redes <span class="ink">sociales.</span></h2>
-
-  <p class="apps-lead">
-    La marca aplicada en <strong>3 plataformas activas</strong>. La <em>foto de perfil</em> se adapta al color identitario de cada red (cian para Instagram, lima para LinkedIn, magenta para YouTube) manteniendo el monograma como constante. Las capturas de abajo son de las <strong>cuentas reales en producción</strong> (no mockups). Al pie, ejemplos de piezas diseñadas a dimensión nativa por plataforma — evidencia del sistema funcionando cross-media.
-  </p>
-
-  <!-- ROW 1: variantes de foto de perfil por red -->
-  <div class="apps-sec">
-    <div class="head">
-      <div class="num-title">
-        <span class="num">01</span>
-        <span class="title">Foto de perfil por red</span>
-      </div>
-      <div class="desc">1 base + 3 variantes color-coded</div>
-    </div>
-    <div class="pfp-row">
-      <div class="pfp-cell">
-        <div class="circle"><img src="./assets/social/ig-profile-pic.png" alt="Base"></div>
-        <div class="lbl">Base · sistema</div>
-        <div class="handle">multicolor gradient</div>
-      </div>
-      <div class="pfp-cell">
-        <div class="circle"><img src="./assets/social/pp-instagram.png" alt="IG"></div>
-        <div class="lbl">Instagram</div>
-        <div class="handle">@maurisantos.design</div>
-      </div>
-      <div class="pfp-cell">
-        <div class="circle"><img src="./assets/social/pp-linkedin.png" alt="LI"></div>
-        <div class="lbl">LinkedIn</div>
-        <div class="handle">in/nbdesigner</div>
-      </div>
-      <div class="pfp-cell">
-        <div class="circle"><img src="./assets/social/pp-youtube.png" alt="YT"></div>
-        <div class="lbl">YouTube</div>
-        <div class="handle">@mauro6026</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 2: capturas reales de las 3 redes -->
-  <div class="apps-sec">
-    <div class="head">
-      <div class="num-title">
-        <span class="num">02</span>
-        <span class="title">Cuentas en producción</span>
-      </div>
-      <div class="desc">capturas reales · perfiles activos</div>
-    </div>
-    <div class="live-row">
-      <div class="live-cell">
-        <div class="head-row"><span class="platform li">LinkedIn</span><span class="handle">in/nbdesigner · 13 contactos</span></div>
-        <div class="frame desktop"><img src="./assets/screens-tp3-v2/li.png" alt="LinkedIn perfil"></div>
-      </div>
-      <div class="live-cell">
-        <div class="head-row"><span class="platform cy">Instagram</span><span class="handle">@maurisantos.design</span></div>
-        <div class="frame mobile"><img src="./assets/screens-tp3-v2/ig-3.jpeg" alt="Instagram perfil"></div>
-      </div>
-      <div class="live-cell">
-        <div class="head-row"><span class="platform mg">YouTube</span><span class="handle">@mauro6026</span></div>
-        <div class="frame mobile"><img src="./assets/screens-tp3-v2/yt.jpeg" alt="YouTube canal"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 3: piezas diseñadas · 5 muestras -->
-  <div class="apps-sec">
-    <div class="head">
-      <div class="num-title">
-        <span class="num">03</span>
-        <span class="title">Piezas diseñadas</span>
-      </div>
-      <div class="desc">1 por categoría + story + highlight cover · a dimensión nativa</div>
-    </div>
-    <div class="designed-row">
-      <div class="designed-cell">
-        <div class="art square"><img src="./assets/social/ig-post-01-nena.png" alt="Post NENA"></div>
-        <div class="cap"><span class="k cy">Post · IG</span><span>Audiovisual</span></div>
-      </div>
-      <div class="designed-cell">
-        <div class="art square"><img src="./assets/social/ig-post-04-imagine.png" alt="Post IMAGINE.AI"></div>
-        <div class="cap"><span class="k li">Post · IG</span><span>Interacción</span></div>
-      </div>
-      <div class="designed-cell">
-        <div class="art square"><img src="./assets/social/ig-post-08-mimemo.png" alt="Post MiMeMo"></div>
-        <div class="cap"><span class="k mg">Post · IG</span><span>Editorial</span></div>
-      </div>
-      <div class="designed-cell">
-        <div class="art tall"><img src="./assets/social/ig-story-01-manifesto.png" alt="Story manifesto"></div>
-        <div class="cap"><span class="k">Story · IG</span><span>Manifiesto</span></div>
-      </div>
-      <div class="designed-cell">
-        <div class="art tall"><img src="./assets/social/ig-hl-cover-ed.png" alt="Highlight Editorial"></div>
-        <div class="cap"><span class="k mg">Highlight</span><span>Editorial</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 </body>
 </html>
