@@ -91,14 +91,14 @@
   .mani-eyebrow-row { display: flex; align-items: center; gap: 4mm; }
   .mani-eyebrow-row .rule { flex: 1; height: 0.3mm; background: var(--c-ink); }
   .mani-title {
-    font-size: 44pt; font-weight: 900; letter-spacing: -0.04em; line-height: 0.9;
+    font-size: 40pt; font-weight: 900; letter-spacing: -0.04em; line-height: 0.9;
   }
   .mani-title .accent { color: var(--c-mag); }
-  .mani-title .sub {
-    font-size: 9.5pt; font-weight: 500; letter-spacing: -0.01em; line-height: 1.4;
-    color: #555; margin-top: 2.5mm; max-width: 130mm;
+  .mani .sub {
+    font-size: 9.5pt; font-weight: 500; letter-spacing: -0.01em; line-height: 1.45;
+    color: #555; margin-top: 3mm; max-width: 140mm;
   }
-  .mani-title .sub em { font-style: italic; color: var(--c-mag); font-weight: 700; }
+  .mani .sub em { font-style: italic; color: var(--c-mag); font-weight: 700; }
 
   .mani-cols {
     column-count: 2;
@@ -871,11 +871,9 @@
     </div>
 
     <div>
-      <h1 class="mani-title">Diseño en <span class="accent">tres</span> canales.</h1>
-      <div class="mani-title">
-        <div class="sub">
-          Editorial, interacción y audiovisual — al mismo tiempo, en el mismo proyecto. <em>No soy especialista de uno solo</em>: soy alguien que ve la conversación entre los tres.
-        </div>
+      <h1 class="mani-title">Manifiesto.</h1>
+      <div class="sub">
+        Editorial, interacción y audiovisual — al mismo tiempo, en el mismo proyecto. <em>No soy especialista de uno solo</em>: soy alguien que ve la conversación entre los tres.
       </div>
     </div>
 
@@ -1048,7 +1046,7 @@
   </header>
 
   <div class="eyebrow">CH·01 · CONCEPTO Y SIGNO IDENTIFICADOR</div>
-  <h2 class="section-title">Tres canales, <span class="ink">una firma.</span></h2>
+  <h2 class="section-title">Concepto y <span class="ink">signo.</span></h2>
 
   <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
     El discurso de marca se construye respondiendo tres preguntas base — quién, qué, para quién — y se resuelve en un signo que representa <em class="hl">no una disciplina sino un modo de operar entre disciplinas</em>. A continuación, el marco conceptual y las variantes del signo pensadas para distintos contextos de aplicación.
@@ -1136,7 +1134,7 @@
   </header>
 
   <div class="eyebrow">CH·02 · SISTEMA GRÁFICO</div>
-  <h2 class="section-title">El programa <span class="ink">visual.</span></h2>
+  <h2 class="section-title">Sistema <span class="ink">gráfico.</span></h2>
 
   <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
     Dos ejes sostienen la identidad visual: la <em class="hl">paleta cromática con roles funcionales</em> — cada color representa un área del oficio y no se usa arbitrariamente — y el <em class="hl">sistema tipográfico Montserrat</em>, una sola familia resuelta por variaciones de peso y tracking. La restricción es intencional: un sistema simple es más fácil de mantener coherente entre soportes.
@@ -1206,49 +1204,94 @@
     </div>
   </div>
 
-  <!-- Estrategia -->
-  <div class="strategy-row">
-    <div class="strat-block">
-      <h3><span class="num">03</span>Estrategia de portfolio</h3>
-      <div class="strat-cols">
-        <div class="cell">
-          <div class="lbl">01 · Principal</div>
-          <div class="name">Behance · Portfolio Web</div>
-          <div class="desc">Trabajos completos con explicación técnica. Piezas terminadas, sinopsis, herramientas, BTS embebido.</div>
+  <!-- Tarjeta + Asset Tag (aplicaciones físicas, ahora integradas aquí) -->
+  <div class="eyebrow" style="margin-top: 8mm; margin-bottom: 3mm;">CH·03 · APLICACIONES FÍSICAS</div>
+  <div class="tarj-obj">
+    <div class="side-block">
+      <h3>Tarjeta personal</h3>
+      <p class="lead">
+        Frente puramente signo. Dorso con nombre, rol, contacto directo y QR al portfolio. Fondo oscuro compartido entre las dos caras para cohesión al girarla.
+      </p>
+      <div class="card-wrapper">
+        <div class="kicker">Frente</div>
+        <div class="biz-card front">
+          <div class="signo-big"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
         </div>
-        <div class="cell li">
-          <div class="lbl">02 · Secundario</div>
-          <div class="name">CV · Landing PDF</div>
-          <div class="desc">Formato compacto para búsqueda de pasantías. Doble titulación + proyectos seleccionados + skills + idiomas.</div>
-        </div>
-        <div class="cell mg">
-          <div class="lbl">03 · Social</div>
-          <div class="name">Instagram · YouTube</div>
-          <div class="desc">Bitácora de proceso creativo. Videos cortos y dinámicos, posts con carousel BTS, stories de sección.</div>
+      </div>
+      <div class="card-wrapper">
+        <div class="kicker">Dorso</div>
+        <div class="biz-card back">
+          <div class="content">
+            <div class="info">
+              <div class="name"><span class="c">M</span>AURICIO <span class="s">S</span>ANTOS</div>
+              <div class="role">Diseñador Gráfico y Multimedia</div>
+              <div class="contact">
+                <strong>mepobox@gmail.com</strong><br>
+                <strong>+54 376 4186318</strong>
+              </div>
+            </div>
+            <div class="qr-box">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fmauricio-santos0109.github.io%2Fnarrative-stream%2F" alt="QR">
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="strat-block">
-      <h3><span class="num">04</span>Estrategia de redes sociales</h3>
-      <div class="strat-cols">
-        <div class="cell">
-          <div class="lbl">Profunda</div>
-          <div class="name">Instagram</div>
-          <div class="desc">Vidriera principal del proceso. Posts curados + stories + highlights por sección.</div>
-          <div class="aud"><strong>Pares de diseño + reclutadores creativos</strong></div>
+    <div class="side-block">
+      <h3>Asset Tag · Objeto colgante</h3>
+      <p class="lead">
+        Etiqueta inspirada en los asset tags de rodajes profesionales. Rediseño de dos caras: frente como declaración de marca, dorso como ficha técnica con QR al portfolio. Se cuelga del cuello, la mochila o de proyectos físicos — traslada el material en crudo del entorno digital al espacio físico.
+      </p>
+      <div class="tag-showcase">
+        <div class="tag-wrap">
+          <div class="kicker">Frente</div>
+          <div class="asset-tag front">
+            <div class="hole"></div>
+            <div class="content">
+              <div class="signo-lg"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
+              <div class="name"><span class="c">M</span>AURICIO<br><span class="s">S</span>ANTOS</div>
+              <div class="tagline">El detrás de cámaras</div>
+            </div>
+            <div class="color-strip">
+              <span class="cy"></span><span class="li"></span><span class="mg"></span><span class="gd"></span>
+            </div>
+          </div>
         </div>
-        <div class="cell li">
-          <div class="lbl">Networking</div>
-          <div class="name">LinkedIn</div>
-          <div class="desc">Header + foto + headline + about. Portfolio formal para estudios y agencias.</div>
-          <div class="aud"><strong>Estudios · agencias · pasantías</strong></div>
-        </div>
-        <div class="cell mg">
-          <div class="lbl">Bitácora</div>
-          <div class="name">YouTube</div>
-          <div class="desc">Canal complementario donde Instagram no alcanza por duración. Procesos largos.</div>
-          <div class="aud"><strong>Curiosos del proceso · estudiantes</strong></div>
+        <div class="tag-wrap">
+          <div class="kicker">Dorso</div>
+          <div class="asset-tag back">
+            <div class="hole"></div>
+            <div class="content">
+              <div class="head-strip">
+                <span>ASSET · TAG</span>
+                <span>№ 001</span>
+              </div>
+              <div class="field">
+                <div class="lbl">Operator</div>
+                <div class="val">Mauricio Santos</div>
+              </div>
+              <div class="field">
+                <div class="lbl">Channels</div>
+                <div class="channels">
+                  <span class="chip e">E</span>
+                  <span class="chip i">I</span>
+                  <span class="chip a">A</span>
+                </div>
+              </div>
+              <div class="field">
+                <div class="lbl">Status</div>
+                <div class="val mono">RAW · Behind the Scenes</div>
+              </div>
+              <div class="qr-mini">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fmauricio-santos0109.github.io%2Fnarrative-stream%2F" alt="QR">
+              </div>
+              <div class="bot-strip">
+                <span>@maurisantos.design</span>
+                <span class="g">Portfolio ↗</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1367,142 +1410,6 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PAGE 6 · TARJETA + OBJETO — A3
-     ═══════════════════════════════════════════════════════════ -->
-<section class="page a3">
-  <header class="header">
-    <div class="brand-word">PORTFOLIO</div>
-    <div class="meta">
-      <strong>TP_1:</strong> Identidad Visual Personal · Aplicaciones Físicas<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
-
-  <div class="eyebrow">CH·04 · APLICACIONES FÍSICAS</div>
-  <h2 class="section-title">Tarjeta y <span class="ink">objeto.</span></h2>
-
-  <p class="body" style="max-width: 240mm; margin-bottom: 8mm;">
-    Dos objetos donde la identidad se materializa: la <em class="hl">tarjeta personal</em> (contacto inmediato en formato tradicional 9×5 cm) y el <em class="hl">Asset Tag</em> (accesorio colgante — llavero, mochila o proyecto físico — que traslada la lógica del "material en crudo" desde el entorno digital al espacio físico).
-  </p>
-
-  <div class="tarj-obj">
-    <!-- Left column: Tarjeta -->
-    <div class="side-block">
-      <h3>Tarjeta personal · 9 × 5 cm</h3>
-      <p class="lead">
-        Tarjeta clásica pensada para <em>momentos formales de networking</em> — eventos, pasantías, primeros contactos. El <strong>frente</strong> es puramente signo (impacto visual, memoria a golpe de ojo). El <strong>dorso</strong> concentra la información funcional: nombre, rol, contacto directo y QR al portfolio. Los dos lados sobre el mismo fondo oscuro para mantener cohesión al girarla.
-      </p>
-
-      <div class="card-wrapper">
-        <div class="kicker">Frente <span class="dim">· 90 × 50 mm</span></div>
-        <div class="biz-card front">
-          <div class="signo-big"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-        </div>
-      </div>
-
-      <div class="card-wrapper">
-        <div class="kicker">Dorso <span class="dim">· 90 × 50 mm</span></div>
-        <div class="biz-card back">
-          <div class="content">
-            <div class="info">
-              <div class="name"><span class="c">M</span>AURICIO <span class="s">S</span>ANTOS</div>
-              <div class="role">Diseñador Gráfico y Multimedia</div>
-              <div class="contact">
-                <strong>mepobox@gmail.com</strong><br>
-                <strong>+54 376 4186318</strong>
-              </div>
-            </div>
-            <div class="qr-box">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1&color=1B1919" alt="QR">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right column: Asset Tag (nuevo diseño CSS · 2 caras) -->
-    <div class="side-block">
-      <h3>Asset Tag · Objeto colgante · 45 × 65 mm</h3>
-      <p class="lead">
-        Etiqueta inspirada en los <em>asset tags de rodajes profesionales</em> — las que identifican cámara, lente, tarjeta, cinta. Rediseño de dos caras: <strong>frente</strong> como declaración de marca (signo + nombre + tagline), <strong>dorso</strong> como ficha técnica de producción con operator, canales, status RAW y QR al portfolio. Se cuelga del cuello con lanyard, de la mochila o de proyectos físicos (maquetas, libros). Traslada al espacio físico el concepto de <em>"material en crudo"</em> que atraviesa la marca personal.
-      </p>
-
-      <div class="tag-showcase">
-        <div class="tag-wrap">
-          <div class="kicker">Frente <span class="dim">· 45×65mm</span></div>
-          <div class="asset-tag front">
-            <div class="hole"></div>
-            <div class="content">
-              <div class="signo-lg"><img src="./assets/logo/MarcaFINAL.png" alt="M"></div>
-              <div class="name"><span class="c">M</span>AURICIO<br><span class="s">S</span>ANTOS</div>
-              <div class="tagline">El detrás de cámaras</div>
-            </div>
-            <div class="color-strip">
-              <span class="cy"></span><span class="li"></span><span class="mg"></span><span class="gd"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="tag-wrap">
-          <div class="kicker">Dorso <span class="dim">· 45×65mm</span></div>
-          <div class="asset-tag back">
-            <div class="hole"></div>
-            <div class="content">
-              <div class="head-strip">
-                <span>ASSET · TAG</span>
-                <span>№ 001</span>
-              </div>
-              <div class="field">
-                <div class="lbl">Operator</div>
-                <div class="val">Mauricio Santos</div>
-              </div>
-              <div class="field">
-                <div class="lbl">Channels</div>
-                <div class="channels">
-                  <span class="chip e">E</span>
-                  <span class="chip i">I</span>
-                  <span class="chip a">A</span>
-                </div>
-              </div>
-              <div class="field">
-                <div class="lbl">Status</div>
-                <div class="val mono">RAW · Behind the Scenes</div>
-              </div>
-              <div class="qr-mini">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://mauricio-santos0109.github.io/narrative-stream/&margin=1&color=1B1919" alt="QR">
-              </div>
-              <div class="bot-strip">
-                <span>@maurisantos.design</span>
-                <span class="g">Portfolio ↗</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="object-meta">
-        <div class="meta-block">
-          <div class="lbl">Materialidad</div>
-          <div class="val">PVC rígido negro · impresión UV a <strong>4/0 tintas + gold</strong> · laminado mate</div>
-        </div>
-        <div class="meta-block">
-          <div class="lbl">Formato</div>
-          <div class="val">45 × 65 mm · esquinas redondeadas 2mm · <strong>ojal reforzado</strong> Ø 3.5mm</div>
-        </div>
-        <div class="meta-block">
-          <div class="lbl">Uso</div>
-          <div class="val">Lanyard cuello · llavero · mochila · marcador de proyecto físico</div>
-        </div>
-        <div class="meta-block">
-          <div class="lbl">Sistema</div>
-          <div class="val">Dos caras · frente marca / dorso <strong>ficha de producción</strong></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 </body>
 </html>
