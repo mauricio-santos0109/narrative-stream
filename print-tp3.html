@@ -140,13 +140,89 @@
     padding: 4mm;
     display: flex; flex-direction: column; gap: 3mm;
   }
-  .plat-head { display:flex; align-items: center; gap: 2mm; padding-bottom: 2.5mm; border-bottom: 0.2mm solid #eee; }
-  .plat-head .dot { width: 2mm; height: 2mm; border-radius: 50%; }
-  .plat-head.cyan .dot { background: #29abe3; box-shadow: 0 0 4px #29abe3; }
-  .plat-head.lime .dot { background: #8fc045; box-shadow: 0 0 4px #8fc045; }
-  .plat-head.mag  .dot { background: #e32285; box-shadow: 0 0 4px #e32285; }
-  .plat-head .name { font-size: 9pt; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
-  .plat-head .role { font-size: 6.5pt; color: #888; letter-spacing: 0.18em; text-transform: uppercase; margin-left: auto; }
+  /* Plat-head reforzado · jerarquía y apertura gráfica */
+  .plat-head {
+    display: grid;
+    grid-template-columns: 10mm 1fr auto;
+    align-items: baseline; gap: 3mm;
+    padding-bottom: 3mm;
+    border-bottom: 0.6mm solid #eee;
+    margin-bottom: 3mm;
+  }
+  .plat-head .num {
+    font-family: 'Courier New', monospace;
+    font-size: 22pt; font-weight: 900; line-height: 0.9;
+    color: #ccc; letter-spacing: -0.02em;
+  }
+  .plat-head .name-row { display: flex; flex-direction: column; gap: 0.8mm; }
+  .plat-head .name {
+    font-size: 20pt; font-weight: 900; letter-spacing: -0.02em;
+    line-height: 0.9;
+  }
+  .plat-head .role {
+    font-size: 6.5pt; color: #888; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 700;
+  }
+  .plat-head.cyan { border-bottom-color: #29abe3; }
+  .plat-head.lime { border-bottom-color: #8fc045; }
+  .plat-head.mag  { border-bottom-color: #e32285; }
+  .plat-head.cyan .name { color: #0d7ba8; }
+  .plat-head.lime .name { color: #4d6b1e; }
+  .plat-head.mag  .name { color: #a01e63; }
+  .plat-head.cyan .num { color: rgba(41,171,227,0.35); }
+  .plat-head.lime .num { color: rgba(143,192,69,0.4); }
+  .plat-head.mag  .num { color: rgba(227,34,133,0.35); }
+
+  /* Status chip */
+  .plat-status {
+    font-family: 'Courier New', monospace;
+    font-size: 6.5pt; font-weight: 700; letter-spacing: 0.15em;
+    padding: 1.2mm 3mm;
+    border-radius: 100mm; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 1.2mm;
+    align-self: center;
+  }
+  .plat-status.pub {
+    background: #1B1919; color: var(--c-gold);
+    border: 0.2mm solid #1B1919;
+  }
+  .plat-status.pub::before {
+    content: ""; width: 1.5mm; height: 1.5mm; border-radius: 50%;
+    background: var(--c-gold); box-shadow: 0 0 0 1mm rgba(249,176,61,0.25);
+  }
+
+  /* Justificación por red — decisión gráfica visible */
+  .plat-just {
+    background: #f5f5f5; border-left: 1.2mm solid;
+    padding: 2mm 3mm;
+    font-size: 6.8pt; line-height: 1.5; color: #555;
+    border-radius: 0 1mm 1mm 0;
+  }
+  .plat-just.cy { border-left-color: #29abe3; }
+  .plat-just.li { border-left-color: #8fc045; }
+  .plat-just.mg { border-left-color: #e32285; }
+  .plat-just strong { color: #1B1919; font-weight: 700; }
+  .plat-just em.cy { font-style: normal; font-weight: 700; color: #0d7ba8; }
+  .plat-just em.li { font-style: normal; font-weight: 700; color: #4d6b1e; }
+  .plat-just em.mg { font-style: normal; font-weight: 700; color: #a01e63; }
+
+  /* Micro-strategy chips (frecuencia · público · tipo) */
+  .plat-meta {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm;
+    margin-top: 2mm;
+  }
+  .plat-meta .cell {
+    padding: 2mm 2.5mm; background: white;
+    border: 0.2mm solid #ddd; border-radius: 1mm;
+  }
+  .plat-meta .cell .lbl {
+    font-family: 'Courier New', monospace;
+    font-size: 5pt; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #999; font-weight: 700; margin-bottom: 0.8mm;
+  }
+  .plat-meta .cell .val {
+    font-size: 7pt; font-weight: 700; color: #1B1919; line-height: 1.2;
+  }
 
   .qr-strip { margin-top: auto; padding-top: 3mm; border-top: 0.2mm dashed #ddd; display: flex; align-items: center; gap: 3mm; }
   .qr-strip .qr { background:#fff; padding:1mm; border:0.2mm solid #ddd; border-radius: 0.8mm; }
@@ -784,9 +860,20 @@
     <!-- ── LINKEDIN (full width arriba) ── -->
     <div class="plat-col full">
       <div class="plat-head lime">
-        <span class="dot"></span>
-        <span class="name">LinkedIn</span>
-        <span class="role">Networking profesional · Desktop</span>
+        <span class="num">01</span>
+        <div class="name-row">
+          <div class="name">LinkedIn</div>
+          <div class="role">Networking profesional · Desktop</div>
+        </div>
+        <span class="plat-status pub">Publicado · Perfil real</span>
+      </div>
+      <div class="plat-just li" style="margin-bottom:3mm;">
+        <strong>Verde lima</strong> = <em class="li">Interacción</em> · elegido porque LinkedIn es una plataforma donde la conversación transacciona en oportunidades. El color codifica la <strong>naturaleza profesional-pero-cercana</strong> de la red, consistente con el sistema.
+      </div>
+      <div class="plat-meta" style="margin-bottom:3mm;">
+        <div class="cell"><div class="lbl">Frecuencia</div><div class="val">1 post / semana</div></div>
+        <div class="cell"><div class="lbl">Público</div><div class="val">Estudios · agencias · pasantías</div></div>
+        <div class="cell"><div class="lbl">Contenido</div><div class="val">Posts profesionales · casos</div></div>
       </div>
       <div class="li-wide">
         <div class="real-screen li-screen">
@@ -803,7 +890,7 @@
             <strong style="color:#1B1919;">Perfil real publicado.</strong> Banner horizontal con el sistema de marca, foto de perfil con monograma sobre paleta brand, headline alineado a la estrategia: <em class="hl">"Multimedia &amp; Graphic Designer · Sistemas narrativos del papel al video"</em>. La descripción incluye las 3 áreas (Editorial · Interacción · Audiovisual) y el link al portfolio.
           </p>
           <div class="qr-strip" style="margin-top:auto;">
-            <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/nbdesigner/&margin=1&color=1B1919" alt="QR LI"></div>
+            <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fnbdesigner%2F" alt="QR LI"></div>
             <div class="qr-meta">
               <strong>linkedin.com/in/<br>nbdesigner</strong>
               <span class="hand">→ Ir a LinkedIn</span>
@@ -816,15 +903,26 @@
     <!-- ── INSTAGRAM ── -->
     <div class="plat-col">
       <div class="plat-head cyan">
-        <span class="dot"></span>
-        <span class="name">Instagram</span>
-        <span class="role">Profunda · Mobile</span>
+        <span class="num">02</span>
+        <div class="name-row">
+          <div class="name">Instagram</div>
+          <div class="role">Profunda · Mobile</div>
+        </div>
+        <span class="plat-status pub">Publicado</span>
+      </div>
+      <div class="plat-just cy" style="margin-bottom:3mm;">
+        <strong>Cian</strong> = <em class="cy">Audiovisual</em> · IG es donde vive el ritmo audiovisual — reels, carousels y stories. El color codifica el <strong>movimiento</strong> como lenguaje de la red.
+      </div>
+      <div class="plat-meta" style="margin-bottom:3mm;">
+        <div class="cell"><div class="lbl">Frecuencia</div><div class="val">3 posts / semana</div></div>
+        <div class="cell"><div class="lbl">Público</div><div class="val">Pares · reclutadores</div></div>
+        <div class="cell"><div class="lbl">Contenido</div><div class="val">Carousels BTS · reels</div></div>
       </div>
       <div class="mobile-screen">
         <img class="shot" src="./assets/screens-tp3/ig-real-3.jpeg" alt="Perfil real IG">
       </div>
       <div class="qr-strip">
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.instagram.com/maurisantos.design&margin=1&color=1B1919" alt="QR IG"></div>
+        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fwww.instagram.com%2Fmaurisantos.design" alt="QR IG"></div>
         <div class="qr-meta">
           <strong>@maurisantos.design</strong>
           <span class="hand">→ Ir a Instagram</span>
@@ -835,15 +933,26 @@
     <!-- ── YOUTUBE ── -->
     <div class="plat-col">
       <div class="plat-head mag">
-        <span class="dot"></span>
-        <span class="name">YouTube</span>
-        <span class="role">Bitácora · Mobile</span>
+        <span class="num">03</span>
+        <div class="name-row">
+          <div class="name">YouTube</div>
+          <div class="role">Bitácora · Mobile</div>
+        </div>
+        <span class="plat-status pub">Publicado</span>
+      </div>
+      <div class="plat-just mg" style="margin-bottom:3mm;">
+        <strong>Magenta</strong> = <em class="mg">Editorial</em> · YouTube es la bitácora editorial extendida — piezas largas y narrativa profunda. El color codifica la <strong>densidad de contenido</strong> por sobre el ritmo corto.
+      </div>
+      <div class="plat-meta" style="margin-bottom:3mm;">
+        <div class="cell"><div class="lbl">Frecuencia</div><div class="val">1 video / mes</div></div>
+        <div class="cell"><div class="lbl">Público</div><div class="val">Curiosos del proceso</div></div>
+        <div class="cell"><div class="lbl">Contenido</div><div class="val">Walkthroughs largos · BTS</div></div>
       </div>
       <div class="mobile-screen">
         <img class="shot" src="./assets/screens-tp3/youtube-real.jpeg" alt="Canal real YouTube">
       </div>
       <div class="qr-strip">
-        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/@mauro6026&margin=1&color=1B1919" alt="QR YT"></div>
+        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fwww.youtube.com%2F%40mauro6026" alt="QR YT"></div>
         <div class="qr-meta">
           <strong>youtube.com/<br>@mauro6026</strong>
           <span class="hand">→ Ir a YouTube</span>
