@@ -398,11 +398,11 @@
   .li-banner-piece .content {
     position: relative; z-index: 2;
     height: 100%;
-    padding: 2.5cqi 4cqi 2cqi 4cqi;  /* sin safe left · el texto va al margen izquierdo del banner, arriba de donde cae la PFP */
+    padding: 2cqi 4cqi 2cqi 22cqi;  /* safe left 22cqi = zona PFP + ring #OPENTOWORK de LinkedIn */
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 3cqi;
-    align-items: start;  /* subo todo al top para que la PFP (que cae en la mitad inferior izquierda) no tape nada */
+    align-items: center;
   }
   .li-banner-piece .text-zone .kicker {
     font-size: 1.3cqi; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;
@@ -410,7 +410,7 @@
     margin-bottom: 0.8cqi;
   }
   .li-banner-piece .text-zone .headline {
-    font-size: 5.5cqi; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
+    font-size: 5cqi; font-weight: 900; letter-spacing: -0.03em; line-height: 0.95;
     color: white;
   }
   .li-banner-piece .text-zone .headline em {
