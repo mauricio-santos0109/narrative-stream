@@ -435,7 +435,7 @@
   }
   .ig-detail-grid .ig-phone .screen img {
     width: 100%; height: 100%;
-    object-fit: cover; object-position: top;
+    object-fit: contain;
   }
   .ig-card-wrap .ig-card-caption { font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #888; font-weight: 700; }
 
@@ -644,7 +644,7 @@
   }
   .mobile-screen .shot {
     width: 100%; height: 100%;
-    object-fit: cover; object-position: top;
+    object-fit: contain;
     display: block;
     border-radius: 1.5mm;
   }
@@ -733,7 +733,7 @@
     background: white; border-radius: 2mm; overflow: hidden;
     aspect-ratio: 9 / 19.5;
   }
-  .ig-phone .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .ig-phone .screen img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
   /* URL strip */
   .url-strip {
@@ -750,7 +750,7 @@
 </head>
 <body>
 
-<!-- ━━━━━━━━━━ PAGE 1 — MARCA · CONCEPTO · ESTRATEGIA ━━━━━━━━━━ -->
+<!-- ━━━━━━━━━━ PAGE 1 — 3 REDES CON QR ━━━━━━━━━━ -->
 <section class="page">
   <header class="header">
     <div class="brand-word">PORTFOLIO</div>
@@ -761,98 +761,11 @@
     </div>
   </header>
 
-  <div class="eyebrow">CH·01 · MARCA · CONCEPTO</div>
-  <h2 class="section-title">El detrás <span class="ink">de cámaras.</span></h2>
-
-  <p class="pull">
-    Soy diseñador multimedia y gráfico <em class="hl">en formación</em>. Uno la formalidad del editorial con la capacidad técnica de las experiencias interactivas y el ritmo del lenguaje audiovisual. Construyo <em class="hl">sistemas narrativos</em> que funcionan en múltiples soportes: del papel al entorno virtual y al video.
-  </p>
-
-  <div class="manifesto-grid">
-    <div class="manifesto-block accent-cyan">
-      <h3 class="block-title q">¿Quién soy?</h3>
-      <p>Diseñador en formación que conecta la formalidad del editorial con la capacidad técnica de interacción y el ritmo audiovisual.</p>
-    </div>
-    <div class="manifesto-block accent-lime">
-      <h3 class="block-title q">¿Qué hago?</h3>
-      <p>Construyo sistemas narrativos. No solo piezas estáticas: proyectos que funcionan en múltiples soportes — papel, entorno virtual, video.</p>
-    </div>
-    <div class="manifesto-block accent-mag">
-      <h3 class="block-title q">¿Para quién?</h3>
-      <p>Estudios de branding transmedia, agencias de contenido digital o desarrolladoras indie que necesiten alguien que entienda tanto de front-end como de montaje de video.</p>
-    </div>
-    <div class="manifesto-block accent-gold">
-      <h3 class="block-title q">¿En qué creo?</h3>
-      <p>En la <em class="hl">transparencia del proceso</em>: mostrar la cocina de un proyecto (bocetos, errores de código, pruebas de montaje) le da un valor que el render final no tiene.</p>
-    </div>
-  </div>
-
-  <!-- BRAND -->
-  <section class="brand-section">
-    <div class="eyebrow" style="margin-bottom:3mm;">CH·02 · SISTEMA DE MARCA</div>
-    <div class="brand-row">
-      <div>
-        <div class="logo-frame"><img src="./assets/logo/MarcaFINAL.png" alt="Marca"></div>
-      </div>
-      <div>
-        <h3 class="block-title">Construcción</h3>
-        <p style="font-size:8.5pt; line-height:1.5; margin-bottom:3mm;">El signo surge de la síntesis de los entornos de edición audiovisual — la línea de tiempo en bloques de color. Tres barras verticales: <em class="cyan">Video</em>, <em class="lime">Interacción</em>, <em class="mag">Editorial</em>. Al integrarse con los <em class="gold">playheads dorados</em>, construyen una "M" como monograma dinámico.</p>
-
-        <h3 class="block-title">Paleta cromática</h3>
-        <div class="palette">
-          <div class="swatch" style="background:#29abe3;"><span class="lbl">Video</span><span class="hex">#29ABE3</span></div>
-          <div class="swatch" style="background:#8fc045;"><span class="lbl">Interacción</span><span class="hex">#8FC045</span></div>
-          <div class="swatch" style="background:#e32285;"><span class="lbl">Editorial</span><span class="hex">#E32285</span></div>
-          <div class="swatch" style="background:#f9b03d; color:#1B1919;"><span class="lbl">Playhead</span><span class="hex">#F9B03D</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO en vivo -->
-  <div style="margin-top:7mm;">
-    <div class="eyebrow" style="margin-bottom:3mm;">CH·03 · EL PORTFOLIO EN VIVO</div>
-    <h3 class="block-title" style="font-size:14pt; margin-bottom:1mm;">Punto de aterrizaje único.</h3>
-    <p class="body" style="margin-bottom: 4mm; max-width: 220mm;">
-      Todas las redes apuntan al mismo destino: <em class="hl">mauricio-santos0109.github.io/narrative-stream</em> — sitio React con 3 rieles de catálogo (Audiovisual · Interacción · Editorial), 9 trabajos abribles en modal con su <em class="mag">Behind the Scenes</em>.
-    </p>
-    <div class="portfolio-showcase">
-      <div class="pf-hero"><img src="./assets/screens-tp3/portfolio-1.png" alt="Portfolio hero"></div>
-      <div class="pf-side"><img src="./assets/screens-tp3/portfolio-2.png" alt="Portfolio catálogo"></div>
-      <div class="pf-side"><img src="./assets/screens-tp3/portfolio-3.png" alt="Modal de proyecto con BTS"></div>
-      <div class="pf-caption">
-        <strong>Proceso TP_2 → TP_3 ·</strong> Cambios aplicados al sitio durante la preparación del TP3 de redes:
-        <ul>
-          <li><strong>Marca real en los proyectos:</strong> reemplazo de BTS placeholder por las 3 fotos del modelo físico de MiMeMo + 3 piezas de proceso reales de la Infografía LEGO (diagrama de partes, fondo escaneado, captura de Illustrator).</li>
-          <li><strong>Sección "Trabajemos juntos":</strong> el tile de Instagram ahora linkea al perfil real (<em>@maurisantos.design</em>) reemplazando el "Próximamente".</li>
-          <li><strong>Tipografía + featured markers:</strong> ajustes previos de jerarquía y badges "destacado" en los trabajos featured de cada categoría (correcciones de la rúbrica TP_2).</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="url-strip">
-    <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">01 / 03 · MARCA + CONCEPTO + PORTFOLIO</span>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━ PAGE 2 — 3 REDES CON QR ━━━━━━━━━━ -->
-<section class="page">
-  <header class="header">
-    <div class="brand-word">PORTFOLIO</div>
-    <div class="meta">
-      <strong>TP_3:</strong> Portfolio Secundario · Estrategia de Redes<br>
-      <strong>UADE. FADI</strong><span class="sep">|</span><strong>Docente:</strong> Durañona Diego · Caiafa Erika<br>
-      <strong>Alumno:</strong> Santos Mauricio Ezequiel
-    </div>
-  </header>
-
-  <div class="eyebrow">CH·02 · 3 REDES ELEGIDAS</div>
+  <div class="eyebrow">CH·01 · 3 REDES ELEGIDAS</div>
   <h2 class="section-title">Vidrieras <span class="ink" style="color:#e32285;">cross-platform.</span></h2>
 
   <p class="body" style="margin-bottom: 6mm; max-width: 220mm;">
-    Tres redes, una sola marca. Cada plataforma adapta el sistema visual a su lenguaje nativo (desktop wide en LinkedIn, mobile vertical en Instagram y YouTube) manteniendo la paleta, la tipografía y el <em class="hl">monograma "M"</em> como anclaje. Los QR llevan a cada plataforma directamente.
+    Tres redes, una sola marca. Cada plataforma adapta el sistema visual a su lenguaje nativo (desktop wide en LinkedIn, mobile vertical en Instagram y YouTube) manteniendo la paleta, la tipografía y el <em class="hl">monograma "M"</em> como anclaje. Las tres <em class="hl">están publicadas y activas</em> — no son mockups — con contenido en producción y QR directos a cada perfil.
   </p>
 
   <div class="three-platforms">
@@ -865,7 +778,7 @@
           <div class="name">LinkedIn</div>
           <div class="role">Networking profesional · Desktop</div>
         </div>
-        <span class="plat-status pub">Publicado · Perfil real</span>
+        <span class="plat-status pub">13 contactos · #OPENTOWORK</span>
       </div>
       <div class="plat-just li" style="margin-bottom:3mm;">
         <strong>Verde lima</strong> = <em class="li">Interacción</em> · elegido porque LinkedIn es una plataforma donde la conversación transacciona en oportunidades. El color codifica la <strong>naturaleza profesional-pero-cercana</strong> de la red, consistente con el sistema.
@@ -883,7 +796,7 @@
             <span class="dot" style="background:#28ca42;"></span>
             <span class="url">linkedin.com/in/nbdesigner</span>
           </div>
-          <img class="shot" src="./assets/screens-tp3/linkedin-real.png" alt="LinkedIn perfil real">
+          <img class="shot" src="./assets/screens-tp3-v2/li.png" alt="LinkedIn perfil real">
         </div>
         <div class="li-aside">
           <p class="body" style="font-size:8pt; margin-bottom:3mm;">
@@ -908,7 +821,7 @@
           <div class="name">Instagram</div>
           <div class="role">Profunda · Mobile</div>
         </div>
-        <span class="plat-status pub">Publicado</span>
+        <span class="plat-status pub">9 posts · 16 seguidores</span>
       </div>
       <div class="plat-just cy" style="margin-bottom:3mm;">
         <strong>Cian</strong> = <em class="cy">Audiovisual</em> · IG es donde vive el ritmo audiovisual — reels, carousels y stories. El color codifica el <strong>movimiento</strong> como lenguaje de la red.
@@ -919,7 +832,7 @@
         <div class="cell"><div class="lbl">Contenido</div><div class="val">Carousels BTS · reels</div></div>
       </div>
       <div class="mobile-screen">
-        <img class="shot" src="./assets/screens-tp3/ig-real-3.jpeg" alt="Perfil real IG">
+        <img class="shot" src="./assets/screens-tp3-v2/ig-3.jpeg" alt="Perfil real IG">
       </div>
       <div class="qr-strip">
         <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fwww.instagram.com%2Fmaurisantos.design" alt="QR IG"></div>
@@ -938,7 +851,7 @@
           <div class="name">YouTube</div>
           <div class="role">Bitácora · Mobile</div>
         </div>
-        <span class="plat-status pub">Publicado</span>
+        <span class="plat-status pub">Canal activo · @mauro6026</span>
       </div>
       <div class="plat-just mg" style="margin-bottom:3mm;">
         <strong>Magenta</strong> = <em class="mg">Editorial</em> · YouTube es la bitácora editorial extendida — piezas largas y narrativa profunda. El color codifica la <strong>densidad de contenido</strong> por sobre el ritmo corto.
@@ -949,7 +862,7 @@
         <div class="cell"><div class="lbl">Contenido</div><div class="val">Walkthroughs largos · BTS</div></div>
       </div>
       <div class="mobile-screen">
-        <img class="shot" src="./assets/screens-tp3/youtube-real.jpeg" alt="Canal real YouTube">
+        <img class="shot" src="./assets/screens-tp3-v2/yt.jpeg" alt="Canal real YouTube">
       </div>
       <div class="qr-strip">
         <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&ecc=H&margin=1&color=1B1919&data=https%3A%2F%2Fwww.youtube.com%2F%40mauro6026" alt="QR YT"></div>
@@ -968,7 +881,7 @@
 
   <div class="url-strip">
     <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">02 / 03 · 3 REDES + QR</span>
+    <span class="page-num">01 / 02 · 3 REDES + QR</span>
   </div>
 </section>
 
@@ -983,11 +896,11 @@
     </div>
   </header>
 
-  <div class="eyebrow">CH·03 · INSTAGRAM · RED MÁS DESARROLLADA</div>
-  <h2 class="section-title">La cuenta <span class="ink">funcionando.</span></h2>
+  <div class="eyebrow">CH·02 · INSTAGRAM · RED MÁS DESARROLLADA</div>
+  <h2 class="section-title">La identidad <span class="ink">en cada formato.</span></h2>
 
   <p class="body" style="margin-bottom: 5mm; max-width: 220mm;">
-    Instagram es la red más desarrollada. Las 3 vistas de abajo son <em class="mag">capturas reales de la cuenta en producción</em> — perfil con grilla 3×3, post abierto con carousel y story con sticker de link. Los 5 highlight covers que cierran la lámina son las piezas diseñadas a dimensión exacta de IG (1080×1920) que se ven recortadas a círculo en el perfil real.
+    Instagram es la red donde la identidad del diseñador aparece en <em class="hl">3 formatos nativos</em> distintos. En el <strong>perfil</strong> el sistema se ve completo: profile pic + bio + 4 highlights customs (E · I · A · ¿Quién soy?) + grid 3×3 con los 9 trabajos etiquetados "Nuevo". En el <strong>post</strong> abierto, cada proyecto viene con su carousel BTS + caption con voz personal + hashtags técnicos. En la <strong>story</strong> "¿Quién soy?", el manifiesto sobre gradiente cyan-magenta con link directo al portfolio. Los 5 highlight covers que cierran la lámina son piezas diseñadas a dimensión exacta (1080×1920) recortadas a círculo por IG.
   </p>
 
   <div class="ig-detail-grid three">
@@ -996,23 +909,23 @@
     <div class="ig-card-wrap">
       <div class="ig-card-caption">01 · Perfil real · @maurisantos.design</div>
       <div class="ig-phone">
-        <div class="screen"><img src="./assets/screens-tp3/ig-real-3.jpeg" alt="Perfil real IG"></div>
+        <div class="screen"><img src="./assets/screens-tp3-v2/ig-3.jpeg" alt="Perfil real IG"></div>
       </div>
     </div>
 
     <!-- POST REAL -->
     <div class="ig-card-wrap">
-      <div class="ig-card-caption">02 · Post real · NENA — Vicios (carousel)</div>
+      <div class="ig-card-caption">02 · Post real · Folioscopio · carousel BTS slide 3</div>
       <div class="ig-phone">
-        <div class="screen"><img src="./assets/screens-tp3/ig-real-1.jpeg" alt="Post real IG"></div>
+        <div class="screen"><img src="./assets/screens-tp3-v2/ig-1.jpeg" alt="Post real IG"></div>
       </div>
     </div>
 
     <!-- STORY REAL -->
     <div class="ig-card-wrap">
-      <div class="ig-card-caption">03 · Story real · Shredded Teen Spirit</div>
+      <div class="ig-card-caption">03 · Story real · "¿Quién soy?" — manifiesto con link</div>
       <div class="ig-phone">
-        <div class="screen"><img src="./assets/screens-tp3/ig-real-2.jpeg" alt="Story real IG"></div>
+        <div class="screen"><img src="./assets/screens-tp3-v2/ig-2.jpeg" alt="Story real IG"></div>
       </div>
     </div>
 
@@ -1020,7 +933,7 @@
 
   <!-- HIGHLIGHTS STRIP — Highlight covers reales -->
   <div class="ig-card-wrap">
-    <div class="ig-card-caption">05 · Highlight covers diseñados · pieza 1080×1920 recortada a círculo por IG</div>
+    <div class="ig-card-caption">04 · Highlight covers diseñados · pieza 1080×1920 recortada a círculo por IG</div>
     <div class="ig-highlight-strip">
       <div class="ig-hl-big">
         <div class="circle mag" style="padding:0; overflow:hidden;"><img src="./assets/social/ig-hl-cover-ed.png" alt="Editorial" style="width:100%; height:100%; object-fit:cover;"></div>
@@ -1052,7 +965,7 @@
 
   <div class="url-strip">
     <span class="url">mauricio-santos0109.github.io/narrative-stream</span>
-    <span class="page-num">03 / 03 · INSTAGRAM · CUENTA EN PRODUCCIÓN</span>
+    <span class="page-num">02 / 02 · INSTAGRAM · CUENTA EN PRODUCCIÓN</span>
   </div>
 </section>
 
